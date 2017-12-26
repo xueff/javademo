@@ -15,34 +15,33 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * dayeeÊı¾İ¿âÎÄ¼ş¸üĞÂÎÄ¼ş¼ĞÊä³ö¿ØÖÆÌ¨
- * ¢Ù ÉèÖÃÆğÊ¼Ê±¼ä
- * ¢Ú´òÓ¡ÀàĞÍ    console company
+ * dayeeæ•°æ®åº“æ–‡ä»¶æ›´æ–°æ–‡ä»¶å¤¹è¾“å‡ºæ§åˆ¶å°
+ * â‘  è®¾ç½®èµ·å§‹æ—¶é—´
+ * â‘¡æ‰“å°ç±»å‹    console company
  * 
- * ¢Û£¡£¡£¡×¢ÒâÊä³ö ÎÄ¼şÃû  console Æ´Ğ´´íÎó Çé¿ö
- * ¿ØÖÆÌ¨´òÓ¡¶ÔÓ¦Â·¾¶ÏÂsqlÎÄ¼ş
- * @author cooltain
+ * â‘¢ï¼ï¼ï¼æ³¨æ„è¾“å‡º æ–‡ä»¶å  console æ‹¼å†™é”™è¯¯ æƒ…å†µ
+ * æ§åˆ¶å°æ‰“å°å¯¹åº”è·¯å¾„ä¸‹sqlæ–‡ä»¶  
  */
 public class PrintOutUpdateSqlFiles {
-    //////////////////////////////////////////////////ÊÖ¶¯ÉèÖÃÆğÊ¼//////////////////////////////////////////////////////
-    // ±¾µØSQLÏîÄ¿ÎÄ¼ş´æ·ÅµÄÂ·¾¶    1  2 3£¬
+    //////////////////////////////////////////////////æ‰‹åŠ¨è®¾ç½®èµ·å§‹//////////////////////////////////////////////////////
+    // æœ¬åœ°SQLé¡¹ç›®æ–‡ä»¶å­˜æ”¾çš„è·¯å¾„    1  2 3ï¼Œ
     private static String LOCALE_PROJECT_PATH = "D:\\ProgStudio\\workspacerelease1116\\release1116_wintalent_other";
     private static String LOCALE_PROJECT_PATH2 = "\\sql\\patch\\8x";
     private static String LOCALE_PROJECT_PATH3 = "\\8.v1.08";
     
-    //ÎÄ¼ş¹ıÂËÆğÊ¼ÈÕÆÚ
+    //æ–‡ä»¶è¿‡æ»¤èµ·å§‹æ—¥æœŸ
     private static int dateStart = 20171201;
     
-    private static boolean printType = true;  //´òÓ¡ÀàĞÍ false console    true:company
-    //////////////////////////////////////////////////ÊÖ¶¯ÉèÖÃ½áÊø//////////////////////////////////////////////////////
+    private static boolean printType = true;  //æ‰“å°ç±»å‹ false console    true:company
+    //////////////////////////////////////////////////æ‰‹åŠ¨è®¾ç½®ç»“æŸ//////////////////////////////////////////////////////
     
     
     
     
-    private static StringBuffer fileString = new StringBuffer(); ///´øÊä³öÎÄ±¾
-    private static Map<Integer,List<String>> fileDateAndNameMap = new HashMap<Integer,List<String>>(); ///£¨ÒÑ¹ıÂË£©ÈÕÆÚ£¬ÎÄ¼şÃû
-    private static List<String> fileNameConsoleOrdered = new LinkedList<String>(); //console  °´ÈÕÆÚÅÅĞòÎÄÃûh
-    private static List<String> fileNameCompanyOrdered = new LinkedList<String>(); //company  °´ÈÕÆÚÅÅĞòÎÄ¼şÃû
+    private static StringBuffer fileString = new StringBuffer(); ///å¸¦è¾“å‡ºæ–‡æœ¬
+    private static Map<Integer,List<String>> fileDateAndNameMap = new HashMap<Integer,List<String>>(); ///ï¼ˆå·²è¿‡æ»¤ï¼‰æ—¥æœŸï¼Œæ–‡ä»¶å
+    private static List<String> fileNameConsoleOrdered = new LinkedList<String>(); //console  æŒ‰æ—¥æœŸæ’åºæ–‡åh
+    private static List<String> fileNameCompanyOrdered = new LinkedList<String>(); //company  æŒ‰æ—¥æœŸæ’åºæ–‡ä»¶å
     
     private static String getCompletePath(){
         return LOCALE_PROJECT_PATH +LOCALE_PROJECT_PATH2 +LOCALE_PROJECT_PATH3;
@@ -51,14 +50,14 @@ public class PrintOutUpdateSqlFiles {
     public static void main(String[] args) throws Exception {
         String completePath = getCompletePath();
         
-        //»ñÈ¡pathNameµÄFile¶ÔÏó  
+        //è·å–pathNameçš„Fileå¯¹è±¡  
         File dirFile = new File(completePath);  
-        //ÅĞ¶Ï¸ÃÎÄ¼ş»òÄ¿Â¼ÊÇ·ñ´æÔÚ£¬²»´æÔÚÊ±ÔÚ¿ØÖÆÌ¨Êä³öÌáĞÑ  
+        //åˆ¤æ–­è¯¥æ–‡ä»¶æˆ–ç›®å½•æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ—¶åœ¨æ§åˆ¶å°è¾“å‡ºæé†’  
         if (!dirFile.exists()) {  
             System.out.println("do not exit");  
             return ;  
         }  
-        //ÅĞ¶ÏÈç¹û²»ÊÇÒ»¸öÄ¿Â¼£¬¾ÍÅĞ¶ÏÊÇ²»ÊÇÒ»¸öÎÄ¼ş£¬Ê±ÎÄ¼şÔòÊä³öÎÄ¼şÂ·¾¶  
+        //åˆ¤æ–­å¦‚æœä¸æ˜¯ä¸€ä¸ªç›®å½•ï¼Œå°±åˆ¤æ–­æ˜¯ä¸æ˜¯ä¸€ä¸ªæ–‡ä»¶ï¼Œæ—¶æ–‡ä»¶åˆ™è¾“å‡ºæ–‡ä»¶è·¯å¾„  
         if (!dirFile.isDirectory()) {  
             if (dirFile.isFile()) {  
                 System.out.println(dirFile.getCanonicalFile());  
@@ -66,20 +65,20 @@ public class PrintOutUpdateSqlFiles {
             return ;  
         }  
           
-        //»ñÈ¡´ËÄ¿Â¼ÏÂµÄËùÓĞÎÄ¼şÃûÓëÄ¿Â¼Ãû  
+        //è·å–æ­¤ç›®å½•ä¸‹çš„æ‰€æœ‰æ–‡ä»¶åä¸ç›®å½•å  
         String[] fileList = dirFile.list(); 
         
         chooseNeedFiles(fileList);
         
         if (printType) {
             for (String filename : fileNameCompanyOrdered) {  
-                //ÎÄ¼şÃû
+                //æ–‡ä»¶å
                 File file = new File(dirFile.getPath(),filename);  
                 printOutFiles(file);
             } 
         }else{
             for (String filename : fileNameConsoleOrdered) {  
-                //ÎÄ¼şÃû
+                //æ–‡ä»¶å
                 File file = new File(dirFile.getPath(),filename);  
                 printOutFiles(file);
             }  
@@ -99,7 +98,7 @@ public class PrintOutUpdateSqlFiles {
                     out = new FileOutputStream("D://conpany-sql.txt");  
             }else{
                     out = new FileOutputStream("D://console-sql.txt");  
-                    //ÎÄ¼şÃû
+                    //æ–‡ä»¶å
             }
             out.write(buff,0,buff.length);  
         }   
@@ -121,11 +120,11 @@ public class PrintOutUpdateSqlFiles {
             return;
         InputStream in = null;  
         try {  
-            // ¸ù¾İÎÄ¼ş´´½¨ÎÄ¼şµÄÊäÈëÁ÷  
+            // æ ¹æ®æ–‡ä»¶åˆ›å»ºæ–‡ä»¶çš„è¾“å…¥æµ  
             in = new FileInputStream(file);  
-            // ´´½¨×Ö½ÚÊı×é  
+            // åˆ›å»ºå­—èŠ‚æ•°ç»„  
             byte[] data = new byte[1024];  
-            // ¶ÁÈ¡ÄÚÈİ£¬·Åµ½×Ö½ÚÊı×éÀïÃæ  
+            // è¯»å–å†…å®¹ï¼Œæ”¾åˆ°å­—èŠ‚æ•°ç»„é‡Œé¢  
             in.read(data);  
             System.out.println(new String(data));  
             fileString.append(new String(data));
@@ -133,7 +132,7 @@ public class PrintOutUpdateSqlFiles {
             e.printStackTrace();  
         } finally {  
             try {  
-                // ¹Ø±ÕÊäÈëÁ÷  
+                // å…³é—­è¾“å…¥æµ    
                 in.close();  
             } catch (Exception e) {  
                 e.printStackTrace();  
@@ -145,7 +144,7 @@ public class PrintOutUpdateSqlFiles {
     
 
     /**
-     * »ñÈ¡Òª¸üĞÂµÄÎÄ¼ş(ÒÑÅÅĞò)
+     * è·å–è¦æ›´æ–°çš„æ–‡ä»¶(å·²æ’åº)
      * @param dirFile
      * @param fileList
      */
@@ -189,7 +188,7 @@ public class PrintOutUpdateSqlFiles {
     }
 	
 	private static void outofDateFileRemove(String fileName) {
-	    //1.¹ıÂËÈÕÆÚ
+	    //1.è¿‡æ»¤æ—¥æœŸ
 	    int datafile = 0;
         try {
             datafile = Integer.valueOf(fileName.substring(0, 8));
@@ -208,7 +207,7 @@ public class PrintOutUpdateSqlFiles {
             fileDateAndNameMap.put(datafile, filesNameList);
         }
         
-//        System.out.println("É¸Ñ¡µÄfile=="+fileName);
+//        System.out.println("ç­›é€‰çš„file=="+fileName);
 	}
 
 }
