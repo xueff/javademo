@@ -1,2 +1,5 @@
 channelPositionService   beans-service.xml id
 http://localhost:8081/wt/xwebservices/channelPositionService?wsdl
+
+
+http://blog.csdn.net/eson_15/article/details/52051801
