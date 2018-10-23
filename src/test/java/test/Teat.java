@@ -22,7 +22,5 @@ public class Teat {
             p.setAge(RamdonStudy.getRamdonInt(10));
             pl.add(p);
         }
-
-
     }
 }
