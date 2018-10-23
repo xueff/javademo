@@ -1,2 +1,0 @@
-channelPositionService   beans-service.xml id
-http://localhost:8081/wt/xwebservices/channelPositionService?wsdl
