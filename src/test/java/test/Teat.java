@@ -1,6 +1,8 @@
 package test;
 
 import common.bean.Person;
+import io.vertx.core.json.JsonObject;
+import net.sf.json.JSONObject;
 import ramdon.RamdonStudy;
 
 import java.util.ArrayList;
@@ -22,5 +24,11 @@ public class Teat {
             p.setAge(RamdonStudy.getRamdonInt(10));
             pl.add(p);
         }
+
+        JSONObject json = new JSONObject();
+        JsonObject vertx = new JsonObject(){
+
+        };
+
     }
 }

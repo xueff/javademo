@@ -13,7 +13,7 @@ import java.util.Properties;
  */
 public class MailUtils {
     static String USERNAME   = "xueff.88@163.com";
-    static String PASSWORD  = "";
+    static String PASSWORD  = "ak969909";
     static String EMAILFORM  = "xueff.88@163.com";
 
     public static void main(String[] args) {
@@ -27,8 +27,8 @@ public class MailUtils {
         props.put("mail.smtp.host", "smtp.163.com"); // 需要经过授权，也就是有户名和密码的校验，这样才能通过验证（一定要有这一条）
         props.put("mail.smtp.auth", "true");// 用刚刚设置好的props对象构建一个session
         Session session = Session.getInstance(props); // 有了这句便可以在发送邮件的过程中在console处显示过程信息，供调试使
-        session.setDebug(true);
-        MimeMessage message = new MimeMessage(Session.getInstance(props));
+//        session.setDebug(true);
+        MimeMessage message = new MimeMessage(session);
         try {
             message.setFrom(new InternetAddress(EMAILFORM));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(address)); // 加载收件人地址

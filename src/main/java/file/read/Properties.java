@@ -13,10 +13,10 @@ import org.apache.commons.configuration2.ex.ConfigurationException;
  * @date 2018/10/2214:28
  */
 public class Properties {
-    public static PropertiesConfiguration properites;
+    private static PropertiesConfiguration properites;
 
     public static PropertiesConfiguration getPropertiesConfig(){
-        if(properites != null) {
+        if(properites == null) {
             try {
                 properites = new Configurations().properties("application.properties");
             } catch (ConfigurationException e) {
