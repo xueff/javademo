@@ -13,7 +13,7 @@ import java.util.Properties;
  */
 public class MailUtils {
     static String USERNAME   = "xueff.88@163.com";
-    static String PASSWORD  = "ak969909";
+    static String PASSWORD  = "*";
     static String EMAILFORM  = "xueff.88@163.com";
 
     public static void main(String[] args) {
