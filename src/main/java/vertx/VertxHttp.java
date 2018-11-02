@@ -35,8 +35,8 @@ public class VertxHttp {
         router.route().handler(BodyHandler.create());//body
         router.post("/hander/*").handler(it->new Filter().handler(it));
         router.post("/hander/it").handler(it -> new Handle().handler(it) );
-        router.get("/*").handler(it -> new Handle().handler(it) );
-        server.requestHandler(it -> router.accept(it) ).listen(8080);
+        router.get("/file/*").handler(it -> new FileHandle().handler(it) );
+        server.requestHandler(it -> router.accept(it) ).listen(8081);
     }
 }
 
@@ -45,9 +45,6 @@ class Filter{
             = Executors.newCachedThreadPool();
 
     public void handler(RoutingContext context) {
-        //String authorization = context.request().getHeader("Authorization");
-        //TODO
-
         System.out.println("filter");
         send("====");
        context.next();
@@ -73,9 +70,27 @@ class Filter{
 
 class Handle{
     public void handler(RoutingContext context) {
-        //String authorization = context.request().getHeader("Authorization");
-        //TODO
         System.out.println("end");
-        context.response().end("end", "UTF-8");
+        //context.response().end("end", "UTF-8");
+        String file = "";
+        if (context.request().path().equals("/")) {
+            file = "index.html";
+        } else if (!context.request().path().contains("..")) {
+            file = context.request().path();
+        }
+        context.response().end("ok");
+    }
+
+}
+
+class FileHandle {
+    public void handler(RoutingContext context) {
+        String file = "";
+        if (context.request().path().equals("/")) {
+            file = "index.html";
+        } else if (!context.request().path().contains("..")) {
+            file = context.request().path();
+        }
+        context.response().sendFile("D:/apache-tomcat-7.0.57-windows-x64.zip");
     }
 }
