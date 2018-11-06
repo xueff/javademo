@@ -3,9 +3,7 @@ package vertx;
 import common.bean.Person;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
-import jdk.nashorn.internal.scripts.JS;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +22,19 @@ public class VertxJson {
         System.out.println(j.toString());
     }
     @Test
+    public void testJsonToObj(){
+        Person p = new Person();
+        JsonObject j = JsonObject.mapFrom(p);
+        System.out.println(j.toString());
+    }
+
+    @Test
+    public void testStringToJson(){
+        JsonObject j = new JsonObject("{\"xm\":90}");
+        System.out.println(j.toString());
+    }
+
+    @Test
     public void testListToJson(){
         List<Person> list = new ArrayList<Person>();
         list.add(new Person());
@@ -31,4 +42,6 @@ public class VertxJson {
         JsonArray l = new JsonArray(list);
         System.out.println(l.toString());
     }
+
+
 }
