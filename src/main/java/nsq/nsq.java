@@ -1,3 +1,5 @@
+package nsq;
+
 import com.github.brainlag.nsq.NSQConsumer;
 import com.github.brainlag.nsq.NSQMessage;
 import com.github.brainlag.nsq.NSQProducer;
@@ -50,8 +52,8 @@ public class nsq {
     @Test
     public void comsume(){
         NSQLookup lookup = new DefaultNSQLookup();
-        lookup.addLookupAddress("39.106.196.5", 3161);
-        NSQConsumer consumerCmdInstance = new NSQConsumer(lookup, "CountryGarden.PowerSocket.Electricity", UUID.randomUUID().toString(),  new NSQMessageCallback(){
+        lookup.addLookupAddress("192.168.121.107", 4161);
+        NSQConsumer consumerCmdInstance = new NSQConsumer(lookup, "CoreToDc.bgy.test", UUID.randomUUID().toString(),  new NSQMessageCallback(){
 
             @Override
             public void message(NSQMessage message) {
