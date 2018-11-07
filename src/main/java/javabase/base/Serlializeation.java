@@ -1,4 +1,4 @@
-package base;
+package javabase.base;
 
 import org.junit.Test;
 
