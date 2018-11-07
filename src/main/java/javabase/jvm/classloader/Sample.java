@@ -1,4 +1,4 @@
-package jvm.classloader;
+package javabase.jvm.classloader;
 public class Sample
 {
 	public Sample() 

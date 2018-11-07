@@ -1,4 +1,4 @@
-package regix;
+package javabase.regix;
 
 import org.junit.Test;
 
