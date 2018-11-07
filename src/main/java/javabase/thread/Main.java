@@ -1,4 +1,4 @@
-package thread;
+package javabase.thread;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

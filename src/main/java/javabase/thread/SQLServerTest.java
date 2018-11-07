@@ -1,4 +1,4 @@
-//package study.springboot.myspringboot;
+package javabase.thread;//package study.springboot.myspringboot;
 //
 //import org.junit.Test;
 //import org.springframework.beans.factory.annotation.Autowired;

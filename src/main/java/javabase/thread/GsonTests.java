@@ -1,15 +1,14 @@
-package thread;
+package javabase.thread;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Test;
+
 import java.io.IOException;
 import java.util.*;
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
 public class GsonTests {
     @Test
     public void jsonStringToModel() throws IOException {
@@ -61,7 +60,7 @@ public class GsonTests {
     public void createJson(){
         JsonObject jsonObj = new JsonObject();
         jsonObj.addProperty("action","tvyuyin.channeldataupdate");
-        jsonObj.addProperty("timestamp",new java.util.Date().getTime());
+        jsonObj.addProperty("timestamp",new Date().getTime());
         jsonObj.addProperty("Key",UUID.randomUUID()+"");
         JsonObject jsonObj2 = new JsonObject();
         jsonObj2.addProperty("child","child");
@@ -88,7 +87,7 @@ public class GsonTests {
     @Test
     public void  getKey(){
         JsonObject jsonObj = new JsonObject();
-        com.google.gson.JsonObject info = jsonObj.getAsJsonObject("props");
+        JsonObject info = jsonObj.getAsJsonObject("props");
 
     }
 

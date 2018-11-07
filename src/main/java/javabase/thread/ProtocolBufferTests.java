@@ -1,4 +1,4 @@
-//package study.springboot.myspringboot;
+package javabase.thread;//package study.springboot.myspringboot;
 //
 //import com.google.protobuf.InvalidProtocolBufferException;
 //import org.junit.Test;

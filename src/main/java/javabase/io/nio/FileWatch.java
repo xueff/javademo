@@ -1,4 +1,4 @@
-package io.nio;
+package javabase.io.nio;
 
 import org.junit.Test;
 
@@ -7,7 +7,7 @@ import java.nio.file.*;
 
 /**
  * @author xuefei
- * @Title: ${file_name}
+ * @Title: ${file_name}1
  * @Package ${package_name}
  * @Description:  获取当前OS平台下的文件系统监控器
  * @date 2018/10/2914:48

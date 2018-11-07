@@ -1,4 +1,4 @@
-package thread.thread.concurrent;
+package javabase.thread.thread.concurrent;
 
 import java.util.HashMap;
 import java.util.concurrent.*;

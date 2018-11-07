@@ -1,11 +1,8 @@
-package thread.concurrent;
-
-import net.sf.json.JSONObject;
+package javabase.thread.concurrent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author xuefei
@@ -76,7 +73,7 @@ public class ConcurrentHashMapTest implements  Runnable{
 
 class HashMapDemo implements Runnable{
 //    private static java.util.concurrent.ConcurrentHashMap<String,AtomicInteger> map = new ConcurrentHashMap();
-    private static java.util.concurrent.ConcurrentHashMap<String,List<String>> contentMap = new ConcurrentHashMap();
+    private static ConcurrentHashMap<String,List<String>> contentMap = new ConcurrentHashMap();
     public String name;
     public String key;
 

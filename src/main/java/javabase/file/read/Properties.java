@@ -1,6 +1,5 @@
-package file.read;
+package javabase.file.read;
 
-import org.apache.commons.configuration2.builder.fluent.Configurations;
 import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.commons.configuration2.builder.fluent.Configurations;
 import org.apache.commons.configuration2.ex.ConfigurationException;
@@ -9,7 +8,7 @@ import org.apache.commons.configuration2.ex.ConfigurationException;
  * @author xuefei
  * @Title: ${file_name}
  * @Package ${package_name}
- * @Description: ${todo}
+ * @Description: ${todo}1
  * @date 2018/10/2214:28
  */
 public class Properties {
