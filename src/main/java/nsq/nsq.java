@@ -25,23 +25,28 @@ import java.util.concurrent.TimeoutException;
  */
 public class nsq {
 
+    public static String nsqAddr = "39.106.196.5";
+    public static int nsqPort = 3150;
+
     @Test
     public void producer(){
         EventModel e = new EventModel();
 
-        Map cmd = new HashMap<>();
-        cmd.put("UseACPower",1.0);
 
-        e.setCmd(cmd);
         GenericKeyedObjectPoolConfig config = new GenericKeyedObjectPoolConfig();
             config.setMinIdlePerKey(1);
             config.setMaxTotalPerKey(20);
             config.setMaxWaitMillis(30000);
         NSQProducer producer = new NSQProducer().setPoolConfig(config)
-                    .addAddress("39.106.196.5", 3150)
+                    .addAddress(nsqAddr, nsqPort)
                     .start();
         try {
-            producer.produce("CountryGarden.PowerSocket.Electricity", JsonObject.mapFrom(e).toString().getBytes());
+             for(int i = 0;i<100;i++) {
+                Map cmd = new HashMap<>();
+                cmd.put("UseACPower",411+i*10);
+                e.setCmd(cmd);
+                producer.produce("CountryGarden.PowerSocket.Electricity", JsonObject.mapFrom(e).toString().getBytes());
+            }
         } catch (NSQException e1) {
             e1.printStackTrace();
         } catch (TimeoutException e1) {

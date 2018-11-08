@@ -1,4 +1,4 @@
-package ramdon;
+package javabase.ramdon;
 
 import java.util.Random;
 

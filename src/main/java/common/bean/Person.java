@@ -1,9 +1,7 @@
 package common.bean;
 
 
-import ramdon.RamdonStudy;
-
-import java.util.Random;
+import javabase.ramdon.RamdonStudy;
 
 /**
  * @author xuefei

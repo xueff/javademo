@@ -3,7 +3,7 @@ package test;
 import common.bean.Person;
 import io.vertx.core.json.JsonObject;
 import net.sf.json.JSONObject;
-import ramdon.RamdonStudy;
+import javabase.ramdon.RamdonStudy;
 
 import java.util.ArrayList;
 import java.util.List;
