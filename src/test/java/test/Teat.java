@@ -17,18 +17,6 @@ import java.util.List;
  */
 public class Teat {
     public static void main(String[] args) {
-        List<Person> pl = new ArrayList<>();
-        for(int i=0;i<5;i++){
-            Person p = new Person();
-            p.setName("A"+i);
-            p.setAge(RamdonStudy.getRamdonInt(10));
-            pl.add(p);
-        }
-
-        JSONObject json = new JSONObject();
-        JsonObject vertx = new JsonObject(){
-
-        };
 
     }
 }

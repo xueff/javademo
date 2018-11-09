@@ -3,13 +3,11 @@ package google.cache;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import common.bean.Person;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 
@@ -18,8 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 class Test{
     public static void main(String[] args) {
-//        Cache<String, Object> c1 = BGYCache.getInstance("BGYInfraredLearningCache",30);
-//        Cache<String, Object> c2 = BGYCache.getInstance("BGYNewDeviceCache",30);
         List<Person> list = new ArrayList<>();
         Person p1 = new Person();
         list.add(p1);
@@ -29,20 +25,18 @@ class Test{
 
         BGYCache.cacheMap.get("BGYInfraredLearningCache").put("a",list);
 
-        BGYCache.cacheMap.get("BGYNewDeviceCache").put("b","8");
-        list = (List<Person>)BGYCache.cacheMap.get("BGYInfraredLearningCache").getIfPresent("a");
-        String de = (String)BGYCache.cacheMap.get("BGYNewDeviceCache").getIfPresent("b");
+        BGYCache.cacheMap.get("BGYInfraredLearningCache").put("b","8");
+
 
         try {
             list = (List<Person>)BGYCache.getCacheValue("BGYInfraredLearningCache","a");
+            String de = (String)BGYCache.getCacheValue("BGYInfraredLearningCache","b");
             System.out.println(list);
+            System.out.println(de);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        de = (String)BGYCache.cacheMap.get("BGYNewDeviceCache").getIfPresent("b");
-
-        System.out.println(list);
-        System.out.println(de);
     }
 }
 
@@ -68,7 +62,7 @@ public class BGYCache {
     }
     static {
         getInstance("BGYInfraredLearningCache",1);
-        getInstance("BGYNewDeviceCache",1);
+//        getInstance("BGYNewDeviceCache",1);
     }
 
 
@@ -88,6 +82,8 @@ public class BGYCache {
             return cacheMap.get(cacheName).get(key, new Callable<Object>() {
                 @Override
                 public Object call() {
+
+                    //load 加载
                     return null;
                 }
             });
