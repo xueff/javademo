@@ -40,28 +40,29 @@ import java.util.List;
  * @Description: 持同一session的HttpClient工具类
  * @date 2018/11/910:04
  */
-public class HttpClientKeepSession {
+public class HttpClientKeepSession extends HttpClientUtils{
 
-    public  static CloseableHttpClient httpClient = null;
-    public  static HttpClientContext context = null;
-    public  static CookieStore cookieStore = null;
-    public  static RequestConfig requestConfig = null;
-
-    static {
-        init();
-    }
-
-    private static void init() {
-        context = HttpClientContext.create();
-        cookieStore = new BasicCookieStore();
-        // 配置超时时间（连接服务端超时1秒，请求数据返回超时2秒）
-        requestConfig = RequestConfig.custom().setConnectTimeout(120000).setSocketTimeout(60000)
-                .setConnectionRequestTimeout(60000).build();
-        // 设置默认跳转以及存储cookie
-        httpClient = HttpClientBuilder.create()
-                .setKeepAliveStrategy(new DefaultConnectionKeepAliveStrategy())
-                .setRedirectStrategy(new DefaultRedirectStrategy()).setDefaultRequestConfig(requestConfig)
-                .setDefaultCookieStore(cookieStore).build();
+    /**
+     * http get
+     *
+     * @param url
+     * @return response
+     * @throws ClientProtocolException
+     * @throws IOException
+     */
+    public static CloseableHttpResponse getNoLogin(String url) throws ClientProtocolException, IOException {
+        HttpGet httpget = new HttpGet(url);
+        CloseableHttpResponse response = httpClient.execute(httpget, context);
+        try {
+            cookieStore = context.getCookieStore();
+            List<Cookie> cookies = cookieStore.getCookies();
+            for (Cookie cookie : cookies) {
+                System.out.println("key:" + cookie.getName() + "  value:" + cookie.getValue());
+            }
+        } finally {
+            response.close();
+        }
+        return response;
     }
 
     /**
@@ -75,15 +76,15 @@ public class HttpClientKeepSession {
     public static CloseableHttpResponse get(String url) throws ClientProtocolException, IOException {
         HttpGet httpget = new HttpGet(url);
         CloseableHttpResponse response = httpClient.execute(httpget, context);
-        try {
-            cookieStore = context.getCookieStore();
-            List<Cookie> cookies = cookieStore.getCookies();
-            for (Cookie cookie : cookies) {
-                System.out.println("key:" + cookie.getName() + "  value:" + cookie.getValue());
-            }
-        } finally {
-            response.close();
-        }
+//        try {
+//            cookieStore = context.getCookieStore();
+//            List<Cookie> cookies = cookieStore.getCookies();
+//            for (Cookie cookie : cookies) {
+//                System.out.println("key:" + cookie.getName() + "  value:" + cookie.getValue());
+//            }
+//        } finally {
+//            response.close();
+//        }
         return response;
     }
 
@@ -188,6 +189,7 @@ public class HttpClientKeepSession {
         BasicClientCookie cookie = new BasicClientCookie(name, value);
         cookie.setDomain(domain);
         cookie.setPath(path);
+        System.out.println("addcookie:"+cookie.getValue());
         cookieStore.addCookie(cookie);
     }
 
@@ -234,7 +236,6 @@ public class HttpClientKeepSession {
 
         //用户登陆
         CloseableHttpResponse response = HttpClientKeepSession.post("http://localhost:8080/BCP/j_spring_security_check", "j_username=13301330133&j_password=330133");
-
         printResponse(response);
         printCookies();
         addCookie("name","test","localhost","/BCP/");

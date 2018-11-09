@@ -42,7 +42,10 @@ import java.util.Map.Entry;
  *     <version>4.5.3</version>
  * </dependency>
  */
-public class HttpClientMy {
+public class HttpClientRequest {
+    /**
+     * Get请求
+     */
     public static byte[] getMethod(String url)
     {
         RequestConfig requestConfig = RequestConfig.custom()
