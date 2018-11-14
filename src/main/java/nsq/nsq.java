@@ -43,7 +43,7 @@ public class nsq {
         try {
              for(int i = 0;i<100;i++) {
                 Map cmd = new HashMap<>();
-                cmd.put("UseACPower",433+i*10);
+                cmd.put("UseACPower",499+i*10+"KW");
                 e.setCmd(cmd);
                 producer.produce("CountryGarden.PowerSocket.Electricity", JsonObject.mapFrom(e).toString().getBytes());
             }

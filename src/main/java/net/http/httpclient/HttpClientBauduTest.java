@@ -137,9 +137,9 @@ public class HttpClientBauduTest {
         CookieStore cookieStore = new BasicCookieStore();
         httpclient = HttpClients.custom().setDefaultCookieStore(cookieStore).build();
         // 创建http请求(get方式)
-        CloseableHttpResponse response = httpclient.execute(httpGet);
-        System.out.println(EntityUtils.toString(response.getEntity()));
-        System.out.println(cookieStore.getCookies());
+//        CloseableHttpResponse response = httpclient.execute(httpGet);
+//        System.out.println(EntityUtils.toString(response.getEntity()));
+//        System.out.println(cookieStore.getCookies());
 
         //===================方法三========================
         saveCookie();
@@ -148,16 +148,16 @@ public class HttpClientBauduTest {
 
 
 
-        try {
-            HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                System.out.println("Response content length: " + entity.getContentLength());
-                System.out.println(EntityUtils.toString(entity));
-                EntityUtils.consume(entity);
-            }
-        } finally {
-            response.close();
-        }
+//        try {
+//            HttpEntity entity = response.getEntity();
+//            if (entity != null) {
+//                System.out.println("Response content length: " + entity.getContentLength());
+//                System.out.println(EntityUtils.toString(entity));
+//                EntityUtils.consume(entity);
+//            }
+//        } finally {
+//            response.close();
+//        }
 
 
 
