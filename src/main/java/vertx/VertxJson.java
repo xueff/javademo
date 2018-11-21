@@ -5,7 +5,9 @@ import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author xuefei
@@ -41,6 +43,20 @@ public class VertxJson {
         list.add(new Person());
         JsonArray l = new JsonArray(list);
         System.out.println(l.toString());
+    }
+
+
+    @Test
+    public void forEach(){
+        Person p = new Person();
+        JsonObject json = JsonObject.mapFrom(p);
+        Iterator<Map.Entry<String, Object>> items = json.iterator();
+        while(items.hasNext()){
+            Object item = items.next();
+
+           System.out.println(""+((Map.Entry) item).getKey().toString().equals("name"));
+           System.out.println(((Map.Entry) item).getValue() instanceof Double);
+        }
     }
 
 

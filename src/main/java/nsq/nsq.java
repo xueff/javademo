@@ -8,6 +8,7 @@ import com.github.brainlag.nsq.exceptions.NSQException;
 import com.github.brainlag.nsq.lookup.DefaultNSQLookup;
 import com.github.brainlag.nsq.lookup.NSQLookup;
 import io.vertx.core.json.JsonObject;
+import javabase.ramdon.RamdonStudy;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
 import org.junit.Test;
 
@@ -31,27 +32,44 @@ public class nsq {
     @Test
     public void producer(){
         EventModel e = new EventModel();
-
-
         GenericKeyedObjectPoolConfig config = new GenericKeyedObjectPoolConfig();
-            config.setMinIdlePerKey(1);
-            config.setMaxTotalPerKey(20);
-            config.setMaxWaitMillis(30000);
+            config.setMinIdlePerKey(100);
+            config.setMaxTotalPerKey(2000);
+            config.setMaxWaitMillis(300000000);
         NSQProducer producer = new NSQProducer().setPoolConfig(config)
                     .addAddress(nsqAddr, nsqPort)
                     .start();
+
+        String[] items = new String[]{"Temperature","Humidity","PM25"};
         try {
-             for(int i = 0;i<100;i++) {
+             for(int i = 0;i<3;i++) {
+                 e.setDevHost("999"+i);
                 Map cmd = new HashMap<>();
-                cmd.put("UseACPower",499+i*10+"KW");
-                e.setCmd(cmd);
-                producer.produce("CountryGarden.PowerSocket.Electricity", JsonObject.mapFrom(e).toString().getBytes());
+                cmd.put("UseACPower",i*0.9+8+"");
+//                cmd.put(items[RamdonStudy.getRamdonInt(3)],RamdonStudy.getRamdonInt(3)+i*0.3+"");
+//                cmd.put(items[RamdonStudy.getRamdonInt(3)],RamdonStudy.getRamdonInt(3)+i*0.3+"");
+
+//                 try {
+//                     Thread.sleep(1000*5);
+//                 } catch (InterruptedException e1) {
+//                     e1.printStackTrace();
+//                 }
+                 e.setCmd(cmd);
+//                producer.produce("CountryGarden.Environmenttest", JsonObject.mapFrom(e).toString().getBytes());
+                producer.produce("CountryGarden.PowerSocket.Electricitytest", JsonObject.mapFrom(e).toString().getBytes());
             }
         } catch (NSQException e1) {
             e1.printStackTrace();
         } catch (TimeoutException e1) {
             e1.printStackTrace();
         }
+        //线程睡眠，让程序执行完
+        try {
+            Thread.sleep(11140000);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     @Test
@@ -81,9 +99,9 @@ public class nsq {
 
 class EventModel {
     //设备地址
-    private String deviceId="1";
+    private String deviceId="213";
     //网关地址
-    private String devHost="28f366b6dc86";
+    private String devHost="666";
     //设备类型
     private String deviceType="3";
     //事件名称

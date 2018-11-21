@@ -1,5 +1,7 @@
 import database.redies.JedisStudy;
 
+import java.util.UUID;
+
 /**
  * @author xuefei
  * @Title: ${file_name}
@@ -10,7 +12,7 @@ import database.redies.JedisStudy;
 public class ClassPathTest {
     public static void main(String[] args) {
         JedisStudy jedisStudy = JedisStudy.getInstance(8);
-        System.out.println(jedisStudy.listAllKeys("BGY*"));
+        System.out.println(UUID.randomUUID().toString());
 
         System.out.println();
     }

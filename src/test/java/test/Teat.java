@@ -23,9 +23,36 @@ public class Teat {
         boolean windows = SystemPropertyUtil.get("os.name", "").toLowerCase(Locale.US).contains("win");
 
 
-        String osname = "macosx8scvs".toLowerCase(Locale.US)
-                .replaceAll("[0-9]+", "");
-        boolean osx = osname.startsWith("macosx") || osname.startsWith("osx");
+        long st = System.currentTimeMillis();
+        long flag = 0L;
+        String b= "12345678901234567890123467890";
+        for(long i=0;i<10000L;i++){
+            try {
+                subString(b);
+            }catch (Exception e){
+//                e.printStackTrace();
+            }
+        }
+        long two = System.currentTimeMillis();
+        b= "1";
+        for(long i=0;i<100000L;i++){
+            try {
+                subString(b);
+            }catch (Exception e){
+//                flag++;
+            }
+        }
+//        for(long i=0;i<10000000L;i++){
+//            b.substring(2);
+//        }
+        long sec = System.currentTimeMillis();
+        System.out.println("A"+(two-st));
+        System.out.println("A"+(sec-two));
 
+    }
+
+    private static String subString(String str){
+        String sb = str.substring(1);
+        return subString(sb);
     }
 }

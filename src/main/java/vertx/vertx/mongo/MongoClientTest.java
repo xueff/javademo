@@ -1,4 +1,4 @@
-package vertx.vertx;
+package vertx.vertx.mongo;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;

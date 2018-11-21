@@ -37,5 +37,5 @@ public class HttpClientUtils {
                 .setRedirectStrategy(new DefaultRedirectStrategy()).setDefaultRequestConfig(requestConfig)
                 .setDefaultCookieStore(cookieStore).build();
     }
-    
+
 }

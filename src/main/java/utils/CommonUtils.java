@@ -5,6 +5,7 @@ import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -28,5 +29,20 @@ public class CommonUtils {
 
     public static void printAsJson(Object object){
         printAsJson(StringUtils.EMPTY,object,StringUtils.EMPTY);
+    }
+
+    /**
+     *
+     * @Title: objectToMap
+     * @Description: TODO(bean转换为Map)
+     * @return Map<?,?>    返回类型
+     * @param obj
+     * @return
+     */
+    public static Map<?, ?> objectToMap(Object obj) {
+        if(obj == null) {
+            return null;
+        }
+        return new org.apache.commons.beanutils.BeanMap(obj);
     }
 }
