@@ -36,7 +36,7 @@ public class JedisPoolClient implements Closeable {
             config.setTestOnReturn(true);
             //connectionTimeout 连接超时（默认2000ms）
             //soTimeout 响应超时（默认2000ms）
-            pool = new JedisPool(config, "39.106.196.5", 6379,  2000, "123456");
+            pool = new JedisPool(config, "127.0.0.1", 6379,  2000, "123456");
         }
     }
     /**

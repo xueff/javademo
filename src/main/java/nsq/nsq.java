@@ -26,7 +26,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class nsq {
 
-    public static String nsqAddr = "39.106.196.5";
+    public static String nsqAddr = "127.0.0.1";
     public static int nsqPort = 3150;
 
     @Test
