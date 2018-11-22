@@ -2,7 +2,9 @@ package net.http.httpclient;
 
 import org.apache.commons.collections.MapUtils;
 import org.apache.http.*;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
@@ -103,11 +105,134 @@ public class HttpsUtils {
         }
         return result;
     }
+    /**
+     * httpClient post请求
+     * @param url 请求url
+     * @param entity 请求实体 json/xml提交适用
+     * @return 可能为空 需要处理
+     */
+    public static String postJson(String  url,HttpEntity entity){
+        String result = "";
+        CloseableHttpClient httpClient = null;
+        try {
+            httpClient = getHttpClient();
+            HttpPost httpPost = new HttpPost(url);
+            // 设置头信息
+            httpPost.addHeader("Content-Type", "application/json");
+            // 设置实体 优先级高
+            if (entity != null) {
+                httpPost.setEntity(entity);
+            }
+            System.out.println(httpPost.toString());
+            HttpResponse httpResponse = httpClient.execute(httpPost);
+            int statusCode = httpResponse.getStatusLine().getStatusCode();
+            if (statusCode == HttpStatus.SC_OK) {
+                HttpEntity resEntity = httpResponse.getEntity();
+                result = EntityUtils.toString(resEntity);
+            } else {
+                readHttpResponse(httpResponse);
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (httpClient != null) {
+                try {
+                    httpClient.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
+
+    public static String postForm(String  url, Map<String, String> param) {
+        String result = "";
+        CloseableHttpClient httpClient = null;
+        try {
+            httpClient = getHttpClient();
+            HttpPost httpPost = new HttpPost(url);
+            // 设置头信息
+            httpPost.addHeader("Content-Type", "application/x-www-form-urlencoded");
+//             设置请求参数
+            if (MapUtils.isNotEmpty(param)) {
+                List<NameValuePair> formparams = new ArrayList<NameValuePair>();
+                for (Map.Entry<String, String> entry : param.entrySet()) {
+                    //给参数赋值
+                    formparams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+                }
+                System.out.println("请求参数："+formparams);
+                UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(formparams, Consts.UTF_8);
+                httpPost.setEntity(urlEncodedFormEntity);
+            }
+            HttpResponse httpResponse = httpClient.execute(httpPost);
+            int statusCode = httpResponse.getStatusLine().getStatusCode();
+            if (statusCode == HttpStatus.SC_OK) {
+                HttpEntity resEntity = httpResponse.getEntity();
+                result = EntityUtils.toString(resEntity);
+            } else {
+                readHttpResponse(httpResponse);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (httpClient != null) {
+                try {
+                    httpClient.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
+    /**
+     * httpClient get请求
+     * @param url 请求url
+     * @return 可能为空 需要处理
+     * @throws Exception
+     *
+     */
+    public static String get(String  url) {
+        String result = "";
+        CloseableHttpClient httpClient = null;
+        try {
+            httpClient = getHttpClient();
+            HttpGet httpGet = new HttpGet(url);
+            System.out.println(System.currentTimeMillis());
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+            System.out.println(System.currentTimeMillis());
+            if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                result = EntityUtils.toString(httpResponse.getEntity());
+            } else {
+                readHttpResponse(httpResponse);
+            }
+        } catch (Exception e) {
+            System.out.println(System.currentTimeMillis());
+            System.out.println(e.getMessage());
+        } finally {
+            if (httpClient != null) {
+                try {
+                    httpClient.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
     public static CloseableHttpClient getHttpClient() throws Exception {
         CloseableHttpClient httpClient = HttpClients.custom()
                 .setSSLSocketFactory(sslsf)
                 .setConnectionManager(cm)
                 .setConnectionManagerShared(true)
+                .setMaxConnTotal(10)//连接池最大连接数
+                .setDefaultRequestConfig(
+                        RequestConfig.custom()
+                                .setConnectTimeout(1000)
+                                .setSocketTimeout(500)//请求超时时间
+                                .build()
+                )
                 .build();
         return httpClient;
     }
