@@ -12,7 +12,7 @@ import io.vertx.core.json.JsonObject;
  */
 public class MongoClientTest {
     public static io.vertx.ext.mongo.MongoClient mongo;
-    public static  String host = "127.0.0.1";
+    public static  String host = "39.106.196.5";
     public static  int port = 27017;
     public static  String db_name = "house_keeper";
     public static  String username = "house_keeper";

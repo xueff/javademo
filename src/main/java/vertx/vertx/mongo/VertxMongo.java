@@ -24,23 +24,26 @@ public class VertxMongo {
     }
 
     @Test
-    public void test(){
-
-//        MongoClientTest.getMongoClient()
-//                .findOneAndUpdate("CountryGardenEnvironment", new JsonObject()
-//                                .put("_id", "5bee5be0d987f531ac73a8f9")
-//                                    , new JsonObject()
-//                                    .put("$set",new JsonObject()
-//                                            .put("dataList.0",+10.0)),
-//                        new Handler<AsyncResult<JsonObject>>() {
-//                            @Override
-//                            public void handle(AsyncResult<JsonObject> event) {
-//
+    public void addTest(){
+        JsonObject add =new JsonObject()
+                .put("hotelId", "bb545405-85b0-4243-873d-a52cfdf14cac")
+                .put("roomNo", "001")
+                .put("cuid", "1")
+                .put("openUid", "1")
+                .put("appId", "1")
+                .put("appSecret", "1")
+                .put("clientId","1")
+                .put("clientSecret","1");
+        MongoClientTest.getMongoClient()
+                .insert("XiaoDuRobot",add
+                                ,new Handler<AsyncResult<String>>() {
+                            @Override
+                            public void handle(AsyncResult<String> event) {
 //                                JsonObject r = event.result();
 //                                System.out.println(r);
-//                            }
-//                        }
-//                );
+                            }
+                        }
+                );
         try {
             Thread.sleep(100000);
         } catch (InterruptedException e) {
@@ -51,7 +54,7 @@ public class VertxMongo {
 
     @Test
     public void EQList(){
-        JsonObject query = new JsonObject().put("dcCode","47b9ab80559cce18bb3217129278f9f6")
+        JsonObject query = new JsonObject().put("dcCode","1")
             .put("hostMac","28f366b6dc86");
                 //gte：大于等于；lte：小于等于
                 //.put("date", new JsonObject().put("$gte","").put("$lte",""))

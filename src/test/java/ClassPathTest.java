@@ -1,4 +1,5 @@
 import database.redies.JedisStudy;
+import redis.clients.jedis.Jedis;
 
 import java.util.UUID;
 
@@ -11,7 +12,7 @@ import java.util.UUID;
  */
 public class ClassPathTest {
     public static void main(String[] args) {
-        JedisStudy jedisStudy = JedisStudy.getInstance(8);
+        Jedis jedisStudy = JedisStudy.getInstance(8);
         System.out.println(UUID.randomUUID().toString());
 
         System.out.println();

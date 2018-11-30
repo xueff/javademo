@@ -3,13 +3,9 @@ package database.redies;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 /**
  * @author xuefei
@@ -30,7 +26,7 @@ public class JedisStudy {
 
     static {
         if(host.length()==0) {
-            host = "39.106.196.5";
+            host = "192.168.2.207";
             port = 6379;
             dbPool = new ConcurrentHashMap<Integer, JedisPool>();
         }
@@ -43,7 +39,7 @@ public class JedisStudy {
     }
 
     //redis构造方法
-    public static JedisStudy getInstance(Integer db) {
+    public static Jedis getInstance(Integer db) {
         JedisPool pool = null;
         if (JedisStudy.dbPool.containsKey(db)) {
             pool = JedisStudy.dbPool.get(db);
@@ -51,17 +47,17 @@ public class JedisStudy {
             pool = new JedisPool(config, host, port,1000, "123456", db);
             JedisStudy.dbPool.put(db, pool);
         }
-        JedisStudy j = new JedisStudy();
+        connection = pool.getResource();
+
         try {
-            j.connection = pool.getResource();
-            j.connection.set("test", "1324654");
+            connection.set("test", "1324654");
         } catch (Exception e) {
             //连接出现异常
             System.out.println("redis 链接异常，请检查网络...");
             JedisStudy.dbPool.remove(db);
             throw new RuntimeException("redis 链接异常，请检查网络...", e);
         }
-        return j;
+        return connection;
     }
 
     public Set<String> listAllKeys(String like)

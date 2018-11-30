@@ -12,6 +12,7 @@ import javabase.ramdon.RamdonStudy;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -26,7 +27,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class nsq {
 
-    public static String nsqAddr = "127.0.0.1";
+    public static String nsqAddr = "39.106.196.5";
     public static int nsqPort = 3150;
 
     @Test
@@ -42,20 +43,17 @@ public class nsq {
 
         String[] items = new String[]{"Temperature","Humidity","PM25"};
         try {
-             for(int i = 0;i<3;i++) {
-                 e.setDevHost("999"+i);
+             for(int i = 0;i<10000;i++) {
+                 e.setDevHost("9998");
                 Map cmd = new HashMap<>();
-                cmd.put("UseACPower",i*0.9+8+"");
+                cmd.put("UseACPower",0.9+i*0.5+"");
+                long da = new Date().getTime()-1000000000+40000000*i;
+                cmd.put("TimeStamp",da);
 //                cmd.put(items[RamdonStudy.getRamdonInt(3)],RamdonStudy.getRamdonInt(3)+i*0.3+"");
 //                cmd.put(items[RamdonStudy.getRamdonInt(3)],RamdonStudy.getRamdonInt(3)+i*0.3+"");
 
-//                 try {
-//                     Thread.sleep(1000*5);
-//                 } catch (InterruptedException e1) {
-//                     e1.printStackTrace();
-//                 }
                  e.setCmd(cmd);
-//                producer.produce("CountryGarden.Environmenttest", JsonObject.mapFrom(e).toString().getBytes());
+                System.out.println(new Date(da));
                 producer.produce("CountryGarden.PowerSocket.Electricitytest", JsonObject.mapFrom(e).toString().getBytes());
             }
         } catch (NSQException e1) {
@@ -76,13 +74,25 @@ public class nsq {
     public void comsume(){
         NSQLookup lookup = new DefaultNSQLookup();
         lookup.addLookupAddress("192.168.121.107", 4161);
-        NSQConsumer consumerCmdInstance = new NSQConsumer(lookup, "CoreToDc.bgy.test", UUID.randomUUID().toString(),  new NSQMessageCallback(){
+        NSQConsumer consumerCmdInstance1 = new NSQConsumer(lookup, "test", "1",  new NSQMessageCallback(){
 
             @Override
             public void message(NSQMessage message) {
                 byte b[] = message.getMessage();
                 String s = new String(b);
-                System.out.println(s);
+                System.out.println("A"+s);
+                message.finished();
+            }
+        });
+        consumerCmdInstance1.start();
+
+        NSQConsumer consumerCmdInstance = new NSQConsumer(lookup, "test", "1",  new NSQMessageCallback(){
+
+            @Override
+            public void message(NSQMessage message) {
+                byte b[] = message.getMessage();
+                String s = new String(b);
+                System.out.println("B"+s);
                 message.finished();
             }
         });
@@ -90,7 +100,7 @@ public class nsq {
 
         //线程睡眠，让程序执行完
         try {
-            Thread.sleep(40000);
+            Thread.sleep(400000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
