@@ -6,8 +6,10 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
+import javabase.ramdon.RamdonStudy;
 import utils.CommonUtils;
 
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -33,11 +35,11 @@ public class VertxHttp {
         Router router = Router.router(vertx);
 
         router.route().handler(BodyHandler.create());//body
-        router.post("/hander/*").handler(it->new Filter().handler(it));
+        //router.post("/hander/*").handler(it->new Filter().handler(it));
         router.get("/*").handler(it->new Filter().handler(it));
-        router.get("/hander/it").handler(it -> new Handle().handler(it) );
+        router.post("/hander/it").handler(it -> new Handle().handler(it) );
         router.get("/file/*").handler(it -> new FileHandle().handler(it) );
-        server.requestHandler(it -> router.accept(it) ).listen(8082);
+        server.requestHandler(it -> router.accept(it) ).listen(8080);
     }
 }
 
@@ -73,6 +75,11 @@ class Handle{
 //        } else if (!context.request().path().contains("..")) {
 //            file = context.request().path();
 //        }
+        try {
+            Thread.sleep(RamdonStudy.getRamdonInt(100));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String f = "kasdcashioobjbjhcuioashcuiosajkb";
         for(int a= 0;a<10;a++){
             f +=f;

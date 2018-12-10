@@ -12,11 +12,11 @@ import io.vertx.core.json.JsonObject;
  */
 public class MongoClientTest {
     public static io.vertx.ext.mongo.MongoClient mongo;
-    public static  String host = "39.106.196.5";
+    public static  String host = "192.168.2.213";
     public static  int port = 27017;
     public static  String db_name = "house_keeper";
-    public static  String username = "house_keeper";
-    public static  String password = "house_keeper";
+    public static  String username = "keeperUser";
+    public static  String password = "123456";
     public static  String authMechanism = "SCRAM-SHA-1";
     public static  boolean keepAlive = true;
 

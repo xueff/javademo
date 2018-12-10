@@ -1,11 +1,17 @@
 package database.mapdb;
 
+import io.vertx.core.json.JsonObject;
+import javabase.ramdon.RamdonStudy;
 import org.junit.Test;
+import org.mapdb.BTreeMap;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.mapdb.Serializer;
 
+import java.util.*;
 import java.util.concurrent.ConcurrentMap;
+
+import static javafx.scene.input.KeyCode.T;
 
 /**
  * @author xuefei
@@ -16,6 +22,7 @@ import java.util.concurrent.ConcurrentMap;
  * @herf https://blog.csdn.net/cnhome/article/details/75467000
  */
 public class MapDB {
+    static DB db = null;
 
     @Test
     public void testMemoryMapdb(){
@@ -31,22 +38,51 @@ public class MapDB {
         //HashMap（和其他集合）也可以存储在文件中。
         // 在这种情况下，可以在JVM重新启动之间保留内容。
         // 有必要调用DB.close（）来保护文件免受数据损坏。其他选项是使用写入日志来启用事务。
-        DB db = DBMaker.fileDB("testfile.db").make();
-        ConcurrentMap map = db.hashMap("map").createOrOpen();
-        System.out.println(map.get("something"));
-        System.out.println(map.get("something1"));
-        db.close();
+        Map<String,Integer> map  = db.get("map");
+//        Map<String,Object> map = new HashMap<>();
+//        while(true) {
+            System.out.println(map.size());
+//        }
+            //db.close();
+    }
+
+    @Test
+    public void addMapDb(){
+        //HashMap（和其他集合）也可以存储在文件中。
+        // 在这种情况下，可以在JVM重新启动之间保留内容。
+        // 有必要调用DB.close（）来保护文件免受数据损坏。其他选项是使用写入日志来启用事务。
+        DB db = DBMaker.fileDB("D:/DC/.nat").fileLockDisable().closeOnJvmShutdown().make();
+        Iterator<Map.Entry<String,Object>> its = db.getAll().entrySet().iterator();
+//        Map<String,Object> map = new HashMap<>();
+        while(true) {
+            while (its.hasNext()) {
+                Map.Entry<String, Object> it = its.next();
+                System.out.println(((JsonObject) it.getValue()).size());
+
+            }
+        }
+        //db.close();
     }
     @Test
     public void testfileSerlizMapdb(){
         //MapDB使用泛型序列化，可以序列化任何数据类型。
         // 使用专门的串行器，速度更快，记忆效率更高。
         // 此外，我们还可以在64位操作系统上启用更快速的内存映射文件：
-        DB db = DBMaker.fileDB("file.db").fileMmapEnable().make();
-        ConcurrentMap<String,Long> map =
-                db.hashMap("map", Serializer.STRING, Serializer.LONG)
+        db = DBMaker.fileDB("file.db").fileMmapEnable().make();
+        ConcurrentMap<String,Integer> map =
+                db.hashMap("map", Serializer.STRING, Serializer.INTEGER)
                         .createOrOpen();
-        db.close();
+        while (true) {
+            map.put(UUID.randomUUID().toString(), RamdonStudy.getRamdonInt(100000));
+            db.commit();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            getMapDb();
+        }
+//        db.close();
     }
 
 }

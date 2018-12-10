@@ -126,6 +126,26 @@ public class VertxMongo {
         }
     }
 
+    @Test
+    public void distinc(){
+        JsonObject query = new JsonObject().put("key" ,"brand");
+//        query.put("hostMac","28f366b6dc86");
+//        query.put("date", 1541606400000L);//今天
+            MongoClientTest.getMongoClient().distinct("TVInfrared","brand" ,String.class.getName(),res -> {
+            if (res.succeeded()) {
+                List list =  res.result().getList();
+                System.out.println(list);
+            } else {
+                res.cause().printStackTrace();
+            }
+        });
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 

@@ -2,11 +2,9 @@ package test;
 
 import io.vertx.core.json.JsonObject;
 import javabase.ramdon.RamdonStudy;
+import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author xuefei
@@ -27,6 +25,23 @@ public class Teat1 {
 
         System.out.println(jsonString);
 
+        List<String> list = new ArrayList<>();
+
     }
+
+    @Test public void getMax(){
+        Map<String,Integer> fbu = new HashMap<>();
+        String test = "";
+        String[] array = test.split("=");
+        for(int i=0;i<array.length;i++){
+            if(fbu.containsKey(array[i])){
+                fbu.put(array[i], fbu.get(array[i])+1);
+            }else{
+                fbu.put(array[i], 1);
+            }
+        }
+        System.out.println(fbu);
+    }
+
 }
 
