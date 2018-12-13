@@ -11,7 +11,7 @@ public class CountIntZeros {
      * 2.依次判断新i前面0的最大范围，执行步骤1
      * 3.该方法，最多判断30位   16+8+4+2 = 30，
      * 3.1  32位情况无需判断
-     * 3.2  n初始值为1，判断结果的可能偏大，所以最后 n -= i >>> 31;实际为判断奇数位前面是否还有一个0，
+     * 3.2  n初始值为1，判断结果的可能偏大，所以最后 n -= i >>> 31;实际为判断判断移位后首位是否为1
      * @param i
      * @return
      */
@@ -36,11 +36,14 @@ public class CountIntZeros {
             n += 2;
             i <<= 2;
         }
-        n -= i >>> 31;   //判断奇数位是否为1
+        n -= i >>> 31;   //i移位为偶数位移动，判断移位后首位是0否为1
         return n;
     }
 
     public static void main(String[] args) {
-        numberOfLeadingZeros(1);
+        for(int i=0;i<Integer.MAX_VALUE;i++) {
+            numberOfLeadingZeros(i);
+            System.out.print("i="+i);
+        }
     }
 }
