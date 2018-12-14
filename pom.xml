@@ -155,7 +155,7 @@
             <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
             <version>1.1.1</version>
         </dependency>
-        <!---->
+        <!--rabbitmq-->
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-rabbitmq-client</artifactId>
