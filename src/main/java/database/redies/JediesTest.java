@@ -1,7 +1,10 @@
 package database.redies;
 
+import io.vertx.core.json.JsonArray;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.Pipeline;
+import redis.clients.jedis.Response;
 
 import java.util.*;
 
@@ -34,6 +37,43 @@ public class JediesTest {
         }
 
 
+    }
+
+    /**
+     * 批量处理
+     */
+    public void pipe(){
+        Jedis jedis = JedisStudy.getInstance(8);
+        Pipeline pipe= jedis.pipelined();
+        for (int i = 0; i < 10; i++) {
+            try {
+                pipe.set(UUID.randomUUID().toString(),"000"+i);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        pipe.sync();
+    } /**
+     * 批量处理结果
+     */
+    public void piperesult(){
+        Jedis jedis = JedisStudy.getInstance(8);
+        Pipeline pip = jedis.pipelined();
+        pip.multi();
+        for (int i = 0; i < 100000; i++) {
+            pip.set(i + "", UUID.randomUUID().toString());
+        }
+
+        Response<List<Object>> r = pip.exec();
+        pip.multi();
+        for (int i = 0; i < 100000; i++) {
+            pip.get("" + i);
+        }
+
+        r = pip.exec();
+        pip.sync();// 调用syn会关闭管道，所以在调用syn之后就不可以在使用管道了
+        System.out.println(r.get().get(0));
+        System.out.println(r.get().size());
     }
 
     private static void release(Map<Integer,Jedis> map,int nowCount){
