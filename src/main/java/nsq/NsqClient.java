@@ -22,10 +22,9 @@ public class NsqClient {
             synchronized (NsqClient.class) {
                 if(producer == null) {
                     GenericKeyedObjectPoolConfig config = new GenericKeyedObjectPoolConfig();
-                    config.setMinIdlePerKey(1);
-                    config.setMaxTotalPerKey(1);
+                    config.setMinIdlePerKey(5);
+                    config.setMaxTotalPerKey(50);
                     config.setMaxWaitMillis(6000);
-//                    config
                     producer = new NSQProducer().setPoolConfig(config)
                             .addAddress(nsqAddr, nsqPort)
                             .start();

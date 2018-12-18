@@ -38,6 +38,31 @@ public class JediesTest {
 
 
     }
+    //value为string时，append添加string
+    public void append(){
+
+        JedisStudy.getInstance(8).append("","");
+    }
+    //value 加减
+    public void decr(){
+
+        long value= JedisStudy.getInstance(8).decr("");//减1
+        long value2= JedisStudy.getInstance(8).decrBy("",2L);//减2
+//        incr 加
+    }
+    //删除
+    public void deleteDB(){
+
+        String value= JedisStudy.getInstance(8).flushAll();//db0 ...db
+        String value2= JedisStudy.getInstance(8).flushDB();//db 选择的
+    }
+
+    //切户复制
+    public void copy(){
+
+        long value= JedisStudy.getInstance(8).move("",9);//db0 ...db
+        String value2= JedisStudy.getInstance(8).flushDB();//db 选择的
+    }
 
     /**
      * 批量处理

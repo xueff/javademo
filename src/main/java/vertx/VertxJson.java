@@ -59,5 +59,15 @@ public class VertxJson {
         }
     }
 
+    @Test
+    public void test() {
+        JsonObject jsonObj = new JsonObject();
+        jsonObj.put("action","tvyuyin.channeldataupdate");
+        jsonObj.put("data",new JsonObject().put("child","child"));
+        System.out.println(jsonObj);
+        JsonObject j = (JsonObject) jsonObj.remove("data");
+        System.out.println(j);
+        System.out.println(jsonObj);
 
+    }
 }
