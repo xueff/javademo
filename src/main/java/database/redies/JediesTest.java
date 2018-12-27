@@ -1,10 +1,8 @@
 package database.redies;
 
 import io.vertx.core.json.JsonArray;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.Pipeline;
-import redis.clients.jedis.Response;
+import org.junit.Test;
+import redis.clients.jedis.*;
 
 import java.util.*;
 
@@ -57,35 +55,48 @@ public class JediesTest {
         String value2= JedisStudy.getInstance(8).flushDB();//db 选择的
     }
 
-    //切户复制
+    //复制
     public void copy(){
 
         long value= JedisStudy.getInstance(8).move("",9);//db0 ...db
         String value2= JedisStudy.getInstance(8).flushDB();//db 选择的
     }
+    //事务
+    public void tx(){
+
+        Jedis jedis= JedisStudy.getInstance(8);
+        jedis.watch("watchkeys");// watchkeys
+        Transaction tx = jedis.multi();// 开启事务
+        tx.incrBy("watchkeys", -1);
+        List<Object> list = tx.exec();// 提交事务，如果此时watchkeys被改动了，则返回null
+        if (list == null ||list.size()==0) {
+            jedis.setnx("failuserifo", "failinfo");/* 抢购失败业务逻辑 */
+        }else {
+            jedis.setnx("succuserifo", "succuserifo"); /* 抢购成功业务逻辑 */
+        }
+    }
 
     /**
      * 批量处理
      */
+    @Test
     public void pipe(){
         Jedis jedis = JedisStudy.getInstance(8);
         Pipeline pipe= jedis.pipelined();
-        for (int i = 0; i < 10; i++) {
-            try {
-                pipe.set(UUID.randomUUID().toString(),"000"+i);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        for (int i = 0; i < 30; i++) {
+                pipe.set(i+"30=","111"+i);
         }
         pipe.sync();
+        jedis.close();
     } /**
-     * 批量处理结果
+     * 批量处理结果j
      */
+    @Test
     public void piperesult(){
         Jedis jedis = JedisStudy.getInstance(8);
         Pipeline pip = jedis.pipelined();
         pip.multi();
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 10; i++) {
             pip.set(i + "", UUID.randomUUID().toString());
         }
 
