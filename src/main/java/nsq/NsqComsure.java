@@ -15,12 +15,17 @@ public class NsqComsure {
     public void comsume(){
         NSQLookup lookup = new DefaultNSQLookup();
         lookup.addLookupAddress(nsqAddr, 4161);
-        NSQConsumer consumerCmdInstance1 = new NSQConsumer(lookup, "xfTest2", "1",  new NSQMessageCallback(){
+        NSQConsumer consumerCmdInstance1 = new NSQConsumer(lookup, "xctrl.dc.receive", ".",  new NSQMessageCallback(){
 
             @Override
             public void message(NSQMessage message) {
-                byte[] b = message.getMessage();
-                ThreadTest.check(b);
+//                byte[] b = message.getMessage();
+//                ThreadTest.check(b);
+                try {
+                    Thread.sleep(30);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 message.finished();
             }
         });

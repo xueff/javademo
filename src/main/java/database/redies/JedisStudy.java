@@ -1,5 +1,6 @@
 package database.redies;
 
+import javabase.ramdon.RamdonStudy;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -27,13 +28,16 @@ public class JedisStudy {
     static {
         if(host.length()==0) {
             host = "192.168.2.207";
-            port = 6379;
+//            host = "0000";
+            port = 7369;
             dbPool = new ConcurrentHashMap<Integer, JedisPool>();
         }
 
-        JedisStudy.config.setMaxTotal(50); //连接实例最大数目
+        JedisStudy.config.setMaxTotal(300); //连接实例最大数目
         //RedisCache.Companion.config.maxIdle = RedisCache.Companion.properties.getInt("redis.max_idle") //连接实例最大空闲数目
-        JedisStudy.config.setMinIdle(5);
+        JedisStudy.config.setMaxIdle(80);
+        JedisStudy.config.setMinIdle(40);
+        JedisStudy.config.setMaxWaitMillis(60000);
         JedisStudy.config.setTestOnBorrow(true); //获取连接之前是否测试可用
 
     }
@@ -44,17 +48,24 @@ public class JedisStudy {
         if (JedisStudy.dbPool.containsKey(db)) {
             pool = JedisStudy.dbPool.get(db);
         } else {
-            pool = new JedisPool(config, host, port,1000, "123456", db);
+            pool = new JedisPool(config, host, port,50000, "111", db);
+//            pool = new JedisPool(config, host, port,1000, "Xiezhu1234!@#$", db);
             JedisStudy.dbPool.put(db, pool);
         }
-        connection = pool.getResource();
+
 
         try {
-            connection.set("test", "1324654");
+            connection = pool.getResource();
+//            connection.set("test", "1324654");
         } catch (Exception e) {
+            try {
+                Thread.sleep(RamdonStudy.getRamdonInt(1000));
+                connection = pool.getResource();
+//            connection.set("test", "1324654");
+            } catch (Exception ex) {}
             //连接出现异常
             System.out.println("redis 链接异常，请检查网络...");
-            JedisStudy.dbPool.remove(db);
+            //JedisStudy.dbPool.remove(db);
             throw new RuntimeException("redis 链接异常，请检查网络...", e);
         }
         return connection;

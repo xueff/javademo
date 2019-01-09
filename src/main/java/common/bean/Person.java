@@ -47,4 +47,13 @@ public class Person {
         this.age = RamdonStudy.getRamdonInt(150);
         this.money = RamdonStudy.getRamdonDouble();
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", money=" + money +
+                '}';
+    }
 }

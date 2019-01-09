@@ -24,12 +24,10 @@ public class VertxJson {
         System.out.println(j.toString());
     }
     @Test
-    public void testJsonToObj(){
-        Person p = new Person();
-        JsonObject j = JsonObject.mapFrom(p);
+    public void testJsontoObj(){
+        Person j = new JsonObject().put("name","xm").mapTo(Person.class);
         System.out.println(j.toString());
     }
-
     @Test
     public void testStringToJson(){
         JsonObject j = new JsonObject("{\"xm\":90}");

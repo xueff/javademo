@@ -11,4 +11,5 @@ public interface MongoQuerySQL {
     String IN = "$in";  // in == {a: {$in: [10, “hello”]}}
     String ALL = "$all";  // in contains {a: {$all: [10, “hello”]}}
     //String AB = "a.b";  // {"a.b": 10} 级联
+
 }

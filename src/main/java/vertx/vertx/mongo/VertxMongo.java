@@ -2,9 +2,13 @@ package vertx.vertx.mongo;
 
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
+import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.mongo.FindOptions;
 import org.junit.Test;
+import utils.DateUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,25 +29,32 @@ public class VertxMongo {
 
     @Test
     public void addTest(){
-        JsonObject add =new JsonObject()
-                .put("hotelId", "bb545405-85b0-4243-873d-a52cfdf14cac")
-                .put("roomNo", "001")
-                .put("cuid", "1")
-                .put("openUid", "1")
-                .put("appId", "1")
-                .put("appSecret", "1")
-                .put("clientId","1")
-                .put("clientSecret","1");
-        MongoClientTest.getMongoClient()
-                .insert("XiaoDuRobot",add
-                                ,new Handler<AsyncResult<String>>() {
-                            @Override
-                            public void handle(AsyncResult<String> event) {
+        long st = new Date().getTime();
+        Double a = 1.0;
+        for(int i=0;i<5;i++) {
+            JsonObject add = new JsonObject()
+                    .put("hotelId", "bb545405-85b0-4243-873d-a52cfdf14cac")
+                    .put("roomNo", "002")
+                    .put("timeStamp", DateUtils.getDayStartTime(new Date(st)).getTime())
+                    .put("valueW", a+i)
+                    .put("lastDayValueW", a+i)
+                    .put("valueE", a+i+1)
+                    .put("lastDayValueE", a+i)
+                    .put("listW", new JsonArray())
+                    .put("listE", new JsonArray());
+            MongoClientTest.getMongoClient()
+                    .insert("CountryGardenBattery", add
+                            , new Handler<AsyncResult<String>>() {
+                                @Override
+                                public void handle(AsyncResult<String> event) {
 //                                JsonObject r = event.result();
 //                                System.out.println(r);
+                                }
                             }
-                        }
-                );
+                    );
+            st += DateUtils.oneDayTime;
+
+        }
         try {
             Thread.sleep(100000);
         } catch (InterruptedException e) {
@@ -54,13 +65,14 @@ public class VertxMongo {
 
     @Test
     public void EQList(){
-        JsonObject query = new JsonObject().put("dcCode","1")
-            .put("hostMac","28f366b6dc86");
+        JsonObject query = new JsonObject().put("hotelId", "bb545405-85b0-4243-873d-a52cfdf14cac")
+//            .put("hostMac","28f366b6dc86");
                 //gte：大于等于；lte：小于等于
-                //.put("date", new JsonObject().put("$gte","").put("$lte",""))
+                .put("timeStamp", new JsonObject().put("$gte",1546272000000L).put("$lte",1548864000000L));
                 //in
                 //.put("$in", idList)
 //            .put("date", 1541606400000L);//今天
+//        List<JsonObject> list = MongoClientTest.getMongoClient().findWithOptions(query,new FindOptions().setSort(new JsonObject().put("timeStamp",1)));
         doQuery(query);
     }
 
@@ -91,7 +103,7 @@ public class VertxMongo {
     }
 
     public void doQuery(JsonObject query){
-        MongoClientTest.getMongoClient().find("CountryGardenBattery", query,res -> {
+        MongoClientTest.getMongoClient().find("CountryGardenEnvironment", query,res -> {
             if (res.succeeded()) {
                 List<JsonObject> list =  res.result();
                 System.out.println(list);
