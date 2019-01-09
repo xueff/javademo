@@ -15,21 +15,17 @@ public class VertxTimer {
     @Test
     public void timerTest(){
         Vertx vertx = VertxHttp.getVertx();
-        System.out.println("st:"+System.currentTimeMillis());
+        System.out.println("定时一次");
         vertx.setTimer(1000,new Handler<Long>(){
-
             @Override
             public void handle(Long event) {
                 System.out.println("delayend:"+System.currentTimeMillis());
             }
         });
-        System.out.println("mainend:"+System.currentTimeMillis());
 
-
-        try {
-            Thread.sleep(10000000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println("循环:");
+        Vertx.vertx().setPeriodic(60*60*1000L,h -> {
+            System.out.println("time's up");
+        });
     }
 }
