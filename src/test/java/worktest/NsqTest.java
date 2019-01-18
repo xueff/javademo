@@ -1,51 +1,44 @@
 package worktest;
 
-import com.github.brainlag.nsq.exceptions.NSQException;
-import database.redies.JedisPoolClient;
-import database.redies.JedisStudy;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
-import javabase.ramdon.RamdonStudy;
-import javabase.serializable.ObjectSerializable;
+import javabase.spi.ramdon.RamdonStudy;
 import nsq.NsqClient;
 import org.junit.Test;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.Pipeline;
 import testmodel.EventModel;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.util.*;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeoutException;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class NsqTest {
     @Test
     public void testAddSend(){
         EventModel e = new EventModel();
         try {
-            long st = 1546591668000L;
-            for(int i=0;i<2000;i++) {
+            long st = 1546099200000L;
+            Double str = 3.0;
+            Double water = 100000000.0;
+            for(int i=0;i<40;i++) {
+//                Thread.sleep(5);
+                //if((st+(7*60*60*1000L)*i)>1547222399000L) break;
                 JsonObject j = new JsonObject()
                         .put("hotelId", "bb545405-85b0-4243-873d-a52cfdf14cac")
-                        .put("roomNo", i%4+"")
-                        .put("timeStamp", st+(10*60*1000)*i)
-                        .put("value",i*0.1)
-                        .put("type",1);
-                NsqClient.getInstance().produce("xctrl.dc.newcmd1", j.toString().getBytes());
+                        .put("roomNo", "00"+i%3)
+                        .put("timeStamp", st+(7*60*60*1000L)*i)
+                        .put("value",water-0.1*i)
+                        .put("type","WaterMeter");
+                NsqClient.getInstance().produce("hydropower.meter", j.toString().getBytes());
+                Thread.sleep(50);
                 JsonObject j2 = new JsonObject()
                         .put("hotelId", "bb545405-85b0-4243-873d-a52cfdf14cac")
-                        .put("roomNo", i%4+"")
-                        .put("timeStamp", st+(10*60*1000)*i)
-                        .put("value",i*0.2)
-                        .put("type",2);
-                NsqClient.getInstance().produce("xctrl.dc.newcmd1", j2.toString().getBytes());
-
+                        .put("roomNo", "00"+i%3)
+                        .put("timeStamp", st+(7*60*60*1000L)*i)
+                        .put("value",str+i*0.1)
+                        .put("type","ElectricMeter");
+                NsqClient.getInstance().produce("hydropower.meter", j2.toString().getBytes());
+//            Long s = st+((6*60*1000L)*i);
+//            Date d = new Date(s);
+//            System.out.println(d.getYear()+"/"+d.getMonth()+"/"+d.getDay()+" "+d.getHours());
+                if(i==20) Thread.sleep(2000);
 
             }
 
@@ -54,7 +47,7 @@ public class NsqTest {
             e1.printStackTrace();
         }
         try {
-            Thread.sleep(100000000);
+            Thread.sleep(1000);
         } catch (InterruptedException e1) {
             e1.printStackTrace();
         }

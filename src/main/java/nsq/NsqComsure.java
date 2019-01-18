@@ -5,7 +5,6 @@ import com.github.brainlag.nsq.NSQMessage;
 import com.github.brainlag.nsq.callbacks.NSQMessageCallback;
 import com.github.brainlag.nsq.lookup.DefaultNSQLookup;
 import com.github.brainlag.nsq.lookup.NSQLookup;
-import javabase.thread.threadtest.ThreadTest;
 import org.junit.Test;
 
 public class NsqComsure {

@@ -1,8 +1,7 @@
 package test;
 
-import io.vertx.core.json.JsonObject;
-import javabase.ramdon.RamdonStudy;
 import org.junit.Test;
+import utils.NumberUtils;
 
 import java.util.*;
 
@@ -15,17 +14,9 @@ import java.util.*;
  */
 public class Teat1 {
     public static void main(String[] args) {
-        JsonObject jsonObject = new JsonObject().put("deviceId","66");
-        String jsonString = jsonObject.toString();
-        String hostMac ="0cefafd20f3a";
-
-        if(jsonString.contains("\"deviceId\""))
-            jsonString = jsonString.replace("\"deviceId\":\"","\"deviceId\": \"/.dev/47b9ab80559cce18bb3217129278f9f6/"+hostMac+"@");
-        jsonObject = new JsonObject(jsonString);
-
-        System.out.println(jsonString);
-
-        List<String> list = new ArrayList<>();
+        Double a = 22.01;
+        for (int i=0;i<1000;i++)
+            System.out.println( NumberUtils.keep2DecimalPlaces(a += 0.01));
 
     }
 

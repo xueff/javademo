@@ -53,4 +53,28 @@ public class Streams {
 
         CommonUtils.printAsJson("end:",list,null);
     }
+
+    public void streams(){
+        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        //1...10
+//        Comsume ->只接受数据，不返回（消费数据）
+        //Supplier -> 没有结束数据（生产者）
+        //Predicate ->判断（1..10选偶数）
+        //Function->Integer ->Integer*2
+        list.stream()
+                .filter(value->value %2 == 0)  //过滤选出偶数
+                .map(value -> value*2)      //乘以2
+                ;
+
+    }
+
+    public void flatMap(){
+        List<String> list = Arrays.asList("1,2,3","4,5");
+
+        list.stream()
+                .map(value->value.split(","))  //一维变二维
+                .flatMap(values -> Arrays.stream(values)) //二维变一维
+                .forEach(System.out::println);
+
+    }
 }

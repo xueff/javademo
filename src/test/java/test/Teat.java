@@ -1,11 +1,7 @@
 package test;
 
-import common.bean.Person;
-import io.netty.util.internal.SystemPropertyUtil;
 import io.vertx.core.json.JsonObject;
-import net.http.httpclient.HttpsUtils;
-import net.sf.json.JSONObject;
-import javabase.ramdon.RamdonStudy;
+import javabase.spi.ramdon.RamdonStudy;
 
 import java.util.*;
 

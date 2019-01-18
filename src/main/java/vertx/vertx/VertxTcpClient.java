@@ -2,10 +2,8 @@ package vertx.vertx;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.net.NetClient;
-import io.vertx.core.net.NetClientOptions;
 import io.vertx.core.net.NetSocket;
-import javabase.ramdon.RamdonStudy;
-import javassist.bytecode.ByteArray;
+import javabase.spi.ramdon.RamdonStudy;
 
 import java.util.UUID;
 
