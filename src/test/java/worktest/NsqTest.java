@@ -2,7 +2,7 @@ package worktest;
 
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
-import javabase.spi.ramdon.RamdonStudy;
+import javabase.ramdon.RamdonStudy;
 import nsq.NsqClient;
 import org.junit.Test;
 import testmodel.EventModel;

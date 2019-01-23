@@ -3,7 +3,7 @@ package vertx.vertx;
 import io.vertx.core.Vertx;
 import io.vertx.core.net.NetClient;
 import io.vertx.core.net.NetSocket;
-import javabase.spi.ramdon.RamdonStudy;
+import javabase.ramdon.RamdonStudy;
 
 import java.util.UUID;
 

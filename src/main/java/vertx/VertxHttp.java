@@ -5,7 +5,7 @@ import io.vertx.core.http.HttpServer;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
-import javabase.spi.ramdon.RamdonStudy;
+import javabase.ramdon.RamdonStudy;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

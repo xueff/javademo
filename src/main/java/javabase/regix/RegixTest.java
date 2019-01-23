@@ -13,6 +13,15 @@ import java.util.regex.Pattern;
  * @date 2018/9/3010:14
  */
 public class RegixTest {
+
+    @Test
+    public void checkSpecialChars(){
+        String regEx="[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher("as*ds");
+        if(m.find())
+            System.out.println("房间号不能有特殊字符");
+    }
     /**
      * 查找所有一段匹配的
      */

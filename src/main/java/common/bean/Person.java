@@ -1,7 +1,7 @@
 package common.bean;
 
 
-import javabase.spi.ramdon.RamdonStudy;
+import javabase.ramdon.RamdonStudy;
 
 /**
  * @author xuefei

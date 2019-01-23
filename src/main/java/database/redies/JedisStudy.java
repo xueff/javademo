@@ -1,6 +1,6 @@
 package database.redies;
 
-import javabase.spi.ramdon.RamdonStudy;
+import javabase.ramdon.RamdonStudy;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;

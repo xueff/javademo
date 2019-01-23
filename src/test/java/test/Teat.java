@@ -1,7 +1,7 @@
 package test;
 
 import io.vertx.core.json.JsonObject;
-import javabase.spi.ramdon.RamdonStudy;
+import javabase.ramdon.RamdonStudy;
 
 import java.util.*;
 

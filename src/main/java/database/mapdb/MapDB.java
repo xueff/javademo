@@ -1,7 +1,7 @@
 package database.mapdb;
 
 import io.vertx.core.json.JsonObject;
-import javabase.spi.ramdon.RamdonStudy;
+import javabase.ramdon.RamdonStudy;
 import org.junit.Test;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
