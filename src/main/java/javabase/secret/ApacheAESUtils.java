@@ -10,7 +10,7 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class ApacheAESUtils {
 
-    private static final String KEY = "0123456789012345";
+    private static final String KEY = "0123456789012345";//注意8的倍数位
     // 加密
     public static String Encrypt(String sSrc) throws Exception {
 
