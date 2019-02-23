@@ -1,5 +1,6 @@
 package net.http.httpclient;
 
+import net.sf.json.JSONObject;
 import org.apache.commons.collections.MapUtils;
 import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
@@ -13,6 +14,7 @@ import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -111,7 +113,7 @@ public class HttpsUtils {
      * @param entity 请求实体 json/xml提交适用
      * @return 可能为空 需要处理
      */
-    public static String postJson(String  url,HttpEntity entity){
+    public static String postJson(String  url, JSONObject json){
         String result = "";
         CloseableHttpClient httpClient = null;
         try {
@@ -120,8 +122,10 @@ public class HttpsUtils {
             // 设置头信息
             httpPost.addHeader("Content-Type", "application/json");
             // 设置实体 优先级高
-            if (entity != null) {
-                httpPost.setEntity(entity);
+            if (json != null) {
+                StringEntity s = new StringEntity(json.toString());
+                s.setContentEncoding("UTF-8");
+                httpPost.setEntity(s);
             }
             System.out.println(httpPost.toString());
             HttpResponse httpResponse = httpClient.execute(httpPost);

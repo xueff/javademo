@@ -27,7 +27,7 @@ public class JedisStudy {
 
     static {
         if(host.length()==0) {
-            host = "192.168.2.207";
+            host = "";
 //            host = "0000";
             port = 7369;
             dbPool = new ConcurrentHashMap<Integer, JedisPool>();
@@ -48,7 +48,7 @@ public class JedisStudy {
         if (JedisStudy.dbPool.containsKey(db)) {
             pool = JedisStudy.dbPool.get(db);
         } else {
-            pool = new JedisPool(config, host, port,50000, "111", db);
+            pool = new JedisPool(config, host, port,50000, "!@#$", db);
 //            pool = new JedisPool(config, host, port,1000, "Xiezhu1234!@#$", db);
             JedisStudy.dbPool.put(db, pool);
         }

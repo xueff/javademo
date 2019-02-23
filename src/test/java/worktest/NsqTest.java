@@ -9,6 +9,9 @@ import testmodel.EventModel;
 
 import java.util.*;
 
+/**
+ * 水电信息
+ */
 public class NsqTest {
     @Test
     public void testAddSend(){

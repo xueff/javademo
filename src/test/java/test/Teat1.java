@@ -14,9 +14,12 @@ import java.util.*;
  */
 public class Teat1 {
     public static void main(String[] args) {
-        Double a = 22.01;
-        for (int i=0;i<1000;i++)
-            System.out.println( NumberUtils.keep2DecimalPlaces(a += 0.01));
+//        Set<Object> set = new HashSet<>();
+//        set.add("1");
+//        set.add(1);
+//        List<Object> list = new ArrayList<Object>(set);
+//       Arrays.copyOf(set,10,Object[].class)
+        UUID.randomUUID().toString();
 
     }
 

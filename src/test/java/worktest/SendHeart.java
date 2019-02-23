@@ -5,12 +5,18 @@ import utils.CommonUtils;
 
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.List;
 
+/**
+ * 发送心跳及新建设备
+ */
 public class SendHeart implements Runnable{
-    public static void main(String[] args) throws InterruptedException {
+
+
+    public static void main(String[] args) throws Exception {
         int i = 0;
         while(true){
-            for(;i<3000;i++){
+            for(;i<1;i++){
                 SendHeart v = new SendHeart();
                 Thread t=new Thread(v);
                 t.start();
@@ -30,25 +36,26 @@ public class SendHeart implements Runnable{
 //                    Thread.sleep(200);
                 }
             }
-            //Thread.sleep(1000);
         }
 
     @Override
     public void run() {
         try {
             String num = Thread.currentThread().getName().split("-")[1];
-            String hostMac = "AAAAAAAA";
-            if(num.length()==1)
-                hostMac +="000"+num;
-            else if(num.length()==2)
-                hostMac +="00"+num;
-            else if(num.length()==3)
-                hostMac +="0"+num;
-            else if(num.length()==4)
-                hostMac += num;
+//            String hostMac = "28f366b6dc87";
+//            String hostMac = "aaaaaaaa0916";
+            String hostMac = "28f366b6d6c7";
+//            if(num.length()==1)
+//                hostMac +="000"+num;
+//            else if(num.length()==2)
+//                hostMac +="00"+num;
+//            else if(num.length()==3)
+//                hostMac +="0"+num;
+//            else if(num.length()==4)
+//                hostMac += num;
 
 
-            Socket s = new Socket("localhost", 1820);
+            Socket s = new Socket("212.26", 1820);
 
             OutputStream os = s.getOutputStream();
 
