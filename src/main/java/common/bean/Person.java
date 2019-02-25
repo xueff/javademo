@@ -1,6 +1,7 @@
 package common.bean;
 
 
+import com.alibaba.fastjson.annotation.JSONField;
 import javabase.ramdon.RamdonStudy;
 
 /**
@@ -11,7 +12,9 @@ import javabase.ramdon.RamdonStudy;
  * @date 2018/10/1714:20
  */
 public class Person {
+    @JSONField(name="userName")
     private String name;
+    @JSONField(name="Age")
     private int age;
 
     public Double getMoney() {
