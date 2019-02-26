@@ -113,7 +113,7 @@ public class HttpsUtils {
      * @param entity 请求实体 json/xml提交适用
      * @return 可能为空 需要处理
      */
-    public static String postJson(String  url, JSONObject json){
+    public static String postJson(String  url, String json){
         String result = "";
         CloseableHttpClient httpClient = null;
         try {
@@ -123,7 +123,7 @@ public class HttpsUtils {
             httpPost.addHeader("Content-Type", "application/json");
             // 设置实体 优先级高
             if (json != null) {
-                StringEntity s = new StringEntity(json.toString());
+                StringEntity s = new StringEntity(json);
                 s.setContentEncoding("UTF-8");
                 httpPost.setEntity(s);
             }
@@ -233,8 +233,8 @@ public class HttpsUtils {
                 .setMaxConnTotal(10)//连接池最大连接数
                 .setDefaultRequestConfig(
                         RequestConfig.custom()
-                                .setConnectTimeout(1000)
-                                .setSocketTimeout(500)//请求超时时间
+                                .setConnectTimeout(10000)
+                                .setSocketTimeout(50000)//请求超时时间
                                 .build()
                 )
                 .build();
