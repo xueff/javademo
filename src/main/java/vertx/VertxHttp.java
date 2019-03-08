@@ -73,7 +73,7 @@ class Handle{
 //            file = context.request().path();
 //        }
         try {
-            Thread.sleep(RamdonStudy.getRamdonInt(100));
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

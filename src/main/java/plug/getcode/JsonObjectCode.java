@@ -18,27 +18,83 @@ import java.util.*;
 
 public class JsonObjectCode {
     public static void main(String[] args) {
-        JsonArray json = new JsonArray(" [\n" +
+        JsonObject json = new JsonObject("{\n" +
+                "  \"type\": \"Scene\",\n" +
+                "  \"operateType\": \"ReadAndWrite\",\n" +
+                "  \"visibleType\": \"Visible\",\n" +
+                "  \"sceneType\": \"PassiveTrigger\",\n" +
+                "  \"props\": {\n" +
+                "    \"sceneInfo\": {\n" +
+                "      \"scenePath\": \"\",\n" +
+                "      \"timerAttr\": {\n" +
+                "        \"flag\": false,\n" +
+                "        \"type\": 0\n" +
+                "      },\n" +
+                "      \"triggerCondition\": [\n" +
                 "        {\n" +
-                "            \"path\": \"/.dentry/47b9ab80559cce18bb3217129278f001/000/灯\",\n" +
-                "            \"cmdName\": \"TurnOn\",\n" +
-                "            \"cmd\": {\n" +
-                "              \"cmdDetails\": {\n" +
-                "                \n" +
-                "              }\n" +
-                "            }\n" +
-                "        },\n" +
+                "          \"path\": \"/.dentry/bb545405-85b0-4243-873d-a52cfdf14cac/777/灯\",\n" +
+                "          \"attributes\": {\n" +
+                "            \"Switch\": \"Open\"\n" +
+                "          }\n" +
+                "        }\n" +
+                "      ],\n" +
+                "      \"priority\": 5,\n" +
+                "      \"leaveTimeCondition\": [],\n" +
+                "      \"extraCondition\": [],\n" +
+                "      \"timeCondition\": [],\n" +
+                "      \"executeType\": \"COMBINE\",\n" +
+                "      \"executes\": [\n" +
                 "        {\n" +
-                "            \"path\": \"/.dentry/47b9ab80559cce18bb3217129278f001/000/门磁\",\n" +
+                "          \"executeType\": \"CONTROL\",\n" +
+                "          \"prop\": {\n" +
+                "            \"path\": \"/.dentry/bb545405-85b0-4243-873d-a52cfdf14cac/777/空调\",\n" +
                 "            \"cmdName\": \"TurnOn\",\n" +
+                "            \"delay\": 0,\n" +
                 "            \"cmd\": {\n" +
                 "              \n" +
                 "            }\n" +
-                "          \n" +
+                "          }\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"executeType\": \"CONTROL\",\n" +
+                "          \"prop\": {\n" +
+                "            \"path\": \"/.dentry/bb545405-85b0-4243-873d-a52cfdf14cac/777/调光灯\",\n" +
+                "            \"cmdName\": \"TurnOn\",\n" +
+                "            \"delay\": 0,\n" +
+                "            \"cmd\": {\n" +
+                "              \n" +
+                "            }\n" +
+                "          }\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"executeType\": \"CONTROL\",\n" +
+                "          \"prop\": {\n" +
+                "            \"path\": \"/.dentry/bb545405-85b0-4243-873d-a52cfdf14cac/777/音响\",\n" +
+                "            \"cmdName\": \"Play\",\n" +
+                "            \"delay\": 0,\n" +
+                "            \"cmd\": {\n" +
+                "              \n" +
+                "            }\n" +
+                "          }\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"executeType\": \"CONTROL\",\n" +
+                "          \"prop\": {\n" +
+                "            \"path\": \"/.dentry/bb545405-85b0-4243-873d-a52cfdf14cac/777/取电开关\",\n" +
+                "            \"cmdName\": \"TurnOn\",\n" +
+                "            \"delay\": 0,\n" +
+                "            \"cmd\": {\n" +
+                "              \n" +
+                "            }\n" +
+                "          }\n" +
                 "        }\n" +
-                "      ]");
+                "      ]\n" +
+                "    },\n" +
+                "    \"sceneId\": \"5c1c84534c9a6641c32a4964\"\n" +
+                "  }\n" +
+                "}");
         StringBuffer jsonCode = new StringBuffer("JsonObject json = ");
-        jsonCode = getJsonArrayCode(json.getList(),jsonCode);
+        jsonCode = getJsonObjectCode(json.getMap(),jsonCode);
         jsonCode.append(";");
         System.out.println(jsonCode);
 
@@ -56,8 +112,8 @@ public class JsonObjectCode {
             StringBuffer valueCode = new StringBuffer();
             if(value instanceof Number){
                 jsonCode.append(".put(\""+key+"\","+value);
-            }else if(value instanceof String){
-                jsonCode.append(".put(\""+key+"\",\""+value+"\"");
+            }else if(value instanceof Boolean){
+                jsonCode.append(".put(\""+key+"\","+value);
             }else if(value instanceof Map){
                 getJsonObjectCode((Map<String, Object>) value,jsonCode.append(".put(\""+key+"\","));
             }else if(value instanceof List){

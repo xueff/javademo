@@ -14,7 +14,7 @@
 //public class HostDistribution {
 //        @Test
 //        fun a() {
-//            var dcList: MutableList<JsonObject> = mutableListOf()
+//            var dcList: MutableLvertist<JsonObject> = mutableListOf()
 //            dcList.add(JsonObject().put("ip","192.167.1574.5215").put("HostTCPServerChannel:1820",JsonObject()))
 //            dcList.add(JsonObject().put("ip","121.167.1574.5215").put("HostTCPServerChannel:1820",JsonObject()))
 //            dcList.add(JsonObject().put("ip","3256.yuu.1574.5215").put("HostTCPServerChannel:1820",JsonObject().put(",","")))
