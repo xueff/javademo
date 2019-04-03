@@ -12,7 +12,7 @@ import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
  */
 public class NsqClient {
 
-    public static String nsqAddr = "192.168.2.206";
+    public static String nsqAddr = "114.55.253.184";
     public static int nsqPort = 4150;
     static NSQProducer producer = null;
 

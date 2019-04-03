@@ -21,8 +21,22 @@ import java.util.List;
 public class VertxMongo {
 
 
-    public List<JsonObject> findDoc(String name, JsonObject query){
+    public static List<JsonObject> findDoc() throws InterruptedException {
+
+        FindOptions findOptions = new FindOptions().setFields(new JsonObject().put("_id",0) );
+        MongoClientTest.getMongoClient().findWithOptions("Xctrl_Home_DoubleControl",
+                new JsonObject().put("dcCode","47b9ab80559cce18bb3217129278f9f6").put("hostMac","0CEFAFD20B06"),findOptions, new Handler<AsyncResult<List<JsonObject>>>() {
+                    @Override
+                    public void handle(AsyncResult<List<JsonObject>> event) {
+                        {
+                            List<JsonObject> list = event.result();
+                            System.out.println(list);
+
+                        }
+                    }
+                });
 //        mongo.
+        Thread.sleep(100000);
         return null;
 
     }

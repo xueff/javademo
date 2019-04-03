@@ -29,7 +29,7 @@ public class NsqTest {
                         .put("timeStamp", st+(7*60*60*1000L)*i)
                         .put("value",water-0.1*i)
                         .put("type","WaterMeter");
-                NsqClient.getInstance().produce("hydropower.meter", j.toString().getBytes());
+                NsqClient.getInstance().produce("xz.baidu.dureos.welcome", j.toString().getBytes());
                 Thread.sleep(50);
                 JsonObject j2 = new JsonObject()
                         .put("hotelId", "bb545405-85b0-4243-873d-a52cfdf14cac")
