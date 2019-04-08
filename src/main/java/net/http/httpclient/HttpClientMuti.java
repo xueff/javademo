@@ -19,7 +19,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.testng.annotations.Test;
 
 import javax.net.ssl.SSLContext;
 import java.io.File;
@@ -44,10 +43,6 @@ import java.util.List;
 
 public class HttpClientMuti {
 
-    @Test
-    public void jUnitTest() {
-        get();
-    }
 
     /**
      * HttpClient连接SSL
