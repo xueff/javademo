@@ -57,8 +57,8 @@ public class Reduce {
                 }
 
             }
-            last = new  BigDecimal(0.00);
-            start = start.add(add);
+//            last = new  BigDecimal(0.00);
+//            start = start.add(add);
         }
     }
 
