@@ -15,7 +15,7 @@ public class EtcdHttpUtils {
     public static final String masterUrl = baseUrl+"master";
     static Logger logger = LoggerFactory.getLogger(EtcdHttpUtils.class);
     public static JsonObject getKey(String url){
-        String res = HttpClientUtilForm.httpGet(url);
+        String res = EtcdHttoClient.httpGet(url);
         logger.info("请求"+url+"\n返回"+res);
         return new JsonObject(res);
     }
@@ -23,7 +23,7 @@ public class EtcdHttpUtils {
         Map<String, String> map = new HashMap<>();
         map.put("value",value);
         logger.info("请求"+url+"\n"+map);
-        String res = HttpClientUtilForm.putForm(url,map);
+        String res = EtcdHttoClient.putForm(url,map);
         logger.info("返回"+res);
         return new JsonObject(res);
     }
@@ -33,7 +33,7 @@ public class EtcdHttpUtils {
         map.put("value",value);
         map.put("ttl", time+"");
         logger.info("请求"+url+"\n"+map);
-        String res = HttpClientUtilForm.putForm(url,map);
+        String res = EtcdHttoClient.putForm(url,map);
         logger.info("返回"+res);
         return new JsonObject(res);
     }
@@ -41,7 +41,7 @@ public class EtcdHttpUtils {
         Map<String, String> map = new HashMap<>();
         map.put("dir",true+"");
         logger.info("请求"+url+"\n"+map);
-        String res = HttpClientUtilForm.putForm(url,map);
+        String res = EtcdHttoClient.putForm(url,map);
         logger.info("返回"+res);
         return new JsonObject(res);
     }
@@ -51,24 +51,24 @@ public class EtcdHttpUtils {
         map.put("dir",true+"");
         map.put("ttl", time+"");
         logger.info("请求"+url+"\n"+map);
-        String res = HttpClientUtilForm.putForm(url,map);
+        String res = EtcdHttoClient.putForm(url,map);
         logger.info("返回"+res);
         return new JsonObject(res);
     }
     public static JsonObject watchMaster(){
-        String res = HttpClientUtilForm.httpGet(masterUrl+"?wait=true");
+        String res = EtcdHttoClient.httpGet(masterUrl+"?wait=true");
         logger.info("监听master返回"+res);
         return new JsonObject(res);
     }
 
     public static JsonObject delEmptyDir(String url){
-        String res = HttpClientUtilForm.httpDelete(url+"?dir=true");
+        String res = EtcdHttoClient.httpDelete(url+"?dir=true");
         logger.info("删除空目录"+url+"\n返回"+res);
         return new JsonObject(res);
     }
 
     public static JsonObject delDir(String url){
-        String res = HttpClientUtilForm.httpDelete(url+"?dir=true&recursive=true");
+        String res = EtcdHttoClient.httpDelete(url+"?dir=true&recursive=true");
         logger.info("删除目录"+url+"\n返回"+res);
         return new JsonObject(res);
     }
