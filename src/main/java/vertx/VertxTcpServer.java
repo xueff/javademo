@@ -17,9 +17,19 @@ public class VertxTcpServer {
         server.connectHandler(socket -> {
             socket.handler(buffer -> {
                 System.out.println("I received some bytes: " + buffer.toString());
-
+                socket.write("some data");
             });
             socket.write("some data");
+            //异常的处理器
+            socket.exceptionHandler(except->{
+                //TODO  有worker掉线
+                except.printStackTrace();
+//                logger.error("有worker掉线");
+            });
+//            //管道关闭处理
+            socket.closeHandler(close->{
+//                logger.error("socket.closeHandler");
+            });
         });
         server.listen(1820, "localhost", res -> {
             if (res.succeeded()) {
@@ -27,6 +37,8 @@ public class VertxTcpServer {
             } else {
                 System.out.println("Failed to bind!");
             }
+
+
         });
 
     }
