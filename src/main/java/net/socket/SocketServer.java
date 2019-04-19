@@ -13,7 +13,7 @@ public class SocketServer{
     public void start(){
         ServerSocket serverSocket = null;
         try {
-            serverSocket = new ServerSocket(8080);
+            serverSocket = new ServerSocket(2379);
             System.out.println("服务器正常启动。。。");
             while(true) {
                 //从请求队列中取出一个连接
