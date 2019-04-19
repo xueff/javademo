@@ -203,6 +203,24 @@
             <version>5.2.1.Final</version>
         </dependency>
         <!--null empty校验  end-->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+<!--        <dependency>
+            <groupId>io.etcd</groupId>
+            <artifactId>jetcd-co    `re</artifactId>
+            <version>0.3.0</version>
+        </dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>com.coreos</groupId>-->
+            <!--<artifactId>jetcd-core</artifactId>-->
+            <!--<version>0.0.2</version>-->
+        <!--</dependency>-->
+
 
     </dependencies>
 
