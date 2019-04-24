@@ -10,7 +10,10 @@ import java.util.List;
 public class Interfaces {
 
     /**
-     * @Description: 根据一个接口返回接口包下的所有类
+     * @Description: 不能读取jar
+     *
+     *
+     * 根据一个接口返回接口包下的所有类
      * @param c 接口
      * @return List<Class>    实现接口的所有类
      */
@@ -116,8 +119,8 @@ public class Interfaces {
 //		}
         List<Class> list = Interfaces.getAllClassByInterface(ITask.class);
         for(Class c : list){
-//            SignInterface sign = (SignInterface)c.newInstance();
-            System.out.println(c.getSimpleName());
+            TaskImpl sign = (TaskImpl)c.newInstance();
+            System.out.println(sign.Im());
 //            SignAnnotation annot = (SignAnnotation) c.getAnnotation(SignAnnotation.class);
 //            System.out.println(annot.TypeName());
             //System.out.println(sign.returnStr());

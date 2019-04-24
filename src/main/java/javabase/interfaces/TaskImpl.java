@@ -9,6 +9,9 @@ import java.util.concurrent.TimeoutException;
 
 public class TaskImpl implements ITask {
     Logger logger = LoggerFactory.getLogger(TaskImpl.class);
+    public String Im(){
+        return "TaskImpl";
+    }
 
     @Override
     public void getTask(String taskType) {
@@ -18,7 +21,13 @@ public class TaskImpl implements ITask {
     }
 
     @Override
+    public void filterTask(String taskType) {
+
+    }
+
+    @Override
     public void distributionTask() {
 
     }
+
 }
