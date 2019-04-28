@@ -8,66 +8,55 @@ import com.github.brainlag.nsq.lookup.NSQLookup;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class NsqComsure {
     public static String nsqAddr = "";
-    public static int nsqPort = 3150;
+    public static Map<String,NSQConsumer> consumerMap = new ConcurrentHashMap<>();
 
     /**
      * 临时管道标记"#ephemeral"
      */
     @Test
-
     public void comsume(){
         NSQLookup lookup = new DefaultNSQLookup();
-        for(;;){
-            lookup.addLookupAddress(nsqAddr, 3161);
-            NSQConsumer consumerCmdInstance1 = new NSQConsumer(lookup, "xctrl_monitor.send.task", "test"+ UUID.randomUUID().toString()+"#ephemeral", new NSQMessageCallback() {
-
-                @Override
-                public void message(NSQMessage message) {
-//                byte[] b = message.getMessage();
-//                ThreadTest.check(b);
-                    try {
-                        Thread.sleep(30);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    message.finished();
-                }
+            buildComsume(lookup, "123321", "test"+ UUID.randomUUID().toString()+"#ephemeral",new NSQMessageCallback(){
+                        @Override
+                        public void message(NSQMessage message) {
+                            byte[] bytes =  message.getMessage();
+                            System.out.println(new String(bytes));
+                            throw new RuntimeException("不收");
+                        }
             });
-            consumerCmdInstance1.start();
-                    try {
-            Thread.sleep(5000);
+        try {
+            Thread.sleep(500000000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-            try {
-                consumerCmdInstance1.close();
-                consumerCmdInstance1.shutdown();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+    }
 
-//        NSQConsumer consumerCmdInstance = new NSQConsumer(lookup, "test", "1",  new NSQMessageCallback(){
-//
-//            @Override
-//            public void message(NSQMessage message) {
-//                byte b[] = message.getMessage();
-//                String s = new String(b);
-//                System.out.println("B"+s);
-//                message.finished();
-//            }
-//        });
-//        consumerCmdInstance.start();
-//
-//        //线程睡眠，让程序执行完
-//        try {
-//            Thread.sleep(400000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+    public String buildComsume(NSQLookup lookup, final String topic, final String channel, final NSQMessageCallback callback){
+        lookup.addLookupAddress("39.106.196.5",3161);
+        NSQConsumer consumerCmdInstance1 = new NSQConsumer(lookup, topic, "test", new NSQMessageCallback() {
+
+            @Override
+            public void message(NSQMessage message) {
+
+                try {
+                    callback.message(message);
+                    message.finished();
+//                    message.touch();
+                } catch (Exception e) {
+                    message.requeue(); //还回
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
+        consumerCmdInstance1.start();
+        consumerMap.put(channel,consumerCmdInstance1);
+        return channel;
     }
 }
