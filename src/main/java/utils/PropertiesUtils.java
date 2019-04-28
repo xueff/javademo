@@ -13,7 +13,10 @@ public class PropertiesUtils {
     //可读jar
     public Properties read() throws UnsupportedEncodingException {
         Properties p = new Properties();
-        InputStream in = Resources.class.getResourceAsStream("");
+        //A :
+        // InputStream in = new BufferedInputStream(new FileInputStream(filepath));
+        //B:
+        InputStream in = Resources.class.getResourceAsStream("资源name");
         InputStreamReader ins = new InputStreamReader(in, "UTF-8");
         try {
             p.load(ins);
