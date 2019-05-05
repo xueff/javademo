@@ -1,11 +1,14 @@
-package dayee;
+package plug;
 
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * 输出目录结构
+ */
 public class DirErgodic {  
   
-    private static int depth=1;  
+    private static int depth=10;
       
     public static void find(String pathName,int depth) throws IOException{  
         int filecount=0;  
@@ -55,6 +58,6 @@ public class DirErgodic {
     }  
       
     public static void main(String[] args) throws IOException{  
-        find("D:\\", depth);  
+        find("E:\\黑马58\\讲义+笔记+资料", depth);
     }  
 }  
