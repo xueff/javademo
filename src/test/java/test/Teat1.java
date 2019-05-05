@@ -18,54 +18,37 @@ import java.util.*;
 public class Teat1 {
     public static void main(String[] args) {
         String str = "{\n" +
-                "  \"type\": \"Scene\",\n" +
-                "  \"operateType\": \"ReadAndWrite\",\n" +
-                "  \"visibleType\": \"Visible\",\n" +
-                "  \"sceneType\": \"ActiveTrigger\",\n" +
-                "  \"props\": {\n" +
-                "    \"sceneInfo\": {\n" +
-                "      \"scenePath\": \"\",\n" +
-                "      \"timerAttr\": {\n" +
-                "        \"flag\": false,\n" +
-                "        \"type\": 0\n" +
-                "      },\n" +
-                "      \"triggerCondition\": [],\n" +
-                "      \"priority\": 5,\n" +
-                "      \"leaveTimeCondition\": [],\n" +
-                "      \"extraCondition\": [],\n" +
-                "      \"timeCondition\": [],\n" +
-                "      \"executeType\": \"CONTROL\",\n" +
-                "      \"executes\": [\n" +
-                "        {\n" +
-                "            \"path\": \"/.dentry/47b9ab80559cce18bb3217129278f001/000/灯\",\n" +
-                "            \"cmdName\": \"TurnOn\",\n" +
-                "            \"cmd\": {\n" +
-                "              \"cmdDetails\": {\n" +
-                "                \n" +
-                "              }\n" +
-                "            }\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"path\": \"/.dentry/47b9ab80559cce18bb3217129278f001/000/门磁\",\n" +
-                "            \"cmdName\": \"TurnOn\",\n" +
-                "            \"cmd\": {\n" +
-                "              \n" +
-                "            }\n" +
+                "  \"type\": \"FILE\",\n" +
+                "  \"header\": {\n" +
+                "    \"EXTRATYPE\": \"WRITE\"\n" +
+                "  },\n" +
+                "  \"body\": {\n" +
+                "    \"path\": \"/.dev/47b9ab80559cce18bb3217129278f9f6/000c43131005\",\n" +
+                "    \"cmd\": {\n" +
+                "      \"cmdName\": \"SendWhiteList\",\n" +
+                "      \"cmdDetails\":{\n" +
+                "        \"deviceList\":[\n" +
+                "          {\n" +
+                "            \"deviceId\":\"asdasd\",\n" +
+                "            \"install_code\":\"asdasda\"\n" +
+                "          }\n" +
                 "          \n" +
-                "        }\n" +
-                "      ]\n" +
+                "        ]\n" +
+                "      }\n" +
                 "    }\n" +
                 "  }\n" +
                 "}";
 
         JsonObject json = new JsonObject(str);
-        JsonObject props = json.getJsonObject("props");
-        JsonObject sceneInfo = props.getJsonObject("sceneInfo");
-        sceneInfo.put("aa","aa");
-        sceneInfo.put("scenePath","/path");
+        StringBuffer s = new StringBuffer();
+        String code = getJsonObjectCode(json.getMap(),s).toString();
+        System.out.println(code);
 
 
-        System.out.println(json.toString());
+
+        JsonObject jsonout = new JsonObject().put("type","FILE").put("header",new JsonObject().put("EXTRATYPE","WRITE")).put("body",new JsonObject().put("path","/.dev/47b9ab80559cce18bb3217129278f9f6/000c43131005").put("cmd",new JsonObject().put("cmdName","SendWhiteList").put("cmdDetails",new JsonObject().put("deviceList",new JsonArray().add(new JsonObject().put("deviceId","asdasd").put("install_code","asdasda"))))));
+
+        System.out.println(jsonout.toString());
 
     }
 

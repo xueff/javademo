@@ -42,7 +42,6 @@
             <version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
-
         <dependency>
             <groupId>com.github.brainlag</groupId>
             <artifactId>nsq-client</artifactId>
