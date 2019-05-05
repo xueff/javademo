@@ -1,15 +1,58 @@
 package plug;
 
+import io.vertx.core.json.JsonObject;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * 输出目录结构
  */
-public class DirErgodic {  
-  
+public class DirErgodic {
+
+    public static void main(String[] args) throws IOException{
+        Map<String,Object> map = find("D:\\咕泡");
+        System.out.println(JsonObject.mapFrom(map).toString());
+    }
+
     private static int depth=10;
-      
+
+    /**
+     * map结构目录
+     * @return
+     * @throws IOException
+     */
+    public static Map<String,Object> find(String pathName) throws IOException{
+        File dirFile = new File(pathName);
+        //判断该文件或目录是否存在，不存在时在控制台输出提醒
+        if (!dirFile.exists()) {
+            System.out.println("do not exit");
+            return null;
+        }
+        //获取此目录下的所有文件名与目录名
+        String[] fileList = dirFile.list();
+        if(fileList == null) return null;
+
+        Map<String,Object> details = new LinkedHashMap<>();
+        for (int i = 0; i < fileList.length; i++) {
+            //遍历文件目录
+            String string = fileList[i];
+            File file = new File(dirFile.getPath(),string);
+            String name = file.getName();
+            Map<String,Object> details2 = null;
+            if (file.isDirectory()) {
+                //递归
+                details2 = find(file.getCanonicalPath());
+            }else{
+            }
+            details.put(name,details2);
+        }
+        return details;
+    }
+
+
     public static void find(String pathName,int depth) throws IOException{  
         int filecount=0;  
         //获取pathName的File对象  
@@ -28,12 +71,13 @@ public class DirErgodic {
         }  
           
         for (int j = 0; j < depth; j++) {  
-            System.out.print("  ");  
+            System.out.print("  ");
         }  
         System.out.print("|--");  
         System.out.println(dirFile.getName());  
         //获取此目录下的所有文件名与目录名  
-        String[] fileList = dirFile.list();  
+        String[] fileList = dirFile.list();
+        if(fileList == null) return;
         int currentDepth=depth+1;  
         for (int i = 0; i < fileList.length; i++) {  
             //遍历文件目录  
@@ -56,8 +100,5 @@ public class DirErgodic {
             }  
         }  
     }  
-      
-    public static void main(String[] args) throws IOException{  
-        find("E:\\黑马58\\讲义+笔记+资料", depth);
-    }  
+
 }  
