@@ -1,22 +1,14 @@
 package json.gson;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import common.bean.Person;
+import net.sf.json.JSONArray;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.*;
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
 public class GsonTests {
 
     @Test
@@ -28,6 +20,26 @@ public class GsonTests {
         map = gson.fromJson(jsonString, map.getClass());
         String goodsid=(String) map.get("goods_id");
         System.out.println("map的值为:"+goodsid);
+    }
+
+    @Test
+    public void jsonArrayToModelList(){
+
+        Person List1 = new Person();
+        Person List2 = new Person();
+        Person List3 = new Person();
+        List<Person> list = new ArrayList<>();
+        list.add(List1);
+        list.add(List2);
+        JSONArray jsonObj = JSONArray.fromObject(list);
+
+        //jsonArray转modelList
+
+        Type type = new TypeToken<ArrayList<Person>>() {}.getType();
+        Gson gson = new Gson();
+        ArrayList arrayList = gson.fromJson(jsonObj.toString(), type);
+        System.out.println(arrayList);
+
     }
 
     public static void main(String[] args) {
