@@ -6,7 +6,7 @@ package algorithm;
 public class MinFallingPathSum {
 
     public static void main(String[] args) {
-//        int[][] A = {{1,2,3},{12,5,6},{7,8,9}};
+//        int[][] A = {{1,2,3},{12,5,6},{7,8,9},{12,3,1}};
         int[][] A = {{69}};
         System.out.println(minFallingPathSum(A));
     }
@@ -20,22 +20,24 @@ public class MinFallingPathSum {
 
     private static int sum(int[][] A,int row,int index,int st){
         if(row>A.length-1) return st;
+        int temp = st;
         if(index-1>=0){
-            st += A[row][index-1];
-            st = sum(A, row+1,index-1,st);
-            if(row==A.length-1 && st<zhi)
-                zhi = st;
+            temp += A[row][index-1];
+            temp = sum(A, row+1,index-1,temp);
+            if(row==A.length-1 && temp<zhi)
+                zhi = temp;
         }
-        st += A[row][index];
-        st = sum(A, row+1,index,st);
-        if(row==A.length-1 && st<zhi)
-            zhi = st;
+        temp = st + A[row][index];
+        temp = sum(A, row+1,index,temp);
+        if(row==A.length-1 && temp<zhi)
+            zhi = temp;
+
         if(index+1<=A[row].length-1){
-            st += A[row][index+1];
-            st =sum(A, row+1,index+1,st);
-            if(row==A.length-1 && st<zhi)
-                zhi = st;
+            temp = st + A[row][index+1];
+            temp =sum(A, row+1,index+1,temp);
+            if(row==A.length-1 && temp<zhi)
+                zhi = temp;
         }
-        return st;
+        return temp;
     }
 }
