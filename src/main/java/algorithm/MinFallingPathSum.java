@@ -1,6 +1,6 @@
 package algorithm;
 
-/**
+/**性能差
  * leetcode:931. 下降路径最小和
  */
 public class MinFallingPathSum {
@@ -12,9 +12,9 @@ public class MinFallingPathSum {
     }
     private static int zhi = Integer.MAX_VALUE;
     public static int minFallingPathSum(int[][] A) {
-        for (int i = 0; i < A.length; i++) {
+//        for (int i = 0; i < A.length; i++) {
             sum(A,0,0,0);
-        }
+//        }
         return zhi;
     }
 
