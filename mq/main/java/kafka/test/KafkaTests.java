@@ -9,6 +9,8 @@ import java.util.Properties;
 
 /**
  * 服务器运行
+ * 1.可能需要：sunjce_provider.jar
+ * 2.cmd：  java -Djava.ext.dirs=./libs  MqApplicationTests2
  */
 public class KafkaTests {
 
