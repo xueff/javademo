@@ -1,10 +1,13 @@
 package json.fastjson;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import common.bean.Person;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //https://www.w3cschool.cn/fastjson/fastjson-serializefilter.html
@@ -47,5 +50,11 @@ public class FastJsonTest {
         JSONObject json = new JSONObject(map);
         //json对象转Map
         Map<String,Object> map2 = (Map<String,Object>)json;
+    }
+
+    public static void listToJsonArr(){
+        List<Person> list = new ArrayList<>();
+        Person a = new Person();
+        JSONArray array = JSONArray.parseArray(JSONObject.toJSONString(a));
     }
 }
