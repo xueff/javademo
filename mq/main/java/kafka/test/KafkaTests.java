@@ -21,7 +21,7 @@ public class KafkaTests {
         public static void get() {
             System.setProperty("java.security.krb5.conf", "/etc/krb5.conf");
             System.setProperty("java.security.auth.login.config",
-                    "/opt/bd/idss/jaas.conf");
+                    "/opt/bd/xx/jaas.conf");
             Properties props = new Properties();
             props.put("bootstrap.servers", BROKER_LIST);
             props.put("group.id", "test-consumer-group");
@@ -56,7 +56,7 @@ public class KafkaTests {
         public static void send() {
             System.setProperty("java.security.krb5.conf", "/etc/krb5.conf");
             System.setProperty("java.security.auth.login.config",
-                    "/opt/bd/idss/jaas.conf");
+                    "/opt/bd/xx/jaas.conf");
             Properties props = new Properties();
             Producer<String, Object> producer1=null;
             props.put("bootstrap.servers", BROKER_LIST);
