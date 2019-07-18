@@ -1,10 +1,14 @@
 package kafka.test;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -14,16 +18,16 @@ import java.util.Properties;
  */
 public class KafkaTests {
 
-        private static final String BROKER_LIST = "172.16.0.87:9092";
+        private static final String BROKER_LIST = "172.16.0.85:9092";
 
 
         public static void main(String[] args)   {
                 send();
         }
         public static void get() {
-            System.setProperty("java.security.krb5.conf", "/etc/krb5.conf");
-            System.setProperty("java.security.auth.login.config",
-                    "/opt/bd/xx/kafka_client_jaas.conf");
+//            System.setProperty("java.security.krb5.conf", "/etc/krb5.conf");
+//            System.setProperty("java.security.auth.login.config",
+//                    "/opt/bd/xx/kafka_client_jaas.conf");
             Properties props = new Properties();
             props.put("bootstrap.servers", BROKER_LIST);
             props.put("group.id", "test-consumer-group");
@@ -34,9 +38,9 @@ public class KafkaTests {
             props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
             props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
-            props.put("security.protocol", "SASL_PLAINTEXT");
-            props.put("sasl.mechanism", "GSSAPI");
-            props.put("sasl.kerberos.service.name", "kafka");
+//            props.put("security.protocol", "SASL_PLAINTEXT");
+//            props.put("sasl.mechanism", "GSSAPI");
+//            props.put("sasl.kerberos.service.name", "kafka");
 
             KafkaConsumer kafkaConsumer = new KafkaConsumer<>(props);
             kafkaConsumer.subscribe(Arrays.asList("test"));
@@ -56,9 +60,9 @@ public class KafkaTests {
 
         }
         public static void send() {
-            System.setProperty("java.security.krb5.conf", "/etc/krb5.conf");
-            System.setProperty("java.security.auth.login.config",
-                    "/opt/bd/xx/kafka_client_jaas.conf");
+//            System.setProperty("java.security.krb5.conf", "/etc/krb5.conf");
+//            System.setProperty("java.security.auth.login.config",
+//                    "/opt/bd/xx/kafka_client_jaas.conf");
             Properties props = new Properties();
             Producer<String, Object> producer1=null;
             props.put("bootstrap.servers", BROKER_LIST);
@@ -67,14 +71,30 @@ public class KafkaTests {
             props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
             props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
             props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-            props.put("security.protocol", "SASL_PLAINTEXT");
-            props.put("sasl.kerberos.service.name","kafka");
+//            props.put("security.protocol", "SASL_PLAINTEXT");
+//            props.put("sasl.kerberos.service.name","kafka");
 
             producer1= new KafkaProducer<String,Object>(props);
 
-            int line = 1;
-            while (line <=4) {
-                ProducerRecord<String, Object> message1= new ProducerRecord<String, Object>("test","TEST_TOPIC_DATA");
+            int line = 0;
+            int index = 0;
+            List<PolicyDistributeOfKafkaDto> list = new ArrayList<>();
+
+                for (int i = index; i < 10; i++) {
+                    PolicyDistributeOfKafkaDto d = new PolicyDistributeOfKafkaDto();
+                    d.setColumnName(index + "从23");
+                    d.setDatabase(index + "");
+                    d.setOwnerUser(index + "");
+                    d.setTableName(index + "");
+                    d.setTransformer(index + "");
+                    d.setType(index + "");
+
+                    list.add(d);
+                    index++;
+                }
+                JSONArray array = JSONArray.parseArray(JSONObject.toJSONString(list));
+                System.out.println(array.toJSONString());
+                ProducerRecord<String, Object> message1= new ProducerRecord<String, Object>("test",array.toJSONString());
                 producer1.send(message1, new Callback() {
                     @Override
                     public void onCompletion(RecordMetadata recordMetadata, Exception e) {
@@ -86,7 +106,10 @@ public class KafkaTests {
                         }
                     }
                 });
-                line++;
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
             producer1.close();
     }

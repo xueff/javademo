@@ -54,7 +54,9 @@ public class DirErgodic {
         }  
     }  
       
-    public static void main(String[] args) throws IOException{  
-        find("D:\\demo\\git\\doc\\百度云同步盘", 3);
+    public static void main(String[] args) throws IOException{
+        Boolean is = null;
+        System.out.println(false==is);
+//        find("D:\\demo\\git\\doc\\百度云同步盘", 3);
     }  
 }  

@@ -21,6 +21,19 @@ import java.util.concurrent.ConcurrentMap;
 public class MapDB {
     static DB db = null;
 
+    public static void main(String[] args) {
+        DB db = DBMaker
+                .fileDB("file.db")
+                .fileMmapEnable()
+                .make();
+        ConcurrentMap<String,Long> map = db
+                .hashMap("map", Serializer.STRING, Serializer.LONG)
+                .createOrOpen();
+        map.put("something", 111L);
+
+        db.close();
+    }
+
     @Test
     public void testMemoryMapdb(){
         //它打开内存中的HashMap，它使用堆栈存储，它不受垃圾收集的限制：
