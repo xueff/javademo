@@ -32,6 +32,7 @@
     <modules>
         <module>init</module>
         <module>mq</module>
+        <module>utils</module>
     </modules>
 
     <properties>
