@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="init" />
         <module name="mq" />
+        <module name="utils" />
       </profile>
     </annotationProcessing>
   </component>
