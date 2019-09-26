@@ -7,7 +7,7 @@ public class GetClassPath {
      * 获取classpath windows  linux
      * @return
      */
-    public String getClassPath() {
+    public static String getClassPath() {
 
         String os = System.getProperty("os.name");
         System.out.println(os );
@@ -19,7 +19,7 @@ public class GetClassPath {
         }else{
             classUrl = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         }
-//        File file = new File(classUrl);
+//        File file = new File(classUrl+"/GetClassPath.class");
 //        System.out.println(classUrl);
 //        System.out.println(file.getAbsolutePath());
         return classUrl;
