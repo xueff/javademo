@@ -1,0 +1,1998 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://authorizationserver.venustech.com.cn" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="Venus4AService" targetNamespace="http://authorizationserver.venustech.com.cn">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://authorizationserver.venustech.com.cn" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://authorizationserver.venustech.com.cn">
+  <xs:element name="CertificateCancell" type="tns:CertificateCancell"/>
+  <xs:element name="CertificateCancellResponse" type="tns:CertificateCancellResponse"/>
+  <xs:element name="CertificateValidation" type="tns:CertificateValidation"/>
+  <xs:element name="CertificateValidationResponse" type="tns:CertificateValidationResponse"/>
+  <xs:element name="applyApproverModeResult" type="tns:applyApproverModeResult"/>
+  <xs:element name="applyApproverModeResultResponse" type="tns:applyApproverModeResultResponse"/>
+  <xs:element name="applyCert" type="tns:applyCert"/>
+  <xs:element name="applyCertResponse" type="tns:applyCertResponse"/>
+  <xs:element name="applyChallenge" type="tns:applyChallenge"/>
+  <xs:element name="applyChallengeResponse" type="tns:applyChallengeResponse"/>
+  <xs:element name="applyRandomNum" type="tns:applyRandomNum"/>
+  <xs:element name="applyRandomNumResponse" type="tns:applyRandomNumResponse"/>
+  <xs:element name="applyTreasuryMode" type="tns:applyTreasuryMode"/>
+  <xs:element name="applyTreasuryModeResponse" type="tns:applyTreasuryModeResponse"/>
+  <xs:element name="authChallenge" type="tns:authChallenge"/>
+  <xs:element name="authChallengeResponse" type="tns:authChallengeResponse"/>
+  <xs:element name="changePassword" type="tns:changePassword"/>
+  <xs:element name="changePasswordResponse" type="tns:changePasswordResponse"/>
+  <xs:element name="checkMaster" type="tns:checkMaster"/>
+  <xs:element name="checkMasterResponse" type="tns:checkMasterResponse"/>
+  <xs:element name="checkRoamingToken" type="tns:checkRoamingToken"/>
+  <xs:element name="checkRoamingTokenResponse" type="tns:checkRoamingTokenResponse"/>
+  <xs:element name="checkSlaveAuth_IPv6" type="tns:checkSlaveAuth_IPv6"/>
+  <xs:element name="checkSlaveAuth_IPv6Response" type="tns:checkSlaveAuth_IPv6Response"/>
+  <xs:element name="checkSmsCode" type="tns:checkSmsCode"/>
+  <xs:element name="checkSmsCodeResponse" type="tns:checkSmsCodeResponse"/>
+  <xs:element name="checkSmsCode_yj" type="tns:checkSmsCode_yj"/>
+  <xs:element name="checkSmsCode_yjResponse" type="tns:checkSmsCode_yjResponse"/>
+  <xs:element name="checkTicket" type="tns:checkTicket"/>
+  <xs:element name="checkTicketResponse" type="tns:checkTicketResponse"/>
+  <xs:element name="createCertRequest" type="tns:createCertRequest"/>
+  <xs:element name="createCertRequestResponse" type="tns:createCertRequestResponse"/>
+  <xs:element name="createRoamingToken" type="tns:createRoamingToken"/>
+  <xs:element name="createRoamingTokenResponse" type="tns:createRoamingTokenResponse"/>
+  <xs:element name="createTicket" type="tns:createTicket"/>
+  <xs:element name="createTicketResponse" type="tns:createTicketResponse"/>
+  <xs:element name="getAppAuthorityList" type="tns:getAppAuthorityList"/>
+  <xs:element name="getAppAuthorityListResponse" type="tns:getAppAuthorityListResponse"/>
+  <xs:element name="getAppLoginParamInfo" type="tns:getAppLoginParamInfo"/>
+  <xs:element name="getAppLoginParamInfoResponse" type="tns:getAppLoginParamInfoResponse"/>
+  <xs:element name="getAppResTicket" type="tns:getAppResTicket"/>
+  <xs:element name="getAppResTicketResponse" type="tns:getAppResTicketResponse"/>
+  <xs:element name="getMAccBaseInfo" type="tns:getMAccBaseInfo"/>
+  <xs:element name="getMAccBaseInfoResponse" type="tns:getMAccBaseInfoResponse"/>
+  <xs:element name="getMasterAuth" type="tns:getMasterAuth"/>
+  <xs:element name="getMasterAuthResponse" type="tns:getMasterAuthResponse"/>
+  <xs:element name="getMasterAuth_IPv6" type="tns:getMasterAuth_IPv6"/>
+  <xs:element name="getMasterAuth_IPv6Response" type="tns:getMasterAuth_IPv6Response"/>
+  <xs:element name="getMasterResAuth" type="tns:getMasterResAuth"/>
+  <xs:element name="getMasterResAuthResponse" type="tns:getMasterResAuthResponse"/>
+  <xs:element name="getOnePassword" type="tns:getOnePassword"/>
+  <xs:element name="getOnePasswordResponse" type="tns:getOnePasswordResponse"/>
+  <xs:element name="getRandomSmsCode" type="tns:getRandomSmsCode"/>
+  <xs:element name="getRandomSmsCodeResponse" type="tns:getRandomSmsCodeResponse"/>
+  <xs:element name="getSMSPassword" type="tns:getSMSPassword"/>
+  <xs:element name="getSMSPasswordResponse" type="tns:getSMSPasswordResponse"/>
+  <xs:element name="getSecondarySignature" type="tns:getSecondarySignature"/>
+  <xs:element name="getSecondarySignatureResponse" type="tns:getSecondarySignatureResponse"/>
+  <xs:element name="getSlave" type="tns:getSlave"/>
+  <xs:element name="getSlaveResponse" type="tns:getSlaveResponse"/>
+  <xs:element name="getSlave_yj" type="tns:getSlave_yj"/>
+  <xs:element name="getSlave_yjResponse" type="tns:getSlave_yjResponse"/>
+  <xs:element name="getSmsCode" type="tns:getSmsCode"/>
+  <xs:element name="getSmsCodeResponse" type="tns:getSmsCodeResponse"/>
+  <xs:element name="hasAliveServer" type="tns:hasAliveServer"/>
+  <xs:element name="hasAliveServerResponse" type="tns:hasAliveServerResponse"/>
+  <xs:element name="preLoginNotice" type="tns:preLoginNotice"/>
+  <xs:element name="preLoginNoticeResponse" type="tns:preLoginNoticeResponse"/>
+  <xs:element name="qryUserByTicket" type="tns:qryUserByTicket"/>
+  <xs:element name="qryUserByTicketResponse" type="tns:qryUserByTicketResponse"/>
+  <xs:element name="sendSmsCodeRequest" type="tns:sendSmsCodeRequest"/>
+  <xs:element name="sendSmsCodeRequestResponse" type="tns:sendSmsCodeRequestResponse"/>
+  <xs:element name="sendSmsCodeRequest_IPv6" type="tns:sendSmsCodeRequest_IPv6"/>
+  <xs:element name="sendSmsCodeRequest_IPv6Response" type="tns:sendSmsCodeRequest_IPv6Response"/>
+  <xs:element name="sendSmsCodeRequest_portal" type="tns:sendSmsCodeRequest_portal"/>
+  <xs:element name="sendSmsCodeRequest_portalResponse" type="tns:sendSmsCodeRequest_portalResponse"/>
+  <xs:element name="smsCodeAuth_portal" type="tns:smsCodeAuth_portal"/>
+  <xs:element name="smsCodeAuth_portalResponse" type="tns:smsCodeAuth_portalResponse"/>
+  <xs:element name="smsPasswordAuth" type="tns:smsPasswordAuth"/>
+  <xs:element name="smsPasswordAuthResponse" type="tns:smsPasswordAuthResponse"/>
+  <xs:element name="tokenAuth" type="tns:tokenAuth"/>
+  <xs:element name="tokenAuthResponse" type="tns:tokenAuthResponse"/>
+  <xs:element name="userAppSelfLogin" type="tns:userAppSelfLogin"/>
+  <xs:element name="userAppSelfLoginResponse" type="tns:userAppSelfLoginResponse"/>
+  <xs:element name="userNameAndDynamicPassToPassword" type="tns:userNameAndDynamicPassToPassword"/>
+  <xs:element name="userNameAndDynamicPassToPasswordResponse" type="tns:userNameAndDynamicPassToPasswordResponse"/>
+  <xs:element name="userPrimaryCertificateLogin" type="tns:userPrimaryCertificateLogin"/>
+  <xs:element name="userPrimaryCertificateLoginResponse" type="tns:userPrimaryCertificateLoginResponse"/>
+  <xs:element name="userPrimaryLogin" type="tns:userPrimaryLogin"/>
+  <xs:element name="userPrimaryLoginDynamicPassword" type="tns:userPrimaryLoginDynamicPassword"/>
+  <xs:element name="userPrimaryLoginDynamicPasswordResponse" type="tns:userPrimaryLoginDynamicPasswordResponse"/>
+  <xs:element name="userPrimaryLoginResponse" type="tns:userPrimaryLoginResponse"/>
+  <xs:element name="userPrimarySafeWordLogin" type="tns:userPrimarySafeWordLogin"/>
+  <xs:element name="userPrimarySafeWordLoginResponse" type="tns:userPrimarySafeWordLoginResponse"/>
+  <xs:element name="userPrimaryWithDynamicPassword" type="tns:userPrimaryWithDynamicPassword"/>
+  <xs:element name="userPrimaryWithDynamicPasswordResponse" type="tns:userPrimaryWithDynamicPasswordResponse"/>
+  <xs:element name="userPrimaryWithSSOLogin" type="tns:userPrimaryWithSSOLogin"/>
+  <xs:element name="userPrimaryWithSSOLoginResponse" type="tns:userPrimaryWithSSOLoginResponse"/>
+  <xs:element name="userSecondaryCertStringLogin" type="tns:userSecondaryCertStringLogin"/>
+  <xs:element name="userSecondaryCertStringLoginResponse" type="tns:userSecondaryCertStringLoginResponse"/>
+  <xs:element name="userSecondaryCertificateLogin" type="tns:userSecondaryCertificateLogin"/>
+  <xs:element name="userSecondaryCertificateLoginResponse" type="tns:userSecondaryCertificateLoginResponse"/>
+  <xs:element name="userSecondaryPasswordLogin" type="tns:userSecondaryPasswordLogin"/>
+  <xs:element name="userSecondaryPasswordLoginResponse" type="tns:userSecondaryPasswordLoginResponse"/>
+  <xs:element name="userSecondarySignatureLogin" type="tns:userSecondarySignatureLogin"/>
+  <xs:element name="userSecondarySignatureLoginResponse" type="tns:userSecondarySignatureLoginResponse"/>
+  <xs:element name="validateTicket" type="tns:validateTicket"/>
+  <xs:element name="validateTicketResponse" type="tns:validateTicketResponse"/>
+  <xs:element name="verifyCert" type="tns:verifyCert"/>
+  <xs:element name="verifyCertResponse" type="tns:verifyCertResponse"/>
+  <xs:complexType name="getOnePassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jsonArray" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getOnePasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimaryLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jsonArray" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimaryLoginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userSecondaryPasswordLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resID_int" type="xs:int"/>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+      <xs:element minOccurs="0" name="passWord" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userSecondaryPasswordLoginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSmsCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="input" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSmsCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applyRandomNum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inputXml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applyRandomNumResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMasterAuth">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="input" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMasterAuthResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="preLoginNotice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="param" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="preLoginNoticeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkMaster">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="input" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkMasterResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSlave">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="input" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSlaveResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CertificateCancell">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="json" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CertificateCancellResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSlave_yj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="input" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSlave_yjResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createCertRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="json" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createCertRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userAppSelfLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResourceID" type="xs:string"/>
+      <xs:element minOccurs="0" name="certificate" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userAppSelfLoginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMasterResAuth">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reqXml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMasterResAuthResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkSlaveAuth_IPv6">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="input" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkSlaveAuth_IPv6Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="relName" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createTicketResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMasterAuth_IPv6">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="input" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMasterAuth_IPv6Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userSecondaryCertStringLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resID_int" type="xs:int"/>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+      <xs:element minOccurs="0" name="passWord" type="xs:string"/>
+      <xs:element minOccurs="0" name="certificate" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userSecondaryCertStringLoginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMAccBaseInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inputXml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMAccBaseInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="smsPasswordAuth">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+      <xs:element minOccurs="0" name="passWord" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="smsPasswordAuthResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userSecondaryCertificateLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resID_int" type="xs:int"/>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+      <xs:element minOccurs="0" name="passWord" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="certificate" type="tns:x509Certificate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="x509Certificate">
+    <xs:complexContent>
+      <xs:extension base="tns:certificate">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="certificate">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="userSecondaryCertificateLoginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createRoamingToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RequestInfo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createRoamingTokenResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimaryCertificateLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jsonArray" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimaryCertificateLoginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ticket" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateTicketResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="String" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="smsCodeAuth_portal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="smsCodeAuth_portalResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="qryUserByTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ticket" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="qryUserByTicketResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSecondarySignature">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResourceID" type="xs:string"/>
+      <xs:element minOccurs="0" name="primarySignature" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSecondarySignatureResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tokenAuth">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jsonArray" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tokenAuthResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyCert">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reqXml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyCertResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendSmsCodeRequest_IPv6">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="input" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendSmsCodeRequest_IPv6Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CertificateValidation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="json" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CertificateValidationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ticket" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkTicketResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkSmsCode_yj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inputStr" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkSmsCode_yjResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendSmsCodeRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="input" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendSmsCodeRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userNameAndDynamicPassToPassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jsonArray" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userNameAndDynamicPassToPasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAppResTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reqXml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAppResTicketResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="String" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getRandomSmsCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inputStr" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getRandomSmsCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="authChallenge">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inputXml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="authChallengeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="hasAliveServer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="master" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="hasAliveServerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimaryWithSSOLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+      <xs:element minOccurs="0" name="resid" type="xs:string"/>
+      <xs:element minOccurs="0" name="sessionid" type="xs:string"/>
+      <xs:element minOccurs="0" name="token" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimaryWithSSOLoginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applyChallenge">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inputXml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applyChallengeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimaryLoginDynamicPassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+      <xs:element minOccurs="0" name="passWord" type="xs:string"/>
+      <xs:element minOccurs="0" name="dynamicPassWord" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimaryLoginDynamicPasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkSmsCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inputStr" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkSmsCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimaryWithDynamicPassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="jsonArray" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimaryWithDynamicPasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkRoamingToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RequestInfo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkRoamingTokenResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAppLoginParamInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reqXml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAppLoginParamInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applyTreasuryMode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="applyInfo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applyTreasuryModeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applyCert">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reqXml" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applyCertResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applyApproverModeResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="applyApproverModeResultResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendSmsCodeRequest_portal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendSmsCodeRequest_portalResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userSecondarySignatureLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resID_int" type="xs:int"/>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+      <xs:element minOccurs="0" name="signature" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userSecondarySignatureLoginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changePassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+      <xs:element minOccurs="0" name="mobile" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="changePasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSMSPassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="masterName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSMSPasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimarySafeWordLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+      <xs:element minOccurs="0" name="passWord" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userPrimarySafeWordLoginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAppAuthorityList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accSlave" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticket" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAppAuthorityListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Exception" type="tns:Exception"/>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="userPrimaryLogin">
+    <wsdl:part element="tns:userPrimaryLogin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userSecondaryPasswordLogin">
+    <wsdl:part element="tns:userSecondaryPasswordLogin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="smsCodeAuth_portalResponse">
+    <wsdl:part element="tns:smsCodeAuth_portalResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSMSPasswordResponse">
+    <wsdl:part element="tns:getSMSPasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applyRandomNum">
+    <wsdl:part element="tns:applyRandomNum" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applyChallengeResponse">
+    <wsdl:part element="tns:applyChallengeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendSmsCodeRequestResponse">
+    <wsdl:part element="tns:sendSmsCodeRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimaryWithSSOLoginResponse">
+    <wsdl:part element="tns:userPrimaryWithSSOLoginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMasterAuth">
+    <wsdl:part element="tns:getMasterAuth" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="preLoginNotice">
+    <wsdl:part element="tns:preLoginNotice" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applyApproverModeResultResponse">
+    <wsdl:part element="tns:applyApproverModeResultResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimaryWithDynamicPasswordResponse">
+    <wsdl:part element="tns:userPrimaryWithDynamicPasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSlave_yj">
+    <wsdl:part element="tns:getSlave_yj" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCertRequest">
+    <wsdl:part element="tns:createCertRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hasAliveServerResponse">
+    <wsdl:part element="tns:hasAliveServerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applyCertResponse">
+    <wsdl:part element="tns:applyCertResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMasterResAuth">
+    <wsdl:part element="tns:getMasterResAuth" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkSlaveAuth_IPv6">
+    <wsdl:part element="tns:checkSlaveAuth_IPv6" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTicket">
+    <wsdl:part element="tns:createTicket" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkSmsCode_yjResponse">
+    <wsdl:part element="tns:checkSmsCode_yjResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userSecondaryCertStringLogin">
+    <wsdl:part element="tns:userSecondaryCertStringLogin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="smsPasswordAuth">
+    <wsdl:part element="tns:smsPasswordAuth" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userSecondaryCertificateLoginResponse">
+    <wsdl:part element="tns:userSecondaryCertificateLoginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createRoamingToken">
+    <wsdl:part element="tns:createRoamingToken" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendSmsCodeRequest_IPv6Response">
+    <wsdl:part element="tns:sendSmsCodeRequest_IPv6Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateTicket">
+    <wsdl:part element="tns:validateTicket" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkSlaveAuth_IPv6Response">
+    <wsdl:part element="tns:checkSlaveAuth_IPv6Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSlave_yjResponse">
+    <wsdl:part element="tns:getSlave_yjResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tokenAuthResponse">
+    <wsdl:part element="tns:tokenAuthResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSecondarySignature">
+    <wsdl:part element="tns:getSecondarySignature" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAppLoginParamInfoResponse">
+    <wsdl:part element="tns:getAppLoginParamInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAppResTicketResponse">
+    <wsdl:part element="tns:getAppResTicketResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCertRequestResponse">
+    <wsdl:part element="tns:createCertRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkTicket">
+    <wsdl:part element="tns:checkTicket" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAppResTicket">
+    <wsdl:part element="tns:getAppResTicket" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimaryCertificateLoginResponse">
+    <wsdl:part element="tns:userPrimaryCertificateLoginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userAppSelfLoginResponse">
+    <wsdl:part element="tns:userAppSelfLoginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createRoamingTokenResponse">
+    <wsdl:part element="tns:createRoamingTokenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSlaveResponse">
+    <wsdl:part element="tns:getSlaveResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authChallenge">
+    <wsdl:part element="tns:authChallenge" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="changePasswordResponse">
+    <wsdl:part element="tns:changePasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="qryUserByTicketResponse">
+    <wsdl:part element="tns:qryUserByTicketResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hasAliveServer">
+    <wsdl:part element="tns:hasAliveServer" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimaryWithSSOLogin">
+    <wsdl:part element="tns:userPrimaryWithSSOLogin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applyChallenge">
+    <wsdl:part element="tns:applyChallenge" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkSmsCode">
+    <wsdl:part element="tns:checkSmsCode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimaryWithDynamicPassword">
+    <wsdl:part element="tns:userPrimaryWithDynamicPassword" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAppLoginParamInfo">
+    <wsdl:part element="tns:getAppLoginParamInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applyTreasuryMode">
+    <wsdl:part element="tns:applyTreasuryMode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CertificateValidationResponse">
+    <wsdl:part element="tns:CertificateValidationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkMasterResponse">
+    <wsdl:part element="tns:checkMasterResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applyCert">
+    <wsdl:part element="tns:applyCert" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applyApproverModeResult">
+    <wsdl:part element="tns:applyApproverModeResult" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOnePasswordResponse">
+    <wsdl:part element="tns:getOnePasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userSecondarySignatureLoginResponse">
+    <wsdl:part element="tns:userSecondarySignatureLoginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMasterResAuthResponse">
+    <wsdl:part element="tns:getMasterResAuthResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMasterAuth_IPv6Response">
+    <wsdl:part element="tns:getMasterAuth_IPv6Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAppAuthorityListResponse">
+    <wsdl:part element="tns:getAppAuthorityListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userSecondarySignatureLogin">
+    <wsdl:part element="tns:userSecondarySignatureLogin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTicketResponse">
+    <wsdl:part element="tns:createTicketResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="changePassword">
+    <wsdl:part element="tns:changePassword" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part element="tns:Exception" name="Exception">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSMSPassword">
+    <wsdl:part element="tns:getSMSPassword" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOnePassword">
+    <wsdl:part element="tns:getOnePassword" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userNameAndDynamicPassToPasswordResponse">
+    <wsdl:part element="tns:userNameAndDynamicPassToPasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyCertResponse">
+    <wsdl:part element="tns:verifyCertResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSmsCode">
+    <wsdl:part element="tns:getSmsCode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CertificateCancellResponse">
+    <wsdl:part element="tns:CertificateCancellResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userSecondaryPasswordLoginResponse">
+    <wsdl:part element="tns:userSecondaryPasswordLoginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimaryLoginResponse">
+    <wsdl:part element="tns:userPrimaryLoginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkMaster">
+    <wsdl:part element="tns:checkMaster" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSlave">
+    <wsdl:part element="tns:getSlave" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CertificateCancell">
+    <wsdl:part element="tns:CertificateCancell" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateTicketResponse">
+    <wsdl:part element="tns:validateTicketResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userAppSelfLogin">
+    <wsdl:part element="tns:userAppSelfLogin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkTicketResponse">
+    <wsdl:part element="tns:checkTicketResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="preLoginNoticeResponse">
+    <wsdl:part element="tns:preLoginNoticeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMasterAuth_IPv6">
+    <wsdl:part element="tns:getMasterAuth_IPv6" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSmsCodeResponse">
+    <wsdl:part element="tns:getSmsCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMAccBaseInfo">
+    <wsdl:part element="tns:getMAccBaseInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userSecondaryCertificateLogin">
+    <wsdl:part element="tns:userSecondaryCertificateLogin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRandomSmsCodeResponse">
+    <wsdl:part element="tns:getRandomSmsCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userSecondaryCertStringLoginResponse">
+    <wsdl:part element="tns:userSecondaryCertStringLoginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimaryCertificateLogin">
+    <wsdl:part element="tns:userPrimaryCertificateLogin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="smsPasswordAuthResponse">
+    <wsdl:part element="tns:smsPasswordAuthResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendSmsCodeRequest_portalResponse">
+    <wsdl:part element="tns:sendSmsCodeRequest_portalResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="smsCodeAuth_portal">
+    <wsdl:part element="tns:smsCodeAuth_portal" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="qryUserByTicket">
+    <wsdl:part element="tns:qryUserByTicket" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tokenAuth">
+    <wsdl:part element="tns:tokenAuth" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyCert">
+    <wsdl:part element="tns:verifyCert" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendSmsCodeRequest_IPv6">
+    <wsdl:part element="tns:sendSmsCodeRequest_IPv6" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CertificateValidation">
+    <wsdl:part element="tns:CertificateValidation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applyTreasuryModeResponse">
+    <wsdl:part element="tns:applyTreasuryModeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkSmsCode_yj">
+    <wsdl:part element="tns:checkSmsCode_yj" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkRoamingTokenResponse">
+    <wsdl:part element="tns:checkRoamingTokenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimarySafeWordLoginResponse">
+    <wsdl:part element="tns:userPrimarySafeWordLoginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendSmsCodeRequest">
+    <wsdl:part element="tns:sendSmsCodeRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimaryLoginDynamicPasswordResponse">
+    <wsdl:part element="tns:userPrimaryLoginDynamicPasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userNameAndDynamicPassToPassword">
+    <wsdl:part element="tns:userNameAndDynamicPassToPassword" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRandomSmsCode">
+    <wsdl:part element="tns:getRandomSmsCode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSecondarySignatureResponse">
+    <wsdl:part element="tns:getSecondarySignatureResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkSmsCodeResponse">
+    <wsdl:part element="tns:checkSmsCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMAccBaseInfoResponse">
+    <wsdl:part element="tns:getMAccBaseInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimaryLoginDynamicPassword">
+    <wsdl:part element="tns:userPrimaryLoginDynamicPassword" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkRoamingToken">
+    <wsdl:part element="tns:checkRoamingToken" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authChallengeResponse">
+    <wsdl:part element="tns:authChallengeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendSmsCodeRequest_portal">
+    <wsdl:part element="tns:sendSmsCodeRequest_portal" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMasterAuthResponse">
+    <wsdl:part element="tns:getMasterAuthResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applyRandomNumResponse">
+    <wsdl:part element="tns:applyRandomNumResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="userPrimarySafeWordLogin">
+    <wsdl:part element="tns:userPrimarySafeWordLogin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAppAuthorityList">
+    <wsdl:part element="tns:getAppAuthorityList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Venus4AService">
+    <wsdl:operation name="getOnePassword">
+      <wsdl:input message="tns:getOnePassword" name="getOnePassword">
+    </wsdl:input>
+      <wsdl:output message="tns:getOnePasswordResponse" name="getOnePasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimaryLogin">
+      <wsdl:input message="tns:userPrimaryLogin" name="userPrimaryLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:userPrimaryLoginResponse" name="userPrimaryLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userSecondaryPasswordLogin">
+      <wsdl:input message="tns:userSecondaryPasswordLogin" name="userSecondaryPasswordLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:userSecondaryPasswordLoginResponse" name="userSecondaryPasswordLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSmsCode">
+      <wsdl:input message="tns:getSmsCode" name="getSmsCode">
+    </wsdl:input>
+      <wsdl:output message="tns:getSmsCodeResponse" name="getSmsCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applyRandomNum">
+      <wsdl:input message="tns:applyRandomNum" name="applyRandomNum">
+    </wsdl:input>
+      <wsdl:output message="tns:applyRandomNumResponse" name="applyRandomNumResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMasterAuth">
+      <wsdl:input message="tns:getMasterAuth" name="getMasterAuth">
+    </wsdl:input>
+      <wsdl:output message="tns:getMasterAuthResponse" name="getMasterAuthResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="preLoginNotice">
+      <wsdl:input message="tns:preLoginNotice" name="preLoginNotice">
+    </wsdl:input>
+      <wsdl:output message="tns:preLoginNoticeResponse" name="preLoginNoticeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkMaster">
+      <wsdl:input message="tns:checkMaster" name="checkMaster">
+    </wsdl:input>
+      <wsdl:output message="tns:checkMasterResponse" name="checkMasterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSlave">
+      <wsdl:input message="tns:getSlave" name="getSlave">
+    </wsdl:input>
+      <wsdl:output message="tns:getSlaveResponse" name="getSlaveResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CertificateCancell">
+      <wsdl:input message="tns:CertificateCancell" name="CertificateCancell">
+    </wsdl:input>
+      <wsdl:output message="tns:CertificateCancellResponse" name="CertificateCancellResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSlave_yj">
+      <wsdl:input message="tns:getSlave_yj" name="getSlave_yj">
+    </wsdl:input>
+      <wsdl:output message="tns:getSlave_yjResponse" name="getSlave_yjResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCertRequest">
+      <wsdl:input message="tns:createCertRequest" name="createCertRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:createCertRequestResponse" name="createCertRequestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="userAppSelfLogin">
+      <wsdl:input message="tns:userAppSelfLogin" name="userAppSelfLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:userAppSelfLoginResponse" name="userAppSelfLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMasterResAuth">
+      <wsdl:input message="tns:getMasterResAuth" name="getMasterResAuth">
+    </wsdl:input>
+      <wsdl:output message="tns:getMasterResAuthResponse" name="getMasterResAuthResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSlaveAuth_IPv6">
+      <wsdl:input message="tns:checkSlaveAuth_IPv6" name="checkSlaveAuth_IPv6">
+    </wsdl:input>
+      <wsdl:output message="tns:checkSlaveAuth_IPv6Response" name="checkSlaveAuth_IPv6Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTicket">
+      <wsdl:input message="tns:createTicket" name="createTicket">
+    </wsdl:input>
+      <wsdl:output message="tns:createTicketResponse" name="createTicketResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMasterAuth_IPv6">
+      <wsdl:input message="tns:getMasterAuth_IPv6" name="getMasterAuth_IPv6">
+    </wsdl:input>
+      <wsdl:output message="tns:getMasterAuth_IPv6Response" name="getMasterAuth_IPv6Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userSecondaryCertStringLogin">
+      <wsdl:input message="tns:userSecondaryCertStringLogin" name="userSecondaryCertStringLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:userSecondaryCertStringLoginResponse" name="userSecondaryCertStringLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMAccBaseInfo">
+      <wsdl:input message="tns:getMAccBaseInfo" name="getMAccBaseInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:getMAccBaseInfoResponse" name="getMAccBaseInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="smsPasswordAuth">
+      <wsdl:input message="tns:smsPasswordAuth" name="smsPasswordAuth">
+    </wsdl:input>
+      <wsdl:output message="tns:smsPasswordAuthResponse" name="smsPasswordAuthResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userSecondaryCertificateLogin">
+      <wsdl:input message="tns:userSecondaryCertificateLogin" name="userSecondaryCertificateLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:userSecondaryCertificateLoginResponse" name="userSecondaryCertificateLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createRoamingToken">
+      <wsdl:input message="tns:createRoamingToken" name="createRoamingToken">
+    </wsdl:input>
+      <wsdl:output message="tns:createRoamingTokenResponse" name="createRoamingTokenResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimaryCertificateLogin">
+      <wsdl:input message="tns:userPrimaryCertificateLogin" name="userPrimaryCertificateLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:userPrimaryCertificateLoginResponse" name="userPrimaryCertificateLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateTicket">
+      <wsdl:input message="tns:validateTicket" name="validateTicket">
+    </wsdl:input>
+      <wsdl:output message="tns:validateTicketResponse" name="validateTicketResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="smsCodeAuth_portal">
+      <wsdl:input message="tns:smsCodeAuth_portal" name="smsCodeAuth_portal">
+    </wsdl:input>
+      <wsdl:output message="tns:smsCodeAuth_portalResponse" name="smsCodeAuth_portalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="qryUserByTicket">
+      <wsdl:input message="tns:qryUserByTicket" name="qryUserByTicket">
+    </wsdl:input>
+      <wsdl:output message="tns:qryUserByTicketResponse" name="qryUserByTicketResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSecondarySignature">
+      <wsdl:input message="tns:getSecondarySignature" name="getSecondarySignature">
+    </wsdl:input>
+      <wsdl:output message="tns:getSecondarySignatureResponse" name="getSecondarySignatureResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tokenAuth">
+      <wsdl:input message="tns:tokenAuth" name="tokenAuth">
+    </wsdl:input>
+      <wsdl:output message="tns:tokenAuthResponse" name="tokenAuthResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyCert">
+      <wsdl:input message="tns:verifyCert" name="verifyCert">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyCertResponse" name="verifyCertResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSmsCodeRequest_IPv6">
+      <wsdl:input message="tns:sendSmsCodeRequest_IPv6" name="sendSmsCodeRequest_IPv6">
+    </wsdl:input>
+      <wsdl:output message="tns:sendSmsCodeRequest_IPv6Response" name="sendSmsCodeRequest_IPv6Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CertificateValidation">
+      <wsdl:input message="tns:CertificateValidation" name="CertificateValidation">
+    </wsdl:input>
+      <wsdl:output message="tns:CertificateValidationResponse" name="CertificateValidationResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:Exception" name="Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkTicket">
+      <wsdl:input message="tns:checkTicket" name="checkTicket">
+    </wsdl:input>
+      <wsdl:output message="tns:checkTicketResponse" name="checkTicketResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSmsCode_yj">
+      <wsdl:input message="tns:checkSmsCode_yj" name="checkSmsCode_yj">
+    </wsdl:input>
+      <wsdl:output message="tns:checkSmsCode_yjResponse" name="checkSmsCode_yjResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSmsCodeRequest">
+      <wsdl:input message="tns:sendSmsCodeRequest" name="sendSmsCodeRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:sendSmsCodeRequestResponse" name="sendSmsCodeRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userNameAndDynamicPassToPassword">
+      <wsdl:input message="tns:userNameAndDynamicPassToPassword" name="userNameAndDynamicPassToPassword">
+    </wsdl:input>
+      <wsdl:output message="tns:userNameAndDynamicPassToPasswordResponse" name="userNameAndDynamicPassToPasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppResTicket">
+      <wsdl:input message="tns:getAppResTicket" name="getAppResTicket">
+    </wsdl:input>
+      <wsdl:output message="tns:getAppResTicketResponse" name="getAppResTicketResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRandomSmsCode">
+      <wsdl:input message="tns:getRandomSmsCode" name="getRandomSmsCode">
+    </wsdl:input>
+      <wsdl:output message="tns:getRandomSmsCodeResponse" name="getRandomSmsCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authChallenge">
+      <wsdl:input message="tns:authChallenge" name="authChallenge">
+    </wsdl:input>
+      <wsdl:output message="tns:authChallengeResponse" name="authChallengeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasAliveServer">
+      <wsdl:input message="tns:hasAliveServer" name="hasAliveServer">
+    </wsdl:input>
+      <wsdl:output message="tns:hasAliveServerResponse" name="hasAliveServerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimaryWithSSOLogin">
+      <wsdl:input message="tns:userPrimaryWithSSOLogin" name="userPrimaryWithSSOLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:userPrimaryWithSSOLoginResponse" name="userPrimaryWithSSOLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applyChallenge">
+      <wsdl:input message="tns:applyChallenge" name="applyChallenge">
+    </wsdl:input>
+      <wsdl:output message="tns:applyChallengeResponse" name="applyChallengeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimaryLoginDynamicPassword">
+      <wsdl:input message="tns:userPrimaryLoginDynamicPassword" name="userPrimaryLoginDynamicPassword">
+    </wsdl:input>
+      <wsdl:output message="tns:userPrimaryLoginDynamicPasswordResponse" name="userPrimaryLoginDynamicPasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSmsCode">
+      <wsdl:input message="tns:checkSmsCode" name="checkSmsCode">
+    </wsdl:input>
+      <wsdl:output message="tns:checkSmsCodeResponse" name="checkSmsCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimaryWithDynamicPassword">
+      <wsdl:input message="tns:userPrimaryWithDynamicPassword" name="userPrimaryWithDynamicPassword">
+    </wsdl:input>
+      <wsdl:output message="tns:userPrimaryWithDynamicPasswordResponse" name="userPrimaryWithDynamicPasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkRoamingToken">
+      <wsdl:input message="tns:checkRoamingToken" name="checkRoamingToken">
+    </wsdl:input>
+      <wsdl:output message="tns:checkRoamingTokenResponse" name="checkRoamingTokenResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppLoginParamInfo">
+      <wsdl:input message="tns:getAppLoginParamInfo" name="getAppLoginParamInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:getAppLoginParamInfoResponse" name="getAppLoginParamInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applyTreasuryMode">
+      <wsdl:input message="tns:applyTreasuryMode" name="applyTreasuryMode">
+    </wsdl:input>
+      <wsdl:output message="tns:applyTreasuryModeResponse" name="applyTreasuryModeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applyCert">
+      <wsdl:input message="tns:applyCert" name="applyCert">
+    </wsdl:input>
+      <wsdl:output message="tns:applyCertResponse" name="applyCertResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applyApproverModeResult">
+      <wsdl:input message="tns:applyApproverModeResult" name="applyApproverModeResult">
+    </wsdl:input>
+      <wsdl:output message="tns:applyApproverModeResultResponse" name="applyApproverModeResultResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSmsCodeRequest_portal">
+      <wsdl:input message="tns:sendSmsCodeRequest_portal" name="sendSmsCodeRequest_portal">
+    </wsdl:input>
+      <wsdl:output message="tns:sendSmsCodeRequest_portalResponse" name="sendSmsCodeRequest_portalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userSecondarySignatureLogin">
+      <wsdl:input message="tns:userSecondarySignatureLogin" name="userSecondarySignatureLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:userSecondarySignatureLoginResponse" name="userSecondarySignatureLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changePassword">
+      <wsdl:input message="tns:changePassword" name="changePassword">
+    </wsdl:input>
+      <wsdl:output message="tns:changePasswordResponse" name="changePasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSMSPassword">
+      <wsdl:input message="tns:getSMSPassword" name="getSMSPassword">
+    </wsdl:input>
+      <wsdl:output message="tns:getSMSPasswordResponse" name="getSMSPasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimarySafeWordLogin">
+      <wsdl:input message="tns:userPrimarySafeWordLogin" name="userPrimarySafeWordLogin">
+    </wsdl:input>
+      <wsdl:output message="tns:userPrimarySafeWordLoginResponse" name="userPrimarySafeWordLoginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppAuthorityList">
+      <wsdl:input message="tns:getAppAuthorityList" name="getAppAuthorityList">
+    </wsdl:input>
+      <wsdl:output message="tns:getAppAuthorityListResponse" name="getAppAuthorityListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Venus4AServiceSoapBinding" type="tns:Venus4AService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getOnePassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getOnePassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOnePasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimaryLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userPrimaryLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userPrimaryLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userSecondaryPasswordLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userSecondaryPasswordLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userSecondaryPasswordLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSmsCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSmsCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSmsCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applyRandomNum">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="applyRandomNum">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="applyRandomNumResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMasterAuth">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMasterAuth">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMasterAuthResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="preLoginNotice">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="preLoginNotice">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="preLoginNoticeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkMaster">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkMaster">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkMasterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSlave">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSlave">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSlaveResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CertificateCancell">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="CertificateCancell">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CertificateCancellResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSlave_yj">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSlave_yj">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSlave_yjResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCertRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createCertRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCertRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="userAppSelfLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userAppSelfLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userAppSelfLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMasterResAuth">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMasterResAuth">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMasterResAuthResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSlaveAuth_IPv6">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkSlaveAuth_IPv6">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkSlaveAuth_IPv6Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTicket">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createTicket">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createTicketResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMasterAuth_IPv6">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMasterAuth_IPv6">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMasterAuth_IPv6Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userSecondaryCertStringLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userSecondaryCertStringLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userSecondaryCertStringLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMAccBaseInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMAccBaseInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMAccBaseInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="smsPasswordAuth">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="smsPasswordAuth">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="smsPasswordAuthResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userSecondaryCertificateLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userSecondaryCertificateLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userSecondaryCertificateLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createRoamingToken">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createRoamingToken">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createRoamingTokenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimaryCertificateLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userPrimaryCertificateLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userPrimaryCertificateLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateTicket">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validateTicket">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validateTicketResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="smsCodeAuth_portal">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="smsCodeAuth_portal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="smsCodeAuth_portalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="qryUserByTicket">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="qryUserByTicket">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="qryUserByTicketResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSecondarySignature">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSecondarySignature">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSecondarySignatureResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tokenAuth">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="tokenAuth">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="tokenAuthResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyCert">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyCert">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyCertResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSmsCodeRequest_IPv6">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendSmsCodeRequest_IPv6">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendSmsCodeRequest_IPv6Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CertificateValidation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="CertificateValidation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CertificateValidationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkTicket">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkTicket">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkTicketResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSmsCode_yj">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkSmsCode_yj">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkSmsCode_yjResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSmsCodeRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendSmsCodeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendSmsCodeRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userNameAndDynamicPassToPassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userNameAndDynamicPassToPassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userNameAndDynamicPassToPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppResTicket">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAppResTicket">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAppResTicketResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRandomSmsCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getRandomSmsCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRandomSmsCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authChallenge">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="authChallenge">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="authChallengeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasAliveServer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="hasAliveServer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="hasAliveServerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimaryWithSSOLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userPrimaryWithSSOLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userPrimaryWithSSOLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applyChallenge">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="applyChallenge">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="applyChallengeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimaryLoginDynamicPassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userPrimaryLoginDynamicPassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userPrimaryLoginDynamicPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSmsCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkSmsCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkSmsCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimaryWithDynamicPassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userPrimaryWithDynamicPassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userPrimaryWithDynamicPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkRoamingToken">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkRoamingToken">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkRoamingTokenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppLoginParamInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAppLoginParamInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAppLoginParamInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applyTreasuryMode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="applyTreasuryMode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="applyTreasuryModeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applyCert">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="applyCert">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="applyCertResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applyApproverModeResult">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="applyApproverModeResult">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="applyApproverModeResultResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSmsCodeRequest_portal">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendSmsCodeRequest_portal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendSmsCodeRequest_portalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userSecondarySignatureLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userSecondarySignatureLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userSecondarySignatureLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changePassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="changePassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="changePasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSMSPassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSMSPassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSMSPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userPrimarySafeWordLogin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="userPrimarySafeWordLogin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="userPrimarySafeWordLoginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAppAuthorityList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAppAuthorityList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAppAuthorityListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Venus4AService">
+    <wsdl:port binding="tns:Venus4AServiceSoapBinding" name="Venus4AServiceImplPort">
+      <soap:address location="http://localhost:8080/Venus4A/services/Venus4AService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

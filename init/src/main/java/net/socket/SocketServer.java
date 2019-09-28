@@ -14,15 +14,28 @@ public class SocketServer{
     public void start(){
         ServerSocket serverSocket = null;
         try {
-            serverSocket = new ServerSocket();
-            serverSocket.bind(new InetSocketAddress("192.168.121.1",80));
+            serverSocket = new ServerSocket(8080);
+//            serverSocket.bind(new InetSocketAddress("192.168.121.1",8080));
             System.out.println("服务器正常启动。。。");
             while(true) {
                 //从请求队列中取出一个连接
                 Socket client = serverSocket.accept();
+                StringBuilder builder = new StringBuilder();
+                BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                InputStreamReader isr = new InputStreamReader(client.getInputStream());
+                char[] charBuf = new char[1024];
+                int mark;
+                while ((mark = isr.read(charBuf)) != -1) {
+                    builder.append(charBuf, 0, mark);
+                    if (mark < charBuf.length) {
+                        break;
+                    }
+                }
+                System.out.println(builder.toString());
+
+                // 处理客户端数据
                 // 处理这次连接
-                HttpRequestHandler request = new HttpRequestHandler(client);
-                request.handle();
+                HandlerThread request = new HandlerThread(client);
 
                 client.close();
             }

@@ -4,11 +4,7 @@ import io.vertx.core.json.JsonObject;
 import net.http.httpclient.HttpsUtils;
 import output.file.FileUtils;
 
-/**
- * @author xuefei@idss.com
- * @description 下载
- * @date 2019/7/15
- */
+
 public class DongFangCaiFu {
     static int page = 1;
     static int pageSize = 100;

@@ -11,4 +11,24 @@
 
     <artifactId>init</artifactId>
 
+    <dependencies>
+        <!--webservice cxf =======start -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>3.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+            <version>3.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>3.2.5</version>
+        </dependency>
+        <!--webservice cxf =======end -->
+    </dependencies>
+
 </project>
