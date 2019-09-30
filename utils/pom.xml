@@ -40,6 +40,20 @@
             <version>0.5</version>
         </dependency>
 
+        <!-- json to xml-->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
+        </dependency>
+
+        <!--hottool工具集合-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>4.3.1</version>
+        </dependency>
+
 
 
     </dependencies>

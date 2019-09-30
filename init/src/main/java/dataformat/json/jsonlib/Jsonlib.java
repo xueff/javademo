@@ -1,4 +1,4 @@
-package json.jsonlib;
+package dataformat.json.jsonlib;
 
 import common.bean.Person;
 import net.sf.json.JSON;

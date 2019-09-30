@@ -1,4 +1,4 @@
-package json.fastjson;
+package dataformat.json.fastjson;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;

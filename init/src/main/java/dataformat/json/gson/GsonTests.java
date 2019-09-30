@@ -1,4 +1,4 @@
-package json.gson;
+package dataformat.json.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import common.bean.Person;
 import net.sf.json.JSONArray;
 import org.junit.Test;
+
 import java.lang.reflect.Type;
 import java.util.*;
 
@@ -99,7 +100,7 @@ public class GsonTests {
     public void createJson(){
         JsonObject jsonObj = new JsonObject();
         jsonObj.addProperty("action","tvyuyin.channeldataupdate");
-        jsonObj.addProperty("timestamp",new java.util.Date().getTime());
+        jsonObj.addProperty("timestamp",new Date().getTime());
         jsonObj.addProperty("Key",UUID.randomUUID()+"");
         JsonObject jsonObj2 = new JsonObject();
         jsonObj2.addProperty("child","child");
@@ -126,7 +127,7 @@ public class GsonTests {
     @Test
     public void  getKey(){
         JsonObject jsonObj = new JsonObject();
-        com.google.gson.JsonObject info = jsonObj.getAsJsonObject("props");
+        JsonObject info = jsonObj.getAsJsonObject("props");
 
     }
 

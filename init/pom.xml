@@ -29,6 +29,14 @@
             <version>3.2.5</version>
         </dependency>
         <!--webservice cxf =======end -->
+
+
+        <!-- json to xml-->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
+        </dependency>
     </dependencies>
 
 </project>
