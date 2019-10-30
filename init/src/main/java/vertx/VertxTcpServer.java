@@ -31,7 +31,7 @@ public class VertxTcpServer {
 //                logger.error("socket.closeHandler");
             });
         });
-        server.listen(1820, "localhost", res -> {
+        server.listen(8080, "localhost", res -> {
             if (res.succeeded()) {
                 System.out.println("Server is now listening on actual port: " + server.actualPort());
             } else {

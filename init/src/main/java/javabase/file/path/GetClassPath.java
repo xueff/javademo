@@ -24,4 +24,17 @@ public class GetClassPath {
 //        System.out.println(file.getAbsolutePath());
         return classUrl;
     }
+    public static boolean isLinux() {
+
+        String os = System.getProperty("os.name");
+        if(os.toLowerCase().startsWith("linux")){
+           return  true;
+        }else if(os.toLowerCase().startsWith("win")){
+        }else{
+        }
+//        File file = new File(classUrl+"/GetClassPath.class");
+//        System.out.println(classUrl);
+//        System.out.println(file.getAbsolutePath());
+        return false;
+    }
 }

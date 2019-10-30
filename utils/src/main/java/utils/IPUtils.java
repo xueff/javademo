@@ -1,13 +1,11 @@
+package utils;
+
 import cn.hutool.core.lang.Validator;
 import cn.hutool.http.HttpUtil;
-import io.vertx.core.json.JsonObject;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -20,19 +18,8 @@ import java.util.stream.Collectors;
  * @description 11
  * @date 2019/8/8
  */
-public class Test {
-    public static void main(String[] args) {
-        List<String> gList = new ArrayList<>();
-        List<String> newL = new ArrayList<>();
-        gList.add("1");
-        gList.add("2");
-        gList.add("3");
-
-        System.out.print(String.join(",", gList.stream().map(item -> String.valueOf(item)).collect(Collectors.toList())));
-        System.out.print(getIP());
-    }
-
-    public static String getIP() {
+public class IPUtils {
+    public static String getPublicIP() {
 
         String res = HttpUtil.get("http://icanhazip.com");
         res = res.trim().replace("\n","");

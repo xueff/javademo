@@ -36,7 +36,7 @@ public class VertxHttp {
         router.get("/*").handler(it->new Filter().handler(it));
         router.post("/hander/it").handler(it -> new Handle().handler(it) );
         router.get("/file/*").handler(it -> new FileHandle().handler(it) );
-        server.requestHandler(it -> router.accept(it) ).listen(8080);
+        server.requestHandler(it -> router.accept(it) ).listen(9090);
     }
 }
 
@@ -72,16 +72,16 @@ class Handle{
 //        } else if (!context.request().path().contains("..")) {
 //            file = context.request().path();
 //        }
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        String f = "kasdcashioobjbjhcuioashcuiosajkb";
-        for(int a= 0;a<10;a++){
-            f +=f;
-        }
-        context.response().putHeader("1",f);
+//        try {
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        String f = "kasdcashioobjbjhcuioashcuiosajkb";
+//        for(int a= 0;a<10;a++){
+//            f +=f;
+//        }
+//        context.response().putHeader("1",f);
         context.response().end("ok2");
     }
 
