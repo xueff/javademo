@@ -31,7 +31,7 @@ public class DongFangCaiFu {
             });
 
 
-            FileUtils.appendFile(st.toString(),"D://gp.txt");
+            FileUtils.createOrAppendFile(st.toString(),"D://gp.txt");
         }
     }
 }

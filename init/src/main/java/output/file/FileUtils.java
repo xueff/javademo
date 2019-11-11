@@ -20,7 +20,7 @@ public class FileUtils {
     /**
      * 向文件追加内容
      */
-    public static void appendFile(String content,String fileName){
+    public static void createOrAppendFile(String content,String fileName){
         if(StringUtils.isEmpty(content)){
             return;
         }

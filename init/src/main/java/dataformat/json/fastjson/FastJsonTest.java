@@ -57,4 +57,10 @@ public class FastJsonTest {
         Person a = new Person();
         JSONArray array = JSONArray.parseArray(JSONObject.toJSONString(a));
     }
+
+    public static void ObjToJson(){
+        List<Person> list = new ArrayList<>();
+        Person a = new Person();
+        JSONObject jsonObj = (JSONObject) JSON.toJSON(a);
+    }
 }
