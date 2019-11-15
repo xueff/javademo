@@ -1,7 +1,3 @@
-package output.file;
-
-import org.apache.commons.lang.StringUtils;
-
 import java.io.*;
 
 /**
@@ -21,7 +17,7 @@ public class FileUtils {
      * 向文件追加内容
      */
     public static void createOrAppendFile(String content,String fileName){
-        if(StringUtils.isEmpty(content)){
+        if(content == null || content.length() ==0){
             return;
         }
         FileWriter writer = null;
@@ -101,14 +97,14 @@ public class FileUtils {
 
     public static void filePermission() {
         try {
-            File file = new File("D:/log/operate_20191112_1.log");
+            File file = new File("/opt/log/operate_112_12.log");
             System.out.println(file.length());
             if (file.createNewFile()){
                 System.out.println("File is created!");
-                //Runtime.getRuntime().exec("chmod 777 /home/test3.txt");
-                file.setExecutable(true);//设置可执行权限
-                file.setReadable(true);//设置可读权限
-                file.setWritable(true);//设置可写权限
+                Runtime.getRuntime().exec("chmod 777 /opt/log/operate_112_12.log");
+//                file.setExecutable(true);//设置可执行权限
+//                file.setReadable(true);//设置可读权限
+//                file.setWritable(true);//设置可写权限
                 System.out.println("is execute allow : " + file.canExecute());
                 System.out.println("is read allow : " + file.canRead());
                 System.out.println("is write allow : " + file.canWrite());
