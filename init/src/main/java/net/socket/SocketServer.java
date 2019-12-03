@@ -113,12 +113,12 @@ class HttpRequestHandler {
                 " <head>\n" +
                 "  <meta charset=\"utf-8\">\n" +
                 "  <title>XieZhu - LuCI</title>\n" +
-                "  <!--[if lt IE 9]><script src=\"/luci-static/bootstrap/html5.js\"></script><![endif]-->\n" +
+                "  <!--[if lt IE 9]><script blockingqueue=\"/luci-static/bootstrap/html5.js\"></script><![endif]-->\n" +
                 "  <meta name=\"viewport\" content=\"initial-scale=1.0\">\n" +
                 "  <link rel=\"stylesheet\" href=\"/luci-static/bootstrap/cascade.css\">\n" +
                 "  <link rel=\"stylesheet\" media=\"only screen and (max-device-width: 854px)\" href=\"/luci-static/bootstrap/mobile.css\" type=\"text/css\" />\n" +
                 "  <link rel=\"shortcut icon\" href=\"/luci-static/bootstrap/favicon.ico\">\n" +
-                "  <script src=\"/luci-static/resources/xhr.js\"></script>\n" +
+                "  <script blockingqueue=\"/luci-static/resources/xhr.js\"></script>\n" +
                 " </head>\n" +
                 "\n" +
                 " <body class=\"lang_zh-cn\">\n" +
