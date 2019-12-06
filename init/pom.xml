@@ -36,6 +36,18 @@
             <version>4.3.1</version>
         </dependency>
 
+        <!-- Oracle的数据库的驱动 -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.25</version>
+        </dependency>
 
         <!-- json to xml-->
         <dependency>
