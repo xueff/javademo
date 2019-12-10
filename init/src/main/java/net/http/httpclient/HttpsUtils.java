@@ -21,7 +21,8 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.util.EntityUtils;
-import java.io.IOException;
+
+import java.io.*;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
@@ -55,6 +56,78 @@ public class HttpsUtils {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) {
+        HttpsUtils.downLoad("https://172.16.0.34:8084//1575256282801/default.zip");
+    }
+
+
+    /**
+     * 文件下载
+     * @param url
+     */
+    public static void downLoad(String url) {
+        CloseableHttpClient httpClient = null;
+        OutputStream out = null;
+        InputStream in = null;
+
+        try {
+            httpClient = getHttpClient();
+            HttpGet httpGet = new HttpGet(url);
+
+//            httpGet.addHeader("userName", userName);
+//            httpGet.addHeader("passwd", passwd);
+//            httpGet.addHeader("fileName", remoteFileName);
+
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+            HttpEntity entity = httpResponse.getEntity();
+            in = entity.getContent();
+
+            long length = entity.getContentLength();
+            if (length <= 0) {
+                System.out.println("下载文件不存在！");
+                return;
+            }
+            File file = new File("D:/aa.zip");
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
+            out = new FileOutputStream(file);
+            byte[] buffer = new byte[4096];
+            int readLength = 0;
+            while ((readLength=in.read(buffer)) > 0) {
+                byte[] bytes = new byte[readLength];
+                System.arraycopy(buffer, 0, bytes, 0, readLength);
+                out.write(bytes);
+            }
+
+            out.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                if(in != null){
+                    in.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                if(out != null){
+                    out.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
     /**
      * httpClient post请求
      * @param url 请求url

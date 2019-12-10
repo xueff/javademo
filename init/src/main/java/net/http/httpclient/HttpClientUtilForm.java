@@ -77,6 +77,10 @@ public class HttpClientUtilForm {
         return httpClient;
     }
 
+    public static void main(String[] args) {
+       HttpClientUtilForm.httpGet("https://172.16.0.34:8084//1575256282801/default.zip");
+    }
+
     /**
      * 发送http get请求
      */
