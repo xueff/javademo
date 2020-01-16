@@ -2,7 +2,13 @@ package javabase.secret;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import com.jcraft.jsch.ChannelSftp;
 import org.apache.commons.codec.binary.Base64;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
 /**
  *
  * @author Administrator
@@ -60,5 +66,10 @@ public class ApacheAESUtils {
         // 解密
         String DeString = ApacheAESUtils.Decrypt(enString);
         System.out.println("解密后的字串是：" + DeString);
+
+
+        InputStream fileStream = null;
+
+        fileStream = new FileInputStream(new File("D:/a"));
     }
 }
