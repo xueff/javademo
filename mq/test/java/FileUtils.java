@@ -10,6 +10,7 @@ public class FileUtils {
 
 
     public static void main(String[] args) {
+
         filePermission();
     }
 
@@ -97,17 +98,18 @@ public class FileUtils {
 
     public static void filePermission() {
         try {
-            File file = new File("/opt/log/operate_112_12.log");
+            File file = new File("/opt/perssion/");
+            File file2 = new File("/opt/perssion/water/aa/");
             System.out.println(file.length());
-            if (file.createNewFile()){
+            if(!file2.exists()) {
+                file2.mkdirs();
+            }
+            if (file2.createNewFile()){
                 System.out.println("File is created!");
-                Runtime.getRuntime().exec("chmod 777 /opt/log/operate_112_12.log");
+                Runtime.getRuntime().exec("chmod -R 777 "+file2.getAbsolutePath());
 //                file.setExecutable(true);//设置可执行权限
 //                file.setReadable(true);//设置可读权限
 //                file.setWritable(true);//设置可写权限
-                System.out.println("is execute allow : " + file.canExecute());
-                System.out.println("is read allow : " + file.canRead());
-                System.out.println("is write allow : " + file.canWrite());
             }else{
                 System.out.println("File already exists.");
             }
