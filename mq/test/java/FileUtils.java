@@ -10,8 +10,10 @@ public class FileUtils {
 
 
     public static void main(String[] args) {
+        File dir = new File("D:/out/aa/bb/");
+        if (!dir.mkdirs()) {
 
-        filePermission();
+        }
     }
 
     /**
@@ -115,6 +117,29 @@ public class FileUtils {
             }
 
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+  }
+    public static void moveFile() {
+        try {
+            File file = new File("/opt/a.txt/");
+            File file2 = new File("/opt/aa/a.txt");
+            try {
+                if (file.renameTo(file2)) {
+                    Runtime.getRuntime().exec("chmod -R 777 "+file2.getAbsolutePath());
+                    System.out.println("文件移动成功！");
+                } else {
+                    System.out.println("文件移动失败2！");
+                }
+            }catch(Exception e) {
+                System.out.println("文件移动出现异常3！");
+            }
+            System.out.println(file.length());
+            if(!file2.exists()) {
+                file2.mkdirs();
+            }
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
   }
