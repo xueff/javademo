@@ -13,10 +13,6 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.List;
 
-/*
- * Created on: 2020/02/26.
- * Author:     xuefei
- */
 public class ExcelMaskUtils2 {
     private static Logger log = LoggerFactory.getLogger(ExcelMaskUtils2.class);
     public static void main(String[] args) {
@@ -28,21 +24,17 @@ public class ExcelMaskUtils2 {
     public boolean maskExcel(String path,String fileOutPath,String waterKey) {
 
         try {
-            List<String> ChineseList = new WaterKey().getEncryptChineseList(waterKey);
-            String encryptChinese = new WaterKey().getWaterKeyToEncryptChinese(waterKey);
-            log.info("waterKey:"+WaterKey.getEncryptChineseToWaterKey(encryptChinese));
+
             File file = new File(path);
-
-
             if(!file.exists()){
                 log.error("找不到文件");
                 throw new RuntimeException("找不到文件");
             }
 
             if(fileOutPath.endsWith(".xlsx")){
-                mask2007PlusExcel(file,ChineseList, encryptChinese,fileOutPath);
+                mask2007PlusExcel(file,fileOutPath);
             }else{
-                mask2003Excel(new File(fileOutPath),ChineseList, encryptChinese,fileOutPath);
+                mask2003Excel(new File(fileOutPath),fileOutPath);
             }
 
             if(new File(fileOutPath).exists()){
@@ -67,7 +59,7 @@ public class ExcelMaskUtils2 {
      * @return
      * @throws Exception
      */
-    public void mask2007PlusExcel(File file, List<String> list,String encryptChinese,String fileOutPath)  {
+    public void mask2007PlusExcel(File file,String fileOutPath)  {
         XSSFWorkbook xwb = null;
         try {
             xwb = new XSSFWorkbook(new FileInputStream(file));
@@ -104,8 +96,8 @@ public class ExcelMaskUtils2 {
             if(row ==null){
                 row = sheet.createRow(i);
             }
-            row.createCell(cellWaterMask).setCellValue(list.get(i%list.size()));
-            row.createCell(cellWaterMask+1).setCellValue(encryptChinese);
+            row.createCell(cellWaterMask).setCellValue("1");
+            row.createCell(cellWaterMask+1).setCellValue(1);
 
         }
         int maxRow = sheet.getLastRowNum();
@@ -115,8 +107,8 @@ public class ExcelMaskUtils2 {
             if(row ==null){
                 row = sheet.createRow(i);
             }
-            row.createCell(cellWaterMask).setCellValue(list.get(i%list.size()));
-            row.createCell(cellWaterMask+1).setCellValue(encryptChinese);
+            row.createCell(cellWaterMask).setCellValue(1);
+            row.createCell(cellWaterMask+1).setCellValue(1);
 
         }
 
@@ -151,7 +143,7 @@ public class ExcelMaskUtils2 {
      * @return
      * @throws Exception
      */
-    public void mask2003Excel(File file, List<String> list,String encryptChinese,String fileOutPath) {
+    public void mask2003Excel(File file,String fileOutPath) {
 
         HSSFWorkbook wb = null;
         try {
@@ -194,8 +186,8 @@ public class ExcelMaskUtils2 {
             if(row ==null){
                 row = sheet.createRow(i);
             }
-            row.createCell(cellWaterMask).setCellValue(list.get(i%list.size()));
-            row.createCell(cellWaterMask+1).setCellValue(encryptChinese);
+            row.createCell(cellWaterMask).setCellValue(1);
+            row.createCell(cellWaterMask+1).setCellValue(1);
 
         }
         int maxRow = sheet.getLastRowNum();
@@ -205,8 +197,8 @@ public class ExcelMaskUtils2 {
             if(row ==null){
                 row = sheet.createRow(i);
             }
-            row.createCell(cellWaterMask).setCellValue(list.get(i%list.size()));
-            row.createCell(cellWaterMask+1).setCellValue(encryptChinese);
+            row.createCell(cellWaterMask).setCellValue(1);
+            row.createCell(cellWaterMask+1).setCellValue(1);
 
         }
 
