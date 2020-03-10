@@ -1,6 +1,7 @@
 package output.file.excel;
 
 import com.alibaba.excel.EasyExcelFactory;
+import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
@@ -97,18 +98,25 @@ public class EasyExcelUtil {
 
         sheet = sheet != null ? sheet : initSheet;
 
-        InputStream fileStream = null;
+        ExcelListener excelListener = new ExcelListener();
+
+        BufferedInputStream bufferedInputStream  = null;
         try {
-            fileStream = new FileInputStream(filePath);
-            ExcelListener excelListener = new ExcelListener();
-            EasyExcelFactory.readBySax(fileStream, sheet, excelListener);
+            bufferedInputStream = new BufferedInputStream(new FileInputStream(filePath));
+            ExcelReader reader =  new ExcelReader(bufferedInputStream, null,null, excelListener, false);
+            if (reader == null) {
+                return null;
+            }
+
+            reader.read(sheet);
+
             return excelListener.getDatas();
         } catch (FileNotFoundException e) {
             log.error("找不到文件或文件路径错误, 文件：{}", filePath);
         }finally {
             try {
-                if(fileStream != null){
-                    fileStream.close();
+                if(bufferedInputStream != null){
+                    bufferedInputStream.close();
                 }
             } catch (IOException e) {
                 log.error("excel文件读取失败, 失败原因：{}", e);
