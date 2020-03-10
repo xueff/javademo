@@ -25,7 +25,7 @@ public class QuartzManager {
     /**
      * 功能： 添加一个定时任务
      * @param jobName 任务名
-     * @param jobGroupName  任务组名
+     * @param jobGroupName  任务组名MapDbOld.java
      * @param triggerName 触发器名
      * @param triggerGroupName 触发器组名
      * @param jobClass  任务的类类型  eg:TimedMassJob.class
