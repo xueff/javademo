@@ -49,6 +49,7 @@ public class JNATest {
 //    public static WinDef.HWND changeWindowName(WinDef.HWND window) {
 //
 //        WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, title); // 第一个参数是Windows窗体的窗体类，第二个参数是窗体的标题。不熟悉windows编程的需要先找一些Windows窗体数据结构的知识来看看，还有windows消息循环处理，其他的东西不用看太多。
+//        WinDef.HWND hwnd = User32.INSTANCE.FindWindowEx(null, title); // 第一个参数是Windows窗体的窗体类，第二个参数是窗体的标题。不熟悉windows编程的需要先找一些Windows窗体数据结构的知识来看看，还有windows消息循环处理，其他的东西不用看太多。
 //        if (hwnd == null) {
 //           System.out.println(title+" not find");
 //        }
