@@ -9,15 +9,25 @@ import com.sun.jna.ptr.IntByReference;
  使用winID来获得窗口的类型和标题，然后发送消息或者其他操作
  *
  */
-public class JNABaseInfo {
+public class JnaBaseInfo {
     private static final int MAX_TITLE_LENGTH = 1024;
 
     public static void main(String[] args) throws InterruptedException {
         while (true) {
-            System.out.println("title: " + JNABaseInfo.getActiveWindowTitle());
+            System.out.println("title: " + JnaBaseInfo.getActiveWindowTitle());
             Thread.sleep(3000);
         }
 
+    }
+
+    public static WinDef.HWND getWindowByTitle(String title){
+        WinDef.HWND hwnd = User32.INSTANCE.FindWindow
+                (null, title);
+        if (hwnd == null) {
+            System.out.println(title+" is not running");
+        }
+
+        return hwnd;
     }
 
     public static String getActiveWindowTitle(){
