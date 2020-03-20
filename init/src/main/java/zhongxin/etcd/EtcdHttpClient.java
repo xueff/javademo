@@ -32,8 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class EtcdHttoClient {
-    static Logger logger = LoggerFactory.getLogger(EtcdHttoClient.class);
+public class EtcdHttpClient {
+    static Logger logger = LoggerFactory.getLogger(EtcdHttpClient.class);
     private static final String HTTP = "http";
     private static final String HTTPS = "https";
     private static SSLConnectionSocketFactory sslsf = null;
