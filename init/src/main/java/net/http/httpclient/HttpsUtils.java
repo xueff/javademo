@@ -238,7 +238,7 @@ public class HttpsUtils {
                     //给参数赋值
                     formparams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
                 }
-                System.out.println("请求参数："+formparams);
+//                System.out.println("请求参数："+formparams);
                 UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(formparams, Consts.UTF_8);
                 httpPost.setEntity(urlEncodedFormEntity);
             }

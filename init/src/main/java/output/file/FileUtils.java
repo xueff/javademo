@@ -13,8 +13,8 @@ public class FileUtils {
 
 
 
-    public static void main(String[] args) {
-        filePermission();
+    public static void main(String[] args) throws Exception {
+        FileUtils.getFileCode("C:\\Users\\admin\\Desktop\\ocyangjiatao\\新建文本文档.txt");
     }
 
     /**
@@ -121,5 +121,36 @@ public class FileUtils {
         }
   }
 
+    /**
+     * 文件编码读取
+     * @param fileName
+     * @return
+     * @throws Exception
+     */
+    public static String getFileCode(String fileName) throws Exception {
+        BufferedInputStream bin = new BufferedInputStream(new FileInputStream(fileName));
+        int p = (bin.read() << 8) + bin.read();
+        bin.close();
+        String code = null;
 
+        switch (p) {
+            case 0xefbb:
+                code = "UTF-8";
+                break;
+            case 0xfffe:
+                code = "Unicode";
+                break;
+            case 0xfeff:
+                code = "UTF-16BE";
+                break;
+            case 0x5c75:
+                code = "ANSI|ASCII" ;
+                break ;
+            default:
+                code = "GBK";
+        }
+        System.out.println(code);
+
+        return code;
+    }
 }
