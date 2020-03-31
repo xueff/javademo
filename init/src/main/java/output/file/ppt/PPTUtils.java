@@ -15,11 +15,11 @@ import java.util.UUID;
 
 
 @Slf4j
-public class PptUtils {
+public class PPTUtils {
 
     public static void main(String[] args) {
 //        String ppt = PptUtils.getTextFromPPT("E:\\qywx\\WXWork\\1688852589482509\\Cache\\File\\2020-03\\曹波_车牌识别.pptx");
-      PptUtils.testPpt("D:\\OneDrive\\我的本地同步\\work\\观安\\培训\\黑白盒工具\\nessus.pptx");
+        PPTUtils.testPpt("D:\\OneDrive\\我的本地同步\\work\\观安\\培训\\黑白盒工具\\nessus.pptx");
         System.out.println("");
     }
 
@@ -49,7 +49,7 @@ public class PptUtils {
         } catch (IOException e) {
             log.error("读取文档失败，请检查文档格式!",e);
         } finally {
-            PptUtils.close(fis);
+            PPTUtils.close(fis);
         }
         return "";
     }
