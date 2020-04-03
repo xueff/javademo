@@ -122,7 +122,7 @@ public class FileUtils {
   }
 
     /**
-     * 文件编码读取
+     * 文件编码读取  编码识别
      * @param fileName
      * @return
      * @throws Exception
