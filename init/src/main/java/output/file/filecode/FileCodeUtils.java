@@ -1,7 +1,10 @@
 package output.file.filecode;
 
+import output.file.file.FindFile;
+
 import java.io.*;
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,24 +19,38 @@ public class FileCodeUtils {
 
     public static void main(String[] args) throws Exception {
 
+        // 支持的编码
         Map<String , Charset> map = Charset.availableCharsets();
         Set<Map.Entry<String , Charset>> set = map.entrySet();
         for(Map.Entry<String , Charset> entry : set){
             System.out.println(entry.getKey() + "=" + entry.getValue());
         }
 
+        List<File> list = FindFile.find("D:\\OneDrive\\我的本地同步",3);
+
+        list.forEach(it->{
+            if(it.isFile()) {
+                InputStream fileStream = null;
+                try {
+                    fileStream = new FileInputStream(it);
+                    ByteArrayOutputStream baos = FileCodeUtils.getByteArrayOutputStream(fileStream);
+                    EncodingDetectUtil encodingDetectUtil = new EncodingDetectUtil();
+                    // 此处不能删除，因为fileStream只能用一次
+                    fileStream = new ByteArrayInputStream(baos.toByteArray());
+                    String charSet = encodingDetectUtil.detectEncoding(fileStream);
+                    System.out.println(it.getPath()+"自动识别编码格式charSet：" + charSet);
+                    fileStream = new ByteArrayInputStream(baos.toByteArray());
+                    baos.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
-        File file = new File("");
-        InputStream fileStream = new FileInputStream(file);
-        ByteArrayOutputStream baos = FileCodeUtils.getByteArrayOutputStream(fileStream);
-        EncodingDetectUtil encodingDetectUtil = new EncodingDetectUtil();
-        // 此处不能删除，因为fileStream只能用一次
-        fileStream = new ByteArrayInputStream(baos.toByteArray());
-        String charSet = encodingDetectUtil.detectEncoding(fileStream);
-        System.out.println("自动识别编码格式charSet：" + charSet);
-        fileStream = new ByteArrayInputStream(baos.toByteArray());
-        baos.close();
+
     }
 
 
