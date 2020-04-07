@@ -1,4 +1,4 @@
-package output.file;
+package output.file.filecode;
 
 import java.io.*;
 import java.net.URL;

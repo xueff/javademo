@@ -1,6 +1,4 @@
-package output.file;
-
-import org.apache.commons.lang.StringUtils;
+package output.file.filecode;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -9,7 +7,7 @@ import java.util.Set;
 
 /**
  *
- * 文件追加内容
+ * 普通文件编码解析
  * @version 2011-3-10 下午10:49:41
  */
 public class FileCodeUtils {
