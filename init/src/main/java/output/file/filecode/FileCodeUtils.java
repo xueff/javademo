@@ -55,11 +55,14 @@ public class FileCodeUtils {
 
 
     public static ByteArrayOutputStream getByteArrayOutputStream(InputStream fileStream) throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream(3*1024*1024);
         byte[] buffer = new byte[1024];
         int len;
         while ((len = fileStream.read(buffer)) > -1) {
             baos.write(buffer, 0, len);
+            if(baos.size() == 3*1024*1024){
+                break;
+            }
         }
         baos.flush();
         return baos;

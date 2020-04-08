@@ -25,7 +25,7 @@ public class DBUtils {
         ArrayHandler arrayHandler = new ArrayHandler();
         try {
             Class.forName(DBConf.JDBC_DRIVER);
-            conn = DriverManager.getConnection(DBConf.DB_URL, DBConf.USER, DBConf.PASS);
+            conn = DriverManager.getConnection(DBConf.  DB_URL, DBConf.USER, DBConf.PASS);
 
             String sql = "select * from satet_sys_user where id=?";
             Map<String, Object> resultMap = queryRunner.query(conn, sql, new MapHandler(), 1);
