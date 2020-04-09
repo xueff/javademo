@@ -4,9 +4,11 @@ import org.junit.Test;
 
 import java.io.*;
 import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileChannel.MapMode;
+import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
@@ -59,7 +61,14 @@ public class ChannelRead {
         channelRead.readChannel(bufs,8,6);
     }
 
+////////////////////////////////////////////////ByteBuffer////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * ByteBuffer
+     * @param filePath
+     * @return
+     * @throws FileNotFoundException
+     */
     public FileChannel getChannel(String filePath) throws FileNotFoundException {
         RandomAccessFile raf = new RandomAccessFile("D:\\360极速浏览器下载\\心理学资源\\人格心理学.txt", "rw");
         // 分散读取，通道中数据分散到多个缓冲区中
@@ -87,30 +96,6 @@ public class ChannelRead {
         return channelIn;
 
     }
-    public FileChannel readChannel(ByteBuffer[] bufs,int start,int length) throws IOException {
-
-
-        // 3.将通道中的数据存入缓冲区中
-        while ((channelIn.read(bufs,start,length)) != -1) {
-            for (ByteBuffer by : bufs) {
-                by.flip();
-            }
-
-            for (int i = 0;i<bufs.length;i++) {
-                System.out.print(i+" ==  ");
-                System.out.println(new String(bufs[i].array(), 0, bufs[i].limit(),"GBK"));
-            }
-
-            for (ByteBuffer by : bufs) {
-                by.clear();
-            }
-        }
-        return channelIn;
-
-    }
-
-
-    // 分散和聚集 分批read
     @Test
     public void test5() throws IOException {
         RandomAccessFile raf = new RandomAccessFile("D:\\360极速浏览器下载\\心理学资源\\人格心理学.txt", "rw");
@@ -143,7 +128,57 @@ public class ChannelRead {
                 by.clear();
             }
         }
+    }
+
+    public FileChannel readChannel(ByteBuffer[] bufs,int start,int length) throws IOException {
+
+
+        // 3.将通道中的数据存入缓冲区中
+        while ((channelIn.read(bufs,start,length)) != -1) {
+            for (ByteBuffer by : bufs) {
+                by.flip();
+            }
+
+            for (int i = 0;i<bufs.length;i++) {
+                System.out.print(i+" ==  ");
+                System.out.println(new String(bufs[i].array(), 0, bufs[i].limit(),"GBK"));
+            }
+
+            for (ByteBuffer by : bufs) {
+                by.clear();
+            }
+        }
+        return channelIn;
 
     }
 
+/////////////////////////////////////////////////////CharBuffer//////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+    // 分散和聚集 分批read
+
+    // 分散和聚集 分批read
+    @Test
+    public void readCharBuffer() throws IOException {
+
+        FileInputStream fis = new FileInputStream("D:\\360极速浏览器下载\\心理学资源\\人格心理学.txt");
+        FileChannel fc = fis.getChannel();
+        ByteBuffer bbuf = ByteBuffer.allocateDirect(8);
+        long offset = 0;
+        long nums = 0;
+        while((nums = fc.read(bbuf, offset)) > 0) {
+            //  一定要反转回到正确位置，CharBuffer视图是基于当前位置创建的
+            bbuf.flip();
+            //  以字符数据方式进行读取
+            System.out.print(Charset.forName("GBK").decode(bbuf));
+            bbuf.clear();
+            offset = offset + nums;
+        }
+        fc.close();
+        fis.close();
+
+    }
 }
