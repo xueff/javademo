@@ -77,4 +77,23 @@ public class Streams {
                 .forEach(System.out::println);
 
     }
+
+
+    public void listToMapByObjectValue(List<Person> list){
+        // value 为对象 student -> student jdk1.8返回当前对象
+        Map<Integer, Person> map = list.stream().collect(Collectors.toMap(Person::getId, student -> student));
+        // 遍历打印结果
+        map.forEach((key, value) -> {
+            System.out.println("key: " + key + "    value: " + value);
+        });
+    }
+    @Test
+    public void listToMapByNameValue(List<Person> list){
+        // value 为对象中的属性
+        Map<Integer, String> map = list.stream().collect(Collectors.toMap(Person::getId, Person::getName));
+        map.forEach((key, value) -> {
+            System.out.println("key: " + key + "    value: " + value);
+        });
+    }
+
 }

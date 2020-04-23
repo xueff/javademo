@@ -3,6 +3,7 @@ package common.bean;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import javabase.ramdon.RamdonStudy;
+import lombok.Data;
 
 /**
  * @author xuefei
@@ -11,11 +12,13 @@ import javabase.ramdon.RamdonStudy;
  * @Description: ${todo}
  * @date 2018/10/1714:20
  */
+@Data
 public class Person {
     @JSONField(name="userName")
     private String name;
     @JSONField(name="Age")
     private int age;
+    private int id;
 
     public Double getMoney() {
         return money;

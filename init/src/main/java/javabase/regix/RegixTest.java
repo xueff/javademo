@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * 正则表达式
  * @author xuefei
  * @Title: ${file_name}
  * @Package ${package_name}
@@ -52,4 +53,19 @@ public class RegixTest {
             System.out.println("匹配数量"+count);
         }
     }
+    /**
+     * replace uuid
+     */
+    @Test
+    public void replaceUUID(){
+//        查找除最后一位不同匹配的
+        //## 为分隔符
+        String keys = "[\"15\",\"20\",\"37\",\"63\",\"6b27af9c-6f24-485d-8637-83a5ba932680\",\"79\",\"86\",\"90\",\"aa097e8e-a83d-474c-9a98-dda8b395589b\"]";
+
+        keys = keys.replaceAll("^\"*\"$","");
+        System.out.print(keys);
+    }
+
+
+
 }
