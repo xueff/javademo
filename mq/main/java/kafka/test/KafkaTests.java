@@ -76,23 +76,7 @@ public class KafkaTests {
 
             producer1= new KafkaProducer<String,Object>(props);
 
-            int line = 0;
-            int index = 0;
-            List<PolicyDistributeOfKafkaDto> list = new ArrayList<>();
-
-                for (int i = index; i < 10; i++) {
-                    PolicyDistributeOfKafkaDto d = new PolicyDistributeOfKafkaDto();
-                    d.setColumnName(index + "从23");
-                    d.setDatabase(index + "");
-                    d.setOwnerUser(index + "");
-                    d.setTableName(index + "");
-                    d.setTransformer(index + "");
-                    d.setType(index + "");
-
-                    list.add(d);
-                    index++;
-                }
-                JSONArray array = JSONArray.parseArray(JSONObject.toJSONString(list));
+                JSONArray array = new JSONArray(new ArrayList<>());
                 System.out.println(array.toJSONString());
                 ProducerRecord<String, Object> message1= new ProducerRecord<String, Object>("test",array.toJSONString());
                 producer1.send(message1, new Callback() {
