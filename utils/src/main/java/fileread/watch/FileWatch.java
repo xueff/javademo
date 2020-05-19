@@ -1,4 +1,4 @@
-package fileread.FileReadUtils;
+package fileread.watch;
 
 import org.junit.Test;
 

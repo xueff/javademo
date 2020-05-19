@@ -22,14 +22,15 @@ import java.util.stream.Collectors;
  */
 public class Test {
     public static void main(String[] args) {
-        List<String> gList = new ArrayList<>();
-        List<String> newL = new ArrayList<>();
-        gList.add("1");
-        gList.add("2");
-        gList.add("3");
+        long time = System.currentTimeMillis();
+        for(;;) {
 
-        System.out.print(String.join(",", gList.stream().map(item -> String.valueOf(item)).collect(Collectors.toList())));
-        System.out.print(getIP());
+            try {
+                Thread.sleep((System.currentTimeMillis()-time)/10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static String getIP() {

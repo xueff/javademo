@@ -13,11 +13,11 @@ import java.util.Properties;
  */
 public class MailUtils {
     static String USERNAME   = "xueff.88@163.com";
-    static String PASSWORD  = "*";
+    static String PASSWORD  = "ak969909aspnet";
     static String EMAILFORM  = "xueff.88@163.com";
 
     public static void main(String[] args) {
-        MailUtils.sendMail("657413186@qq.com","test");
+        MailUtils.sendMail("657413186@qq.com","test <br /> 666");
     }
 
 
