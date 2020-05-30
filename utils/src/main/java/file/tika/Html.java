@@ -23,6 +23,9 @@ import org.xml.sax.SAXException;
 import org.apache.tika.metadata.Metadata;
 import java.util.concurrent.Future;
 
+/**
+ * 文件 内容 抽取
+ */
 public class Html {
     public static String extractHtml(File file) throws IOException {
         byte[] bytes = Files.toByteArray(file);
