@@ -65,6 +65,17 @@
             <artifactId>jna-platform</artifactId>
             <version>4.4.0</version>
         </dependency>
+        <!-- 文本抽取  html -->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>1.24</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-parsers</artifactId>
+            <version>1.13</version>
+        </dependency>
 
 
 
