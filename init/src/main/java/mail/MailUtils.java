@@ -56,6 +56,13 @@ public class MailUtils {
 //            e.printStackTrace();
 //        }
 //    }
+
+
+    /**
+     * 发件人邮箱须配置权限
+     * @param address
+     * @param content
+     */
     public static void sendMail(String address,String content) {
         try{
             String host = "smtp.qq.com";
