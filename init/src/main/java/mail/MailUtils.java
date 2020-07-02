@@ -1,9 +1,13 @@
 package mail;
 
+import cn.hutool.core.date.DateUtil;
 import com.sun.mail.util.MailSSLSocketFactory;
+import org.junit.Test;
 
 import javax.mail.*;
 import javax.mail.internet.*;
+import javax.mail.search.FlagTerm;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -113,4 +117,126 @@ public class MailUtils {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * 读取腾讯企业邮箱的邮件
+     */
+    @Test
+    public void getMessage() {
+
+        try{
+
+            //创建一个有具体连接信息的Properties对象
+            Properties prop = new Properties();
+            prop.setProperty("mail.debug", "true");
+            prop.setProperty("mail.store.protocol", "pop3");
+            prop.setProperty("mail.pop3.host", "smtp.exmail.qq.com");
+
+            Session session = Session.getInstance(prop);
+            Store store = session.getStore();
+            store.connect("", "");
+
+            Folder folder = store.getFolder("inbox");
+            folder.open(Folder.READ_ONLY);
+
+            Message[] messages = folder.getMessages();
+
+            for(int i=0;i<messages.length;i++){
+
+                Date date = messages[i].getSentDate();
+                String subject = messages[i].getSubject();
+                String from = (messages[i].getFrom()[0]).toString();
+
+
+                System.out.println("\n\n\n\n-----------------start------------------------");
+                System.out.println(DateUtil.format(date,"yyyy-MM-dd"));
+                System.out.println("第 "+ (i+1) + " 封邮件的发件人地址---->>>"+from);
+                System.out.println("第 "+ (i+1) + " 封邮件的主题--->>>"+subject);
+                System.out.println("第 "+ (i+1) + " 封邮件的内容---->>>");
+
+
+                Object o = messages[i].getContent();
+                if (o instanceof Multipart) {
+                    Multipart mp = (Multipart)o;
+                    for (int j = 0; j < mp.getCount(); j++) {
+                        BodyPart b = mp.getBodyPart(j);
+
+                        // Loop if the content type is multipart then get the content that is in that part,
+                        // make it the new container and restart the loop in that part of the message.
+                        if (b.getContentType().contains("multipart")) {
+                            mp = (Multipart)b.getContent();
+                            j = -1;
+                            continue;
+                        }
+                        if(!b.getContentType().contains("text/html")) {
+                            continue;
+                        }
+
+                        Object o2 = b.getContent();
+                        if (o2 instanceof String) {
+                               System.out.print(o2);
+                        }
+                    }
+                }
+
+
+                System.out.println("--------------------end---------------------\n\n\n\n");
+            }
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+        }
+    }
+    /**
+     * qq邮箱接收邮件
+     */
+    @Test
+    public void getMessageQQ() {
+
+        try{
+
+            //创建一个有具体连接信息的Properties对象
+            Properties props = new Properties();
+            props.setProperty("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");//ssl加密,jdk1.8无法使用
+            props.setProperty("mail.imap.socketFactory.fallback", "false");
+            props.setProperty("mail.transport.protocol", "imap"); // 使用的协议
+            props.setProperty("mail.imap.port", "993");
+            props.setProperty("mail.imap.socketFactory.port", "993");
+
+            Session session = Session.getDefaultInstance(props);
+//   session.setDebug(true);
+            Store store = session.getStore("imap");
+            store.connect("imap.qq.com","xxxx@qq.com", "xxxx");//登录认证
+
+            Folder folder = store.getFolder("inbox");//获取用户的邮件账户
+            folder.open(Folder.READ_WRITE);//设置对邮件账户的访问权限
+
+            FlagTerm ft = new FlagTerm(new Flags(Flags.Flag.SEEN),false);//false代表未读，true代表已读
+
+//   Message[] messages = folder.getMessages();
+            Message[] messages = folder.search(ft);
+
+            for(int i=0;i<messages.length;i++){
+
+                String subject = messages[i].getSubject();
+                String from = (messages[i].getFrom()[0]).toString();
+                String content = messages[i].getContent().toString();
+
+                System.out.println("第 "+ (i+1) + " 封邮件的发件人地址---->>>"+from);
+                System.out.println("第 "+ (i+1) + " 封邮件的主题--->>>"+subject);
+                System.out.println("第 "+ (i+1) + " 封邮件的内容---->>>"+content);
+                System.out.println("-----------------------------------------");
+
+                messages[i].setFlag(Flags.Flag.SEEN, false);//imap读取后邮件状态变为已读
+            }
+
+            folder.close(false);
+            store.close();
+        }catch(Exception e){
+
+            e.printStackTrace();
+        }
+    }
+
 }
