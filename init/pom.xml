@@ -120,6 +120,18 @@
             <artifactId>fastdfs-client</artifactId>
             <version>1.27.2</version>
         </dependency>
+
+        <!--outlook-->
+        <dependency>
+            <groupId>com.pff</groupId>
+            <artifactId>java-libpst</artifactId>
+            <version>0.9.5-SNAPSHOT-SNAPSHOT</version>
+            <!--  <version>0.9.3</version>-->
+            <scope>system</scope>
+            <systemPath>D:/temp/java-libpst/target/java-libpst-0.9.5-SNAPSHOT.jar</systemPath>
+        </dependency>
     </dependencies>
+
+
 
 </project>
