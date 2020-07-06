@@ -1,6 +1,7 @@
 package mail.outlook;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.io.FileUtil;
 import com.pff.*;
 import java.util.*;
 
@@ -26,7 +27,7 @@ public class PstOst {
         // I build an object from the MyNetWork class which takes this PST as an argument
         // and I call on this object my function GetInfo
         PstOst helloObj =
-                new PstOst("C:\\Users\\admin\\AppData\\Local\\Microsoft\\Outlook\\x.ost");
+                new PstOst("C:\\Users\\admin\\AppData\\Local\\Microsoft\\Outlook\\xuefei@idss-cn.com (1).ost");
 //                new MyNetWork("C:\\Users\\admin\\Documents\\Outlook 文件\\x.pst");
         helloObj.GetInfo();
         helloObj.GetInfo();
@@ -109,12 +110,12 @@ public class PstOst {
 
 
             while (email != null) {
-                StringBuffer bf = new StringBuffer("\n\n\n\n//////////////////////////////////////////////////////////////////////////////////////////");
+                StringBuffer bf = new StringBuffer(/*"\n\n\n\n//////////////////////////////////////////////////////////////////////////////////////////\n"*/);
                 // write title of email
-                bf.append("Email: "+email.getSubject()+"\n");
+                bf.append("Email: "+email.getSubject()+"");
 
                 //for each email, get vector of recipients (including sender)
-                bf.append(">>Contact: "+email.getSenderName()+"\n");
+                bf.append(">>User: "+email.getSenderName());
                 bf.append(">>Date: "+ DateUtil.format(email.getMessageDeliveryTime(),"yyyy-MM-dd HH:mm")+"\n");
                 int nbContact = email.getNumberOfRecipients();
                 for (int x = 0; x <= nbContact-1; x++) {
@@ -135,11 +136,12 @@ public class PstOst {
                 }
                 System.out.println(bf.toString());
 
-//                FileUtil.appendUtf8String(bf.toString(),"E:\\mail.txt");
+                FileUtil.appendUtf8String(bf.toString(),"E:\\mail.txt");
                 try {
 
                     email = (PSTMessage)folder.getNextChild();
                 }catch (Exception e){
+                    FileUtil.appendUtf8String(e.getMessage()+"\n","E:\\mail.txt");
 
                     folder.moveChildCursorTo((folder.getContentCount())+1);
                     System.out.print(e.getMessage());
