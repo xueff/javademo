@@ -27,7 +27,7 @@ public class PstOst {
         // I build an object from the MyNetWork class which takes this PST as an argument
         // and I call on this object my function GetInfo
         PstOst helloObj =
-                new PstOst("C:\\Users\\admin\\AppData\\Local\\Microsoft\\Outlook\\xuefei@idss-cn.com (1).ost");
+                new PstOst("C:\\Users\\admin\\AppData\\Local\\Microsoft\\Outlook\\.ost");
 //                new MyNetWork("C:\\Users\\admin\\Documents\\Outlook 文件\\x.pst");
         helloObj.GetInfo();
         helloObj.GetInfo();
