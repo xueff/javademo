@@ -1,13 +1,12 @@
-package database.accsess;
+package datasource.accsess;
 
 import  java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Statement;
 
-    /**
+/**
      * 纯java代码实现 连接access数据库
      * @author xuyl
      *

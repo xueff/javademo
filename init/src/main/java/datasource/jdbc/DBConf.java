@@ -1,4 +1,4 @@
-package database.jdbc;
+package datasource.jdbc;
 
 public class DBConf {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";

@@ -1,6 +1,5 @@
-package database.redies;
+package datasource.redies;
 
-import io.vertx.core.json.JsonArray;
 import org.junit.Test;
 import redis.clients.jedis.*;
 

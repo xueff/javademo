@@ -1,4 +1,4 @@
-import database.redies.JedisStudy;
+import datasource.redies.JedisStudy;
 import redis.clients.jedis.Jedis;
 
 import java.util.UUID;

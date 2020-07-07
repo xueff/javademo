@@ -130,6 +130,13 @@
             <scope>system</scope>
             <systemPath>D:/temp/java-libpst/target/java-libpst-0.9.5-SNAPSHOT.jar</systemPath>
         </dependency>
+
+        <!--ftp-->
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
+        </dependency>
     </dependencies>
 
 

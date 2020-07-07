@@ -1,11 +1,11 @@
-package database.oracle;
+package datasource.oracle;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class MysqlTest {
+public class OracleTest {
     /**
      * 一个非常标准的连接Oracle数据库的示例代码
      */
@@ -15,12 +15,12 @@ public class MysqlTest {
         ResultSet result = null;// 创建一个结果集对象
         try
         {
-            Class.forName("com.ibm.db2.jcc.DB2Driver");// 加载Oracle驱动程序
+            Class.forName("oracle.jdbc.driver.OracleDriver");// 加载Oracle驱动程序
             System.out.println("开始尝试连接数据库！");
 //            String url = "jdbc:oracle:" + "thin:@172.16.0.139:1522:orcl";// 127.0.0.1是本机地址，XE是精简版Oracle的默认数据库名
-            String url = "jdbc:db2://10.77.17.155:50000/mingandb";// 127.0.0.1是本机地址，XE是精简版Oracle的默认数据库名
-            String user = "db2inst1";// 用户名,系统默认的账户名
-            String password = "12345678";// 你安装时选设置的密码
+            String url = "jdbc:oracle:thin:@//172.16.0.139:1522/orcl";// 127.0.0.1是本机地址，XE是精简版Oracle的默认数据库名
+            String user = "system";// 用户名,系统默认的账户名
+            String password = "DbDev2019";// 你安装时选设置的密码
             con = DriverManager.getConnection(url, user, password);// 获取连接
             System.out.println("连接成功！");
             String sql = "SELECT sname,sno FROM STUDENT";// 预编译语句，“？”代表参数

@@ -1,4 +1,4 @@
-package database.redies;
+package datasource.redies;
 
 import javabase.ramdon.RamdonStudy;
 import redis.clients.jedis.Jedis;

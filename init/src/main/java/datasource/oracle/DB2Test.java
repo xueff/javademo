@@ -1,4 +1,4 @@
-package database.oracle;
+package datasource.oracle;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

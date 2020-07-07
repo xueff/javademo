@@ -4,6 +4,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import common.bean.Person;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -29,7 +30,13 @@ class Test{
 
 
         try {
-            list = (List<Person>)BGYCache.getCacheValue("BGYInfraredLearningCache","a");
+            List<Person> list2 = (List<Person>)BGYCache.getCacheValue("BGYInfraredLearningCache","a");
+            Iterator<Person> items = list2.iterator();
+            while (items.hasNext()){
+                items.next();
+                items.remove();
+                System.out.println("listsize:"+((List<Person>)BGYCache.cacheMap.get("BGYInfraredLearningCache").getIfPresent("a")).size());
+            }
             String de = (String)BGYCache.getCacheValue("BGYInfraredLearningCache","b");
             System.out.println(list);
             System.out.println(de);

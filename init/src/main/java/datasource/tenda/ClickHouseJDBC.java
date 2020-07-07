@@ -1,4 +1,4 @@
-package database.tenda;
+package datasource.tenda;
 
 import java.sql.*;
 import java.util.ArrayList;

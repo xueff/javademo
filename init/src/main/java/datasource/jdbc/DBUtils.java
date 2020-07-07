@@ -1,16 +1,11 @@
-package database.jdbc;
+package datasource.jdbc;
 
-import io.vertx.core.json.JsonObject;
-import io.vertx.ext.web.RoutingContext;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
 import org.apache.commons.dbutils.handlers.MapHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 public class DBUtils {

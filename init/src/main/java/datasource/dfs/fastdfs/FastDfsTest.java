@@ -1,4 +1,4 @@
-package database.dfs.fastdfs;
+package datasource.dfs.fastdfs;
 
 public class FastDfsTest {
 

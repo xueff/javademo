@@ -1,4 +1,4 @@
-//package database.mapdb;
+//package datasource.mapdb;
 //
 //import io.vertx.core.json.JsonObject;
 //import javabase.ramdon.RamdonStudy;
