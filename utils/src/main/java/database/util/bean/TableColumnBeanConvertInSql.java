@@ -1,22 +1,68 @@
 package database.util.bean;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import io.vertx.core.json.JsonObject;
 import org.apache.commons.lang.StringUtils;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
+import java.nio.charset.Charset;
+import java.util.*;
 
 /**
  * 数据库bean spring ：驼峰命名转下划线
  */
 public class TableColumnBeanConvertInSql {
+
     public static void main(String[] args) {
-        System.out.println(getTableName(TestBean.class));
-        System.out.println(JSONObject.toJSONString(getColumnsName(TestBean.class)));
+        List<Object> list = new ArrayList<>();
+        list.add(new TestBean(1L,"1",1,"1",1,1));
+        list.add(new TestBean(2L,"2",2,"2",2,2));
+
+        System.out.println( JsonObject.mapFrom(new TestBean(1L,"1",1,"1",1,1)).toString());
+        System.out.println(insertBeans(list));
+    }
+
+
+    public static String insertBeans(List<Object> list){
+        StringBuffer sb = new StringBuffer();
+        String tableName  = getTableName(list.get(0).getClass());
+        Map<String,String>  columnsNames  = getColumnsName(list.get(0).getClass());
+
+        StringBuffer colums = new StringBuffer("INSERT INTO "+tableName+"  ( ");
+        StringBuffer values = new StringBuffer(" ( ");
+        Set<Map.Entry<String , String>> set = columnsNames.entrySet();
+        for(Map.Entry<String , String> entry : set){
+            colums.append("`").append(entry.getValue()).append("`").append(",");
+            values.append("`").append(entry.getKey()).append("`").append(",");
+        }
+        String column = colums.substring(0,colums.length()-1)+" ) values ";
+        final String valueFix = values.substring(0,values.length()-1)+" )";
+        String value = valueFix.substring(0,values.length()-1)+" )";
+
+        String valueSql = "";
+       for(int i=0;i<list.size();i++){
+           JsonObject json = JsonObject.mapFrom(list.get(i));
+           Set<Map.Entry<String , Object>> items = json.getMap().entrySet();
+           for(Map.Entry<String , Object> entry : items){
+               if(entry.getValue() instanceof  String){
+
+                   value = value.replace("`"+ entry.getKey()+"`","'"+entry.getValue()+"'");
+               }else if(entry.getValue() instanceof Date) {
+                   value = value.replace("`"+ entry.getKey()+"`","'"+((Date)entry.getValue()).toString()+"'");
+               }else {
+                   value = value.replace("`"+ entry.getKey()+"`",entry.getValue()+"");
+
+               }
+           }
+           valueSql += value+",";
+           value = valueFix;
+       }
+       return colums +valueSql.substring(0,valueSql.length()-1)+";";
+
     }
 
     /**
