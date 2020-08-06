@@ -15,18 +15,18 @@ import java.util.Objects;
 public class JSONFileUtils {
 
 
-//    public static void main(String[] args)   {
-//        List<Dto> dtos = readFile(new File("C:\\Users\\ffxue\\hbase.json"));
-//        dtos.forEach(it->{
-//            appendFile(it.getDbName()+","+it.getFamily()+","+it.getTableName()+","+it.getColumn()+","+it.getValues()+"\n","C:\\Users\\ffxue\\hbase.csv");
-//        });
-//
-//    }
     public static void main(String[] args)   {
-      readFile2(new File("C:\\Users\\ffxue\\keeplive.text"));
-
+        List<Dto> dtos = readFile(new File("C:\\Users\\ffxue\\hbase.json"));
+        dtos.forEach(it->{
+            appendFile(it.getDbName()+","+it.getFamily()+","+it.getTableName()+","+it.getColumn()+","+it.getValues()+"\n","C:\\Users\\ffxue\\hbase.csv");
+        });
 
     }
+//    public static void main(String[] args)   {
+//        readFile(new File("C:\\Users\\ffxue\\keeplive.text"));
+//
+//
+//    }
 
     /**
      *
@@ -94,9 +94,9 @@ public class JSONFileUtils {
                                 sb.append(ruleName).append(",").append(count).append(",");
                             }
                             dto.setValues(sb.length()>0?sb.substring(0,sb.length()-1):"");
-                            if(!dtos.contains(dto)){
-                                dtos.add(dto);
-                            }
+//                            if(!dtos.contains(dto)){
+//                                dtos.add(dto);
+//                            }
                         });
                     });
                 }catch (Exception e){
