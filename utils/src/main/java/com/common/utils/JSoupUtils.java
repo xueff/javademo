@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * @author xuefei
@@ -25,7 +26,10 @@ public class JSoupUtils {
         return doc.body();
     }
 
-    public static Document getDoc(String url) throws IOException {
-        return  Jsoup.connect(url).timeout(10000).get();
+//    public static Document getDoc(String url) throws IOException {
+//        return  Jsoup.connect(url).timeout(10000).get();
+//    }
+    public static Document getDocRareCharacters(String url) throws IOException {
+       return Jsoup.parse(new URL(url).openStream(), "GBK", url);
     }
 }
