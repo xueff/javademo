@@ -1,11 +1,10 @@
 package kafka.test;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +17,8 @@ import java.util.Properties;
  */
 public class KafkaTests {
 
-        private static final String BROKER_LIST = "172.16.0.85:9092";
+        private static final String BROKER_LIST = "172.16.0.202:19092";
+        private static final String FILE_PATH = "C:\\Users\\ffxue\\hbase.json";
 
 
         public static void main(String[] args)   {
@@ -50,7 +50,7 @@ public class KafkaTests {
                     System.out.println("\n\n\n*****************************");
                     System.out.println("Partition: " + record.partition() + " Offset: " + record.offset() + " Value: " + record.value() + " ThreadID: " + Thread.currentThread().getId());
                 }
-                System.out.println("null====================================");
+//                System.out.println("null====================================");
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -71,25 +71,24 @@ public class KafkaTests {
             props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
             props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
             props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-//            props.put("security.protocol", "SASL_PLAINTEXT");
-//            props.put("sasl.kerberos.service.name","kafka");
 
             producer1= new KafkaProducer<String,Object>(props);
+            List<String>  jsons = JSONFileUtils.readFile(new File(FILE_PATH));
 
-                JSONArray array = new JSONArray(new ArrayList<>());
-                System.out.println(array.toJSONString());
-                ProducerRecord<String, Object> message1= new ProducerRecord<String, Object>("test",array.toJSONString());
-                producer1.send(message1, new Callback() {
-                    @Override
-                    public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-                        if( e!=null){
-                            e.printStackTrace();
-                            System.out.println("failed");
-                        }else {
-                            System.out.println(recordMetadata.topic());
+                for(int i=0;i<jsons.size();i++){
+                    ProducerRecord<String, Object> message1= new ProducerRecord<String, Object>("test",jsons.get(i));
+                    producer1.send(message1, new Callback() {
+                        @Override
+                        public void onCompletion(RecordMetadata recordMetadata, Exception e) {
+                            if( e!=null){
+                                e.printStackTrace();
+                                System.out.println("failed");
+                            }else {
+                                System.out.println(recordMetadata.topic());
+                            }
                         }
-                    }
-                });
+                    });
+                }
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
