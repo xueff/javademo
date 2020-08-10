@@ -3,7 +3,8 @@ package com.my;
 import cn.hutool.core.io.FileUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.common.utils.JSoupUtils;
-import io.vertx.core.json.JsonArray;
+//import io.vertx.core.json.JsonArray;
+//import io.vertx.core.json.JsonObject;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -24,31 +25,83 @@ public class JSoupTest {
      */
     @Test
     public void phone_model() {
+//        try {
+//            Document doc = JSoupUtils.getDocRareCharacters("http://product.cnmo.com/manu.html");
+//            Thread.sleep(100);
+//            //doc.body().select("ul.tab-div.manu-tab-div.manu-tab-div1").get(0).children().get(0).children().get(0).getElementsByTag("span").get(0).text()
+//            Elements items =  doc.body().select("ul.tab-div.manu-tab-div.manu-tab-div1").get(0).children();
+//            JsonArray pinpai = new JsonArray();
+//            JsonArray xinghao = new JsonArray();
+//            for(Element e:items){
+//                String name = e.children().get(0).getElementsByTag("span").get(0).text();
+//                pinpai.add(name);
+//                Elements phones = e.children().get(1).children();
+//                for(Element e2:phones){
+//                    String phone = e2.text();
+//                    xinghao.add(phone);
+//                }
+//            }
+//            System.out.println(xinghao.toString());
+//            System.out.println(xinghao.size());
+//            System.out.println(pinpai.toString());
+//
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+    }
+    /**
+     * 手机app
+     * http://www.appchina.com/category/30/1_1_1_1_0_0_0.html app
+     * http://www.appchina.com/category/40/1_1_1_3_0_0_0.html game
+     */
+    static Map<Integer,String> treeMap = new TreeMap<>();
+    public List<String> getApps(String url){
+        List<String> list = new ArrayList<>();
         try {
-            Document doc = JSoupUtils.getDocRareCharacters("http://product.cnmo.com/manu.html");
-            Thread.sleep(100);
-            //doc.body().select("ul.tab-div.manu-tab-div.manu-tab-div1").get(0).children().get(0).children().get(0).getElementsByTag("span").get(0).text()
-            Elements items =  doc.body().select("ul.tab-div.manu-tab-div.manu-tab-div1").get(0).children();
-            JsonArray pinpai = new JsonArray();
-            JsonArray xinghao = new JsonArray();
+            Document doc = JSoupUtils.getDoc(url);
+            Thread.sleep(2000);
+            Elements items = doc.body().select("ul.app-list").get(0).children();
             for(Element e:items){
-                String name = e.children().get(0).getElementsByTag("span").get(0).text();
-                pinpai.add(name);
-                Elements phones = e.children().get(1).children();
-                for(Element e2:phones){
-                    String phone = e2.text();
-                    xinghao.add(phone);
-                }
+                String name = e.select("h1.app-name").get(0).children().get(0).text();
+                list.add(name);
             }
-            System.out.println(xinghao.toString());
-            System.out.println(xinghao.size());
-            System.out.println(pinpai.toString());
 
+
+            Elements pages = doc.body().select("div.discuss_fangye").get(0).children().get(0).children();
+
+            for(Element p:pages){
+                try {
+                    String no = p.select("a").get(0).text();
+                    String href = "http://www.appchina.com/"+p.select("a").first().attr("href");
+                    treeMap.put(Integer.valueOf(no),href);
+                }catch (Exception e){}
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return list;
     }
+    public Map<String,Object> getAppUrl(String url){
+        treeMap.put(1,url);
+        treeMap.entrySet();
+        Map<String,Object> map = new LinkedHashMap<>();
+
+        for(int i=1;i<=2;i++){
+            if(treeMap.containsKey(i)) {
+                try {
+                    map.put(i+"",getApps(treeMap.get(i)));
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        return map;
+    }
+
+
+
     /**http://jb39.com
      * 疾病类型
      */
@@ -152,6 +205,11 @@ public class JSoupTest {
     }
 
 
+    /**
+     * 长度大于等于6显示不全
+     * @param url
+     * @return
+     */
     private String eqSixLength(String url){
         Document doc = null;
         try {
@@ -165,7 +223,14 @@ public class JSoupTest {
     }
 
 
+
+
+
+
     public static void main(String[] args) {
-        new JSoupTest().eqSixLength("http://jb39.com/jibing/JiangMu250196.htm");
+//        Map<String,Object> apps = new JSoupTest().getAppUrl("http://www.appchina.com/soft/30/1_1_1_1_0_0_0.html");
+        Map<String,Object> apps = new JSoupTest().getAppUrl("http://www.appchina.com/category/30/1_1_1_1_0_0_0.html");
+        System.out.print((Map<String, Object>)apps);
+//        FileUtil.appendUtf8String(newapps.toString(),"C:\\Users\\ffxue\\Desktop\\xf\\APPS.json");
     }
 }
