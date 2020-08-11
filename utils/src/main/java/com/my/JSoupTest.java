@@ -3,8 +3,7 @@ package com.my;
 import cn.hutool.core.io.FileUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.common.utils.JSoupUtils;
-//import io.vertx.core.json.JsonArray;
-//import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonObject;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -60,7 +59,8 @@ public class JSoupTest {
         List<String> list = new ArrayList<>();
         try {
             Document doc = JSoupUtils.getDoc(url);
-            Thread.sleep(2000);
+
+            Thread.sleep(2000+(new Random().nextInt(6000)));
             Elements items = doc.body().select("ul.app-list").get(0).children();
             for(Element e:items){
                 String name = e.select("h1.app-name").get(0).children().get(0).text();
@@ -228,9 +228,7 @@ public class JSoupTest {
 
 
     public static void main(String[] args) {
-//        Map<String,Object> apps = new JSoupTest().getAppUrl("http://www.appchina.com/soft/30/1_1_1_1_0_0_0.html");
         Map<String,Object> apps = new JSoupTest().getAppUrl("http://www.appchina.com/category/30/1_1_1_1_0_0_0.html");
-        System.out.print((Map<String, Object>)apps);
-//        FileUtil.appendUtf8String(newapps.toString(),"C:\\Users\\ffxue\\Desktop\\xf\\APPS.json");
+        FileUtil.appendUtf8String(new JsonObject(apps).toString(),"/opt/APPS.json");
     }
 }
