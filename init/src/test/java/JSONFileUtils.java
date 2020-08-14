@@ -21,7 +21,7 @@ public class JSONFileUtils {
             String aa = it.getDbName()+","+it.getFamily()+","+it.getTableName()+","+it.getColumn()+","+it.getValues()+","+it.getSample()+"\n";
             try {
                 aa =  new String(aa.getBytes(),"utf-8");
-                appendFile(it.getDbName()+"|=|"+it.getFamily()+"|=|"+it.getTableName()+"|=|"+it.getColumn()+"|=|"+it.getValues()+"|=|"+it.getSample()+"|=|"+"\n","C:\\Users\\admin\\Desktop\\aa\\hbase.csv");
+                appendFile(it.getDbName()+"\t"+it.getFamily()+"\t"+it.getTableName()+"\t"+it.getColumn()+"\t"+it.getValues()+"\t"+it.getSample()+"\t"+"\n","C:\\Users\\admin\\Desktop\\aa\\hbase.txt");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
