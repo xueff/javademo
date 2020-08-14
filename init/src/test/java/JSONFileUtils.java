@@ -16,9 +16,15 @@ public class JSONFileUtils {
 
 
     public static void main(String[] args)   {
-        List<Dto> dtos = readFile(new File("C:\\Users\\ffxue\\hbase.json"));
+        List<Dto> dtos = readFile(new File("C:\\Users\\admin\\Desktop\\aa\\send.txt"));
         dtos.forEach(it->{
-            appendFile(it.getDbName()+","+it.getFamily()+","+it.getTableName()+","+it.getColumn()+","+it.getValues()+"\n","C:\\Users\\ffxue\\hbase.csv");
+            String aa = it.getDbName()+","+it.getFamily()+","+it.getTableName()+","+it.getColumn()+","+it.getValues()+","+it.getSample()+"\n";
+            try {
+                aa =  new String(aa.getBytes(),"utf-8");
+                appendFile(it.getDbName()+"|=|"+it.getFamily()+"|=|"+it.getTableName()+"|=|"+it.getColumn()+"|=|"+it.getValues()+"|=|"+it.getSample()+"|=|"+"\n","C:\\Users\\admin\\Desktop\\aa\\hbase.csv");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         });
 
     }
@@ -39,7 +45,9 @@ public class JSONFileUtils {
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String line;
 
+            int i = 0;
             while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(i++);
                 try {
                     JsonObject json = new JsonObject(line);
                     int cpu = json.getInteger("cpu");
@@ -69,37 +77,47 @@ public class JSONFileUtils {
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String line;
 
+            int j = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 try {
+                    System.out.println(j++);
                     JsonObject json = new JsonObject(line);
-                    JsonArray array = json.getJsonArray("tableList");
-                    array.forEach(it->{
-                        JsonObject table = (JsonObject) it;
-                        String tableName = table.getString("name");
-                        JsonArray columns = table.getJsonArray("columns");
-                        columns.forEach(it2->{
-                            JsonObject column = (JsonObject) it2;
-                            String columnFamily = column.getString("columnFamily");
-                            String name = column.getString("name");
-                            JsonArray ruleInfo = column.getJsonArray("ruleInfo");
-                            Dto dto = new Dto();
-                            dto.setDbName("default");
-                            dto.setTableName(tableName);
-                            dto.setFamily(columnFamily);
-                            dto.setColumn(name);
-                            StringBuffer sb = new StringBuffer();
-                            for(int i=0;i<ruleInfo.size();i++){
-                                int count = ruleInfo.getJsonObject(i).getInteger("hitCount");
-                                String ruleName = ruleInfo.getJsonObject(i).getString("ruleName");
-                                sb.append(ruleName).append(",").append(count).append(",");
+                    if(json.getInteger("taskId") == 661 && !json.containsKey("inCompleteCount")){
+                        JsonArray array = json.getJsonArray("tableList");
+                        array.forEach(it->{
+                            JsonObject table = (JsonObject) it;
+                            String tableName = table.getString("name");
+                            JsonArray columns = table.getJsonArray("columns");
+                            columns.forEach(it2->{
+                                JsonObject column = (JsonObject) it2;
+                                String columnFamily = column.getString("columnFamily");
+                                String name = column.getString("name");
+                                JsonArray ruleInfo = column.getJsonArray("ruleInfo");
+
+                                Dto dto = new Dto();
+                                dto.setDbName("default");
+                                dto.setTableName(tableName);
+                                dto.setFamily(columnFamily);
+                                dto.setColumn(name);
+                                StringBuffer sb = new StringBuffer();
+                                for(int i=0;i<ruleInfo.size();i++){
+                                    int count = ruleInfo.getJsonObject(i).getInteger("hitCount");
+                                    String ruleName = ruleInfo.getJsonObject(i).getString("ruleName");
+                                    sb.append(ruleName).append(",").append(count).append(",");
+                                }
+                                dto.setValues(sb.length()>0?sb.substring(0,sb.length()-1):"");
+                                StringBuffer sb2 = new StringBuffer(column.getJsonArray("sample").toString());
+
+                                dto.setValues(sb.length()>0?sb.substring(0,sb.length()-1):"");
+                                dto.setSample(sb2.toString());
+                            if(!dtos.contains(dto)){
+                                dtos.add(dto);
                             }
-                            dto.setValues(sb.length()>0?sb.substring(0,sb.length()-1):"");
-//                            if(!dtos.contains(dto)){
-//                                dtos.add(dto);
-//                            }
+                            });
                         });
-                    });
+                    }
                 }catch (Exception e){
+                    e.printStackTrace();
                 }
             }
             bufferedReader.close();
@@ -144,6 +162,7 @@ class Dto{
     private String family="";
     private String column="";
     private String values="";
+    private String sample="";
 
     public String getDbName() {
         return dbName;
@@ -185,6 +204,13 @@ class Dto{
         this.values = values;
     }
 
+    public String getSample() {
+        return sample;
+    }
+
+    public void setSample(String sample) {
+        this.sample = sample;
+    }
 
     @Override
     public boolean equals(Object o) {
