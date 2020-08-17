@@ -17,7 +17,7 @@ import java.io.IOException;
  * @author ben
  *
  */
-public abstract class Compressor {
+public abstract class CompressorPackage {
 	
 	/**
 	 * 压缩文件抽象方法，子类实现具体功能

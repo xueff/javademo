@@ -6,7 +6,7 @@
  */
 package datasource.compressor.type;
 
-import datasource.compressor.Compressor;
+import datasource.compressor.CompressorPackage;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
 
@@ -17,7 +17,7 @@ import java.io.*;
  * @author Administrator
  *
  */
-public final class MyBZip2 extends Compressor {
+public final class MyBZip2 extends CompressorPackage {
 
 	private static FileNameExtensionFilter filter = new FileNameExtensionFilter(
 			"BZIP2压缩文件(*.bz2)", "bz2");

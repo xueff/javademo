@@ -143,6 +143,11 @@
             <version>0.8.1</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.junrar</groupId>
+            <artifactId>junrar</artifactId>
+            <version>4.0.0</version>
+        </dependency>
     </dependencies>
 
 

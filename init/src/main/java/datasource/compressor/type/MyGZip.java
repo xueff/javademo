@@ -6,7 +6,7 @@
  */
 package datasource.compressor.type;
 
-import datasource.compressor.Compressor;
+import datasource.compressor.CompressorPackage;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
@@ -18,7 +18,7 @@ import java.util.zip.GZIPOutputStream;
  * @author ben
  *
  */
-public final class MyGZip extends Compressor {
+public final class MyGZip extends CompressorPackage {
 	
 	private static FileNameExtensionFilter filter = new FileNameExtensionFilter(
 			"GZIP压缩文件(*.gz)", "gz");
