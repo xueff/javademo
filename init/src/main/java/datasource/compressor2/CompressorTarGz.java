@@ -9,6 +9,7 @@ package datasource.compressor2;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.tools.tar.TarEntry;
 import org.apache.tools.tar.TarInputStream;
+import output.file.filecode.FileCodeUtils;
 
 import java.io.*;
 import java.util.zip.GZIPInputStream;
@@ -37,7 +38,7 @@ public class CompressorTarGz implements Compressor {
 			fileInputStream = new FileInputStream(file);
 			bufferedInputStream = new BufferedInputStream(fileInputStream);
 			gzipIn = new GZIPInputStream(bufferedInputStream);
-			tarIn = new TarInputStream(gzipIn, 1024 * 2);
+			tarIn = new TarInputStream(gzipIn, 1024 * 2,512,"gb2312");
 
 			// 创建输出目录
 			Compressor.createDirectory(targetPath, null);

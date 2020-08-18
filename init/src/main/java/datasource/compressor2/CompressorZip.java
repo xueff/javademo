@@ -6,12 +6,14 @@
  */
 package datasource.compressor2;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.tools.tar.TarEntry;
 import org.apache.tools.tar.TarInputStream;
 
 import java.io.*;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
 import java.util.zip.ZipInputStream;
 
 /**
@@ -19,14 +21,8 @@ import java.util.zip.ZipInputStream;
  * @author ben
  *
  */
+@Slf4j
 public class CompressorZip implements Compressor {
-
-	/**
-	 * 解压缩tar.gz文件
-	 * @param file 压缩包文件
-	 * @param targetPath 目标文件夹
-	 * @param delete 解压后是否删除原压缩包文件
-	 */
 	/**
 	 * 解压缩7z文件
 	 *
@@ -40,6 +36,7 @@ public class CompressorZip implements Compressor {
 		OutputStream outputStream = null;
 		try {
 			FileInputStream fis = new FileInputStream(file);
+
 			BufferedInputStream bis = new BufferedInputStream(fis);
 			zis = new ZipInputStream(bis);
 			ZipEntry entry = null;
@@ -56,6 +53,10 @@ public class CompressorZip implements Compressor {
 					}
 					outputStream.flush();
 				}
+			}
+		} catch (ZipException e) {
+			if(e.getMessage().contains("encrypted ZIP entry not supported")){
+				log.error("zip已加密");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

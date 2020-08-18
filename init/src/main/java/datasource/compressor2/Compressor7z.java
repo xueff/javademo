@@ -38,6 +38,11 @@ public class Compressor7z implements Compressor {
 				if(entry.isDirectory()){
 					Compressor.createDirectory(targetPath, entry.getName()); // 创建子目录
 				}else{
+
+					File fileOut = new File(targetPath + File.separator + entry.getName());
+					if(!fileOut.getParentFile().exists()){
+						fileOut.getParentFile().mkdirs();
+					}
 					outputStream = new FileOutputStream(new File(targetPath + File.separator + entry.getName()));
 					int len = 0;
 					byte[] b = new byte[2048];

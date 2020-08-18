@@ -44,10 +44,10 @@ public class CompressorRAR implements Compressor {
 
 
 				if(fileHeader.isDirectory()){
-					Compressor.createDirectory(targetPath, StringUtils.isEmpty(fileHeader.getFileNameW().trim())?fileHeader.getFileNameString().trim():fileHeader.getFileNameW().trim()); // 创建子目录
+					Compressor.createDirectory(targetPath, fileHeader.getFileNameW().trim().isEmpty()?fileHeader.getFileNameString().trim():fileHeader.getFileNameW().trim()); // 创建子目录
 				}else{
 					File fileOut = null;
-					if(StringUtils.isEmpty(fileHeader.getFileNameW())){
+					if(fileHeader.getFileNameW().trim().isEmpty()){
 						fileOut = new File(targetPath + File.separator + fileHeader.getFileNameString().trim());
 					}else {
 						fileOut = new File(targetPath + File.separator + fileHeader.getFileNameW().trim());

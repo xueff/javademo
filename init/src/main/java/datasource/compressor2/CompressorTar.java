@@ -32,16 +32,12 @@ public class CompressorTar implements Compressor {
 		TarInputStream tarInputStream = null;
 		try {
 			fis = new FileInputStream(file);
-			tarInputStream = new TarInputStream(fis, 1024 * 2);
+			tarInputStream = new TarInputStream(fis, 1024 * 2,512,"gb2312");
 			// 创建输出目录
 			Compressor.createDirectory(targetPath, null);
 
 			TarEntry entry = null;
-			while(true){
-				entry = tarInputStream.getNextEntry();
-				if( entry == null){
-					break;
-				}
+			while((entry = tarInputStream.getNextEntry()) != null){
 				if(entry.isDirectory()){
 					Compressor.createDirectory(targetPath, entry.getName()); // 创建子目录
 				}else{

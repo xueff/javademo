@@ -1,5 +1,6 @@
 package output.file.filecode;
 
+import org.junit.Test;
 import output.file.file.FindFile;
 
 import java.io.*;
@@ -66,6 +67,15 @@ public class FileCodeUtils {
         }
         baos.flush();
         return baos;
+    }
+
+
+    public static String getCharSetByFileName(String fileName){
+        EncodingDetectUtil encodingDetectUtil = new EncodingDetectUtil();
+        ByteArrayInputStream tInputStringStream = new ByteArrayInputStream(fileName.getBytes());
+        String charSet = encodingDetectUtil.detectEncoding(tInputStringStream);
+        System.out.println("自动识别编码格式charSet：" + charSet);
+        return charSet;
     }
 
 

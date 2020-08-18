@@ -25,7 +25,6 @@ public class CharBufferToText {
             //显示乱码，采用默认的编码方式（UTF-16BE）将ByteBuffer转换成CharBuffer
             System.out.println(buff.asCharBuffer());
             buff.rewind();//准备重读
-
             //当前系统默认编码方式
             String encoding = System.getProperty("file.encoding");
             //下面我们使用系统默认的编码方式（GBK）将ByteBuffer转换成CharBuffer

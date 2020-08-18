@@ -16,8 +16,12 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-//        new CompressorZip().decompress(new File("E:\\黑马58\\讲义+笔记+资料\\Java基础\\01.会员版(2.0)-就业课(2.0)-Java基础语法\\01.【前言、入门程序、常量、变量】.zip"),"E:\\tmp",false);
+//        new CompressorZip().decompress(new File("C:\\Users\\admin\\Desktop\\aa.zip"),"E:\\tmp",false);
 //        new CompressorRAR().decompress(new File("E:\\software\\linux\\NAT类型测试工具.rar"),"E:\\tmp",false);
-        new CompressorRAR().decompress(new File("E:\\BaiduNetdiskDownload\\尚硅谷前端\\webpack\\code\\project build.rar"),"E:\\tmp",false);
+//        new CompressorRAR().decompress(new File("E:\\BaiduNetdiskDownload\\尚硅谷前端\\webpack\\code\\project build.rar"),"E:\\tmp",false);
+//        System.setProperty("file.encoding","gb2312");
+//        new CompressorTar().decompress(new File("E:\\software\\linux\\npf数据库嗅探工具.tar"),"E:\\tmp",false);
+//        new CompressorTarGz().decompress(new File("E:\\software\\linux\\npf数据库嗅探工具.tar.gz"),"E:\\tmp",false);
+        new Compressor7z().decompress(new File("E:\\software\\linux\\npf数据库嗅探工具.7z"),"E:\\tmp",false);
     }
 }
