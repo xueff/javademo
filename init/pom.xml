@@ -159,6 +159,50 @@
             <artifactId>xz</artifactId>
             <version>1.8</version>
         </dependency>
+
+
+
+
+        <!--RAR5 依赖  start>>>>>>>>>>>>>>>>>>>-->
+        <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-parsers -->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-parsers</artifactId>
+            <version>1.22</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-compress -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.19</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.tukaani/xz -->
+        <dependency>
+            <groupId>org.tukaani</groupId>
+            <artifactId>xz</artifactId>
+            <version>1.8</version>
+        </dependency>
+        <!-- RAR5 https://mvnrepository.com/artifact/com.github.axet/java-unrar -->
+        <dependency>
+            <groupId>com.github.axet</groupId>
+            <artifactId>java-unrar</artifactId>
+            <version>1.7.0-8</version>
+        </dependency>
+
+        <dependency>
+            <groupId> net.sf</groupId>
+            <artifactId>sevenzipjbinding-16.02-2.01beta</artifactId>
+            <scope>system</scope>
+            <systemPath>D:\project\git\my.java.tools\init\lib\sevenzipjbinding-16.02-2.01beta.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId> net.sf</groupId>
+            <artifactId>sevenzipjbinding-16.02-2.01beta-AllPlatforms</artifactId>
+            <scope>system</scope>
+            <systemPath>D:\project\git\my.java.tools\init\lib\sevenzipjbinding-16.02-2.01beta-AllPlatforms.jar</systemPath>
+        </dependency>
+        <!--RAR5 依赖  end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
     </dependencies>
 
 
