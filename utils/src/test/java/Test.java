@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,14 +23,13 @@ import java.util.stream.Collectors;
  */
 public class Test {
     public static void main(String[] args) {
-        long time = System.currentTimeMillis();
-        for(;;) {
-
-            try {
-                Thread.sleep((System.currentTimeMillis()-time)/10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        List<String> list = new ArrayList<>();
+        list.add("a");
+        Iterator<String> it = list.iterator();
+        for (int i = 0;i< list.size(); i++){
+            System.out.print(list.size());
+            list.add("ss");
+            System.out.print(list.size());
         }
     }
 

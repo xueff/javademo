@@ -11,6 +11,7 @@ import org.apache.tools.tar.TarEntry;
 import org.apache.tools.tar.TarInputStream;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
@@ -38,13 +39,17 @@ public class CompressorZip implements Compressor {
 			FileInputStream fis = new FileInputStream(file);
 
 			BufferedInputStream bis = new BufferedInputStream(fis);
-			zis = new ZipInputStream(bis);
+			zis = new ZipInputStream(bis, Charset.forName("GBK"));
 			ZipEntry entry = null;
 
 			while ((entry = zis.getNextEntry()) != null) {
 				if (entry.isDirectory()) {
 					Compressor.createDirectory(targetPath, entry.getName()); // 创建子目录
 				} else {
+					File fileOut = new File(targetPath + File.separator + entry.getName());
+					if(!fileOut.getParentFile().exists()){
+						fileOut.getParentFile().mkdirs();
+					}
 					outputStream = new FileOutputStream(new File(targetPath + File.separator + entry.getName()));
 					int len = 0;
 					byte[] b = new byte[2048];
