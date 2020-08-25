@@ -65,7 +65,7 @@ public class GoogleCacheTest {
 //
 //                    // 此时一般我们会进行相关处理，如到数据库去查询
 //                    private Person getPerson(String key) throws ExecutionException {
-//                        System.out.println(key + " query");
+//                        System.out.println(key + " query_codes");
 //                        for (Person p : list) {
 //                            if (p.getId().equals(key))
 //                                return p;

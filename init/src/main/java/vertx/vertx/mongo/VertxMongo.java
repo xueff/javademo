@@ -86,7 +86,7 @@ public class VertxMongo {
                 //in
                 //.put("$in", idList)
 //            .put("date", 1541606400000L);//今天
-//        List<JsonObject> list = MongoClientTest.getMongoClient().findWithOptions(query,new FindOptions().setSort(new JsonObject().put("timeStamp",1)));
+//        List<JsonObject> list = MongoClientTest.getMongoClient().findWithOptions(query_codes,new FindOptions().setSort(new JsonObject().put("timeStamp",1)));
         doQuery(query);
     }
 
@@ -135,8 +135,8 @@ public class VertxMongo {
     @Test
     public void testReturn(){
         JsonObject query = new JsonObject().put("date" ,1542297600000L);
-//        query.put("hostMac","28f366b6dc86");
-//        query.put("date", 1541606400000L);//今天
+//        query_codes.put("hostMac","28f366b6dc86");
+//        query_codes.put("date", 1541606400000L);//今天
         MongoClientTest.getMongoClient().find("CountryGardenBattery", query,res -> {
             if (res.succeeded()) {
                 List<JsonObject> list =  res.result();
@@ -155,8 +155,8 @@ public class VertxMongo {
     @Test
     public void distinc(){
         JsonObject query = new JsonObject().put("key" ,"brand");
-//        query.put("hostMac","28f366b6dc86");
-//        query.put("date", 1541606400000L);//今天
+//        query_codes.put("hostMac","28f366b6dc86");
+//        query_codes.put("date", 1541606400000L);//今天
             MongoClientTest.getMongoClient().distinct("TVInfrared","brand" ,String.class.getName(),res -> {
             if (res.succeeded()) {
                 List list =  res.result().getList();
