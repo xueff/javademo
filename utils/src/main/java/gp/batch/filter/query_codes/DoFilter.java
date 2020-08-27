@@ -20,7 +20,7 @@ public class DoFilter {
         if(queryBean != null && queryBean.getFilters() != null){
             queryBean.getFilters().forEach(it->{
                 if(it.isFilter()){
-                    Map<String,String>  map = new FilterBeanDatasService().getDatas(it.getBeanAction().getBeanName(),it.getBeanAction().getCodeColumn());
+                    Map<String,String>  map = new FilterBeanDatasService().getDatas(it.getBeanAction());
                     map.forEach((k,v)->{
                         if(codes.contains(k)){
                             BeanAction beanAction = it.getBeanAction();

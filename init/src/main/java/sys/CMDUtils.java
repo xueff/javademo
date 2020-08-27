@@ -1,11 +1,19 @@
 package sys;
 import org.junit.Test;
-import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.*;
 
 /**
  * java 执行cmd
  */
 public class CMDUtils {
+    private static Logger log = LoggerFactory.getLogger(CMDUtils.class);
+
+    public static void main(String[] args) {
+        execute("rm -rf "+"./"+"666");
+    }
     @Test
     public void test1() throws IOException{
 //直接打开应用程序--无窗口
@@ -34,6 +42,91 @@ public class CMDUtils {
     public void test2()throws IOException{
         /********可以通过cmd命令打开软件或者是做其他*****/
         Runtime.getRuntime().exec("C:/Windows/System32/cmd.exe/cosk");//通过屏幕软键盘
+    }
+
+
+
+    /**
+     * @Author li cong
+     * @Description 更新的数据源，执行挂载命令
+     * @Date 2019/11/26 4:34 下午
+     */
+    public static boolean execute(String command) {
+        boolean result = false;
+        try {
+                Runtime runtime = Runtime.getRuntime();
+                Long start = System.currentTimeMillis();
+                Process process = runtime.exec(command);
+                //等待子线程线程执行完毕再进行执行
+                int i = process.waitFor();
+                log.info("waitFor"+i);
+                //接收执行完成后，获得的返回值
+                i = process.exitValue();
+                log.info("exitValue"+i);
+                log.info("执行时间：" + (System.currentTimeMillis() - start));
+                if (i == 0) {
+                    log.info("执行完成");
+                } else {
+                    log.info("执行失败，需要root用户执行，返回值：" + i);
+                    //log.info("---process.getInputStream()---");
+                    //readProcessInfo(process.getInputStream(),System.out);
+                    log.info("---process.getErrorStream()---");
+                    readProcessInfo(process.getErrorStream(), System.out);
+                    readProcessInfo(process.getInputStream(), System.out);
+                }
+                process.destroy();
+
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * @Author li cong
+     * @Description
+     * @Date 2019/11/26 4:41 下午
+     */
+    private static void readProcessInfo(InputStream inputStream, PrintStream out) {
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            String lines = "";
+            while ((line = reader.readLine()) != null) {
+                out.println(line);
+                lines += line;
+            }
+            log.error("readProcessInfo "+lines);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static String readProcessInfo(InputStream inputStream) {
+        StringBuilder sb = new StringBuilder();
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return sb.toString();
     }
 
 }

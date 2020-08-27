@@ -20,7 +20,7 @@ public class JSONFileUtils {
 //
 //    }
     public static void main(String[] args)   {
-        List<String>  jsons = readFile(new File("C:\\Users\\ffxue\\keeplive.text"));
+       new File("D:\\project\\idr-holmes-copy\\processor_java\\tmp\\decompress\\1598427205608\\新建文件夹").delete();
 
 
     }
