@@ -63,4 +63,8 @@ public class CompressorBZ2 implements Compressor {
 			}
 		}
 	}
+	@Override
+	public void decompress(InputStream inputStream, String targetPath, boolean delete){
+
+	}
 }

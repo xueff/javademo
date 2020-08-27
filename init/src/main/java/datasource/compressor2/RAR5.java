@@ -33,4 +33,9 @@ public class RAR5 implements Compressor {
 
 
 	}
+
+	@Override
+	public void decompress(InputStream stream, String targetPath, boolean delete) {
+
+	}
 }

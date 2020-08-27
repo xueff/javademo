@@ -7,10 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.mail.search.SearchTerm;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class DoFilter {
     private static Logger log = LoggerFactory.getLogger(DoFilter.class);
@@ -39,5 +36,24 @@ public class DoFilter {
 
     private static boolean filter(BeanAction beanAction, String v) {
         return CustomAlgorithm.algorithm(beanAction,v);
+    }
+
+
+    public static void main(String[] args) {
+        String action = "AllIn(A,B)";
+
+        action = action.substring(action.indexOf("(")+1,action.lastIndexOf(")"));
+        String type = "AA";
+        Set<Object> set = new HashSet<>();
+        String[] vs = action.split(",");
+        if(type.equalsIgnoreCase("String")){
+
+        }else if(type.equalsIgnoreCase("Long")){
+
+        }else if(type.equalsIgnoreCase("Integer")){
+
+        }
+
+
     }
 }

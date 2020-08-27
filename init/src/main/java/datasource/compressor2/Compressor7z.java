@@ -67,4 +67,8 @@ public class Compressor7z implements Compressor {
 			}
 		}
 	}
+	@Override
+	public void decompress(InputStream inputStream, String targetPath,  boolean delete){
+		System.out.println("XXXXXX");
+	}
 }

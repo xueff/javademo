@@ -57,6 +57,10 @@ public class CompressorRAR implements Compressor {
 		}
 	}
 
+	@Override
+	public void decompress(InputStream stream, String targetPath, boolean delete) {
+
+	}
 
 
 	/**

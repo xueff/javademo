@@ -63,4 +63,9 @@ public class CompressorGz implements Compressor {
 			}
 		}
 	}
+
+	@Override
+	public void decompress(InputStream stream, String targetPath, boolean delete) {
+
+	}
 }

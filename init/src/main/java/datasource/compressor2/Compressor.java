@@ -7,10 +7,7 @@
 package datasource.compressor2;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * 压缩解压的基类
@@ -19,7 +16,18 @@ import java.io.IOException;
  */
 public interface Compressor {
 
+    String ZIP = "ZIP";
+    String RAR = "RAR";
+    String TARGZ = "TAR.GZ";
+    String _7Z = "7Z";
+    String BZ2 = "BZ2";
+    String GZ = "GZ";
+    String TARBZ2 = "TAR.BZ2";
+    String TAR = "TAR";
+
+
     void decompress(File file, String targetPath, boolean delete);
+    void decompress(InputStream stream, String targetPath, boolean delete);
 
     /**
      *  构建目录
