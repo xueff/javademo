@@ -25,7 +25,13 @@ public class Test {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
         list.add("a");
-        Iterator<String> it = list.iterator();
+        list.add("a");
+        list.add("a");
+        list.add("a");
+        list.add("a");
+        list.add("a");
+        list.add("a");
+        List<String> it = list.subList(0,2);
         for (int i = 0;i< list.size(); i++){
             System.out.print(list.size());
             list.add("ss");

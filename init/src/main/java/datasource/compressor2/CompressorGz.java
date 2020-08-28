@@ -13,7 +13,9 @@ import java.io.*;
 import java.util.zip.GZIPInputStream;
 
 /**
- * 压缩解压的基类
+ * GZ:  只对文件压缩
+ * 1.gzip 源文件
+ * 2.gzip -r 目录 ： ！！！注意 gzip 压缩目录 只会递归地压缩目录下的所有文件 不会压缩目录
  * @author ben
  *
  */
@@ -36,6 +38,12 @@ public class CompressorGz implements Compressor {
 			gzipIn = new GZIPInputStream(fileInputStream);
 			// 创建输出目录
 			Compressor.createDirectory(targetPath, null);
+
+
+			// TODO 文件名获取乱码
+//			GzipCompressorInputStream stream1=new GzipCompressorInputStream(new FileInputStream(file));
+//			String fileName = stream1.getMetaData().getFilename();
+//			stream1.close();
 
 			File tempFile = new File(targetPath + File.separator + file.getName().replace(suffix, ""));
 			out = new FileOutputStream(tempFile);
