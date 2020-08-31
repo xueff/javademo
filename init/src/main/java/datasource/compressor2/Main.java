@@ -22,14 +22,14 @@ public class Main {
 //        new CompressorTar().decompress(new File("C:\\Users\\admin\\Desktop\\aa\\啊.tar"),"E:\\tmp",false);
 //        new CompressorTarGz().decompress(new File("E:\\software\\linux\\npf数据库嗅探工具.tar.gz"),"E:\\tmp",false);
 //        new CompressorTarBZ2().decompress(new File("C:\\Users\\admin\\Desktop\\aa\\hbase.tar.bz2"),"E:\\tmp",false);
-//        new CompressorGz().decompress(new File("C:\\Users\\admin\\Desktop\\aa\\啊.csv.gz"),"E:\\tmp",false);
+        new CompressorGz().decompress(new File("C:\\Users\\admin\\Desktop\\aa\\啊.csv.gz"),"E:\\tmp",false);
 //        new CompressorRAR().decompress(new File("E:\\software\\linux\\NAT类型测试工具.rar"),"E:\\tmp",false);
 //        new CompressorRAR().decompress(new File("E:\\BaiduNetdiskDownload\\尚硅谷前端\\webpack\\code\\project build.rar"),"E:\\tmp",false);
 
 
 
         //rar5
-        new CompressorRAR().decompress(new File("C:\\Users\\admin\\Desktop\\aa\\通用代码.rar"),"E:\\tmp",false);
+//        new CompressorRAR().decompress(new File("C:\\Users\\admin\\Desktop\\aa\\通用代码.rar"),"E:\\tmp",false);
 
     }
 }

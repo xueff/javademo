@@ -6,6 +6,7 @@
  */
 package datasource.compressor2;
 
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
 import org.apache.tools.tar.TarEntry;
 import org.apache.tools.tar.TarInputStream;
 
@@ -41,9 +42,9 @@ public class CompressorGz implements Compressor {
 
 
 			// TODO 文件名获取乱码
-//			GzipCompressorInputStream stream1=new GzipCompressorInputStream(new FileInputStream(file));
-//			String fileName = stream1.getMetaData().getFilename();
-//			stream1.close();
+			GzipCompressorInputStream stream1=new GzipCompressorInputStream(new FileInputStream(file));
+			String fileName = stream1.getMetaData().getFilename();
+			stream1.close();
 
 			File tempFile = new File(targetPath + File.separator + file.getName().replace(suffix, ""));
 			out = new FileOutputStream(tempFile);
