@@ -32,7 +32,7 @@ public class PackageUtil {
                 URL url = dir.nextElement();
                 System.out.println("url:***" + url);
                 String protocol = url.getProtocol();//获得协议号
-                if("file".equals(protocol)){
+                if("file_system.file".equals(protocol)){
                     System.err.println("file类型的扫描");
                     String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
                     System.out.println("filePath :" + filePath);

@@ -1,12 +1,9 @@
-package file;
+package file_system.file;
 
 import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.*;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

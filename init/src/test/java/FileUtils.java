@@ -127,13 +127,13 @@ public class FileUtils {
             if (file.createNewFile()){
                 System.out.println("File is created!");
                 Runtime.getRuntime().exec(" sudo chattr -V +i /opt/data/新建文本文档1.txt");
-//                file.setExecutable(false);//设置可执行权限
-//                file.setReadable(true);//设置可读权限
-//                file.setWritable(true);//设置可写权限
-//                System.out.println("is execute allow : " + file.canExecute());
-//                System.out.println("is read allow : " + file.canRead());
-//                System.out.println("is write allow : " + file.canWrite());
-//                System.out.println("is delete : " + file.delete());
+//                file_system.file.setExecutable(false);//设置可执行权限
+//                file_system.file.setReadable(true);//设置可读权限
+//                file_system.file.setWritable(true);//设置可写权限
+//                System.out.println("is execute allow : " + file_system.file.canExecute());
+//                System.out.println("is read allow : " + file_system.file.canRead());
+//                System.out.println("is write allow : " + file_system.file.canWrite());
+//                System.out.println("is delete : " + file_system.file.delete());
 
             }else{
                 System.out.println("File already exists.");

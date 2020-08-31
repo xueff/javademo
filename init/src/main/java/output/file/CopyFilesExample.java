@@ -17,7 +17,7 @@ public class CopyFilesExample {
         File source = new File("C:\\Users\\nikos7\\Desktop\\files\\sourcefile1.txt");
         File dest = new File("C:\\Users\\nikos7\\Desktop\\files\\destfile1.txt");
 
-        // copy file using FileStreamslong start = System.nanoTime();
+        // copy file_system.file using FileStreamslong start = System.nanoTime();
         long end;
         long start = System.currentTimeMillis();
         copyFileUsingFileStreams(source, dest);
@@ -31,7 +31,7 @@ public class CopyFilesExample {
         end = System.nanoTime();
         System.out.println("Time taken by FileChannels Copy = " + (end - start));
 
-        // copy file using Java 7 Files classsource = new File("C:\\Users\\nikos7\\Desktop\\files\\sourcefile3.txt");
+        // copy file_system.file using Java 7 Files classsource = new File("C:\\Users\\nikos7\\Desktop\\files\\sourcefile3.txt");
         dest = new File("C:\\Users\\nikos7\\Desktop\\files\\destfile3.txt");
         start = System.nanoTime();
         copyFileUsingJava7Files(source, dest);

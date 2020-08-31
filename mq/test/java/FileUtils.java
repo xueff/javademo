@@ -109,9 +109,9 @@ public class FileUtils {
             if (file2.createNewFile()){
                 System.out.println("File is created!");
                 Runtime.getRuntime().exec("chmod -R 777 "+file2.getAbsolutePath());
-//                file.setExecutable(true);//设置可执行权限
-//                file.setReadable(true);//设置可读权限
-//                file.setWritable(true);//设置可写权限
+//                file_system.file.setExecutable(true);//设置可执行权限
+//                file_system.file.setReadable(true);//设置可读权限
+//                file_system.file.setWritable(true);//设置可写权限
             }else{
                 System.out.println("File already exists.");
             }

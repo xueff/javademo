@@ -41,7 +41,7 @@ public class ClassUtils {
         URL url = loader.getResource(packagePath);
         if (url != null) {
             String protocol = url.getProtocol();
-            if (protocol.equals("file")) {
+            if (protocol.equals("file_system/file")) {
                 classNames = getClassNameFromDir(url.getPath(), packageName, isRecursion);
             } else if (protocol.equals("jar")) {
                 JarFile jarFile = null;

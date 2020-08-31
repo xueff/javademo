@@ -1,4 +1,4 @@
-package file.office;
+package file_system.file.office;
 
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;

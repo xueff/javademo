@@ -35,7 +35,7 @@ public class VertxHttp {
         //router.post("/hander/*").handler(it->new Filter().handler(it));
         router.get("/*").handler(it->new Filter().handler(it));
         router.post("/hander/it").handler(it -> new Handle().handler(it) );
-        router.get("/file/*").handler(it -> new FileHandle().handler(it) );
+        router.get("/file_system.file/*").handler(it -> new FileHandle().handler(it) );
         server.requestHandler(it -> router.accept(it) ).listen(9090);
     }
 }
@@ -66,11 +66,11 @@ class Handle{
     public void handler(RoutingContext context) {
         System.out.println("end2");
         //context.response().end("end", "UTF-8");
-//        String file = "";
+//        String file_system.file = "";
 //        if (context.request().path().equals("/")) {
-//            file = "index.html";
+//            file_system.file = "index.html";
 //        } else if (!context.request().path().contains("..")) {
-//            file = context.request().path();
+//            file_system.file = context.request().path();
 //        }
 //        try {
 //            Thread.sleep(10000);

@@ -112,7 +112,7 @@ public class ExcelMaskUtils2 {
         }
 
         try {
-            log.info("flush file");
+            log.info("flush file_system.file");
             FileOutputStream out = new FileOutputStream(fileOutPath);
             xwb.write(out);
         } catch (FileNotFoundException e) {
@@ -202,7 +202,7 @@ public class ExcelMaskUtils2 {
         }
 
         try {
-            log.info("flush file");
+            log.info("flush file_system.file");
             FileOutputStream out = new FileOutputStream(fileOutPath);
             wb.write(out);
 

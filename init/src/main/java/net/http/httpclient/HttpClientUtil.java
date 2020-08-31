@@ -310,8 +310,8 @@
 //        }
 //        //二进制参数
 //        if (files != null && files.size() > 0) {
-//            for (File file : files) {
-//                mEntityBuilder.addBinaryBody("file", file);
+//            for (File file_system.file : files) {
+//                mEntityBuilder.addBinaryBody("file_system.file", file_system.file);
 //            }
 //        }
 //        httpost.setEntity(mEntityBuilder.build());

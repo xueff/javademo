@@ -246,7 +246,7 @@ public class HttpClientMuti {
             HttpPost httppost = new HttpPost("http://localhost:8080/myDemo/Ajax/serivceFile.action");
 
             FileBody bin = new FileBody(new File("F:\\image\\sendpix0.jpg"));
-            StringBody comment = new StringBody("A binary file of some kind", ContentType.TEXT_PLAIN);
+            StringBody comment = new StringBody("A binary file_system.file of some kind", ContentType.TEXT_PLAIN);
 
             HttpEntity reqEntity = MultipartEntityBuilder.create().addPart("bin", bin).addPart("comment", comment).build();
 

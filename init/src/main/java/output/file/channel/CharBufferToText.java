@@ -26,7 +26,7 @@ public class CharBufferToText {
             System.out.println(buff.asCharBuffer());
             buff.rewind();//准备重读
             //当前系统默认编码方式
-            String encoding = System.getProperty("file.encoding");
+            String encoding = System.getProperty("file_system.file.encoding");
             //下面我们使用系统默认的编码方式（GBK）将ByteBuffer转换成CharBuffer
             System.out.println("Decoded using " + encoding + ": "
                     + Charset.forName(encoding).decode(buff));//显示正常，因为写入与读出时采用相同编码方式

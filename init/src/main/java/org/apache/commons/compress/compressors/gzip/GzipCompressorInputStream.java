@@ -1,11 +1,11 @@
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
+ * or more contributor license agreements.  See the NOTICE file_system.file
  * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
+ * regarding copyright ownership.  The ASF licenses this file_system.file
  * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
+ * "License"); you may not use this file_system.file except in compliance
  * with the License.  You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -186,7 +186,7 @@ public class GzipCompressorInputStream extends CompressorInputStream
         final int magic1 = in.read();
 
         // If end of input was reached after decompressing at least
-        // one .gz member, we have reached the end of the file successfully.
+        // one .gz member, we have reached the end of the file_system.file successfully.
         if (magic0 == -1 && !isFirstMember) {
             return false;
         }
@@ -238,7 +238,7 @@ public class GzipCompressorInputStream extends CompressorInputStream
             }
         }
 
-        // Original file name
+        // Original file_system.file name
         if ((flg & FNAME) != 0) {
             parameters.setFilename(new String(readToNull(inData),
                     CharsetNames.UTF_8));
@@ -353,7 +353,7 @@ public class GzipCompressorInputStream extends CompressorInputStream
                             + "(uncompressed size mismatch)");
                 }
 
-                // See if this is the end of the file.
+                // See if this is the end of the file_system.file.
                 if (!decompressConcatenated || !init(false)) {
                     inf.end();
                     inf = null;
@@ -367,7 +367,7 @@ public class GzipCompressorInputStream extends CompressorInputStream
     }
 
     /**
-     * Checks if the signature matches what is expected for a .gz file.
+     * Checks if the signature matches what is expected for a .gz file_system.file.
      *
      * @param signature the bytes to check
      * @param length    the number of bytes to check

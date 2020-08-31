@@ -23,7 +23,7 @@
 //
 //    public static void main(String[] args) {
 //        DB db = DBMaker
-//                .fileDB("file.db")
+//                .fileDB("file_system.file.db")
 //                .fileMmapEnable()
 //                .make();
 //        ConcurrentMap<String,Long> map = db
@@ -78,7 +78,7 @@
 //        //MapDB使用泛型序列化，可以序列化任何数据类型。
 //        // 使用专门的串行器，速度更快，记忆效率更高。
 //        // 此外，我们还可以在64位操作系统上启用更快速的内存映射文件：
-//        db = DBMaker.fileDB("file.db").fileMmapEnable().make();
+//        db = DBMaker.fileDB("file_system.file.db").fileMmapEnable().make();
 //        ConcurrentMap<String,Integer> map =
 //                db.hashMap("map", Serializer.STRING, Serializer.INTEGER)
 //                        .createOrOpen();

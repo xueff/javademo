@@ -93,7 +93,7 @@ public class AppendFile {
         try{
             File file = new File("d://text.txt");
             if(file.createNewFile()){
-                System.out.println("Create file successed");
+                System.out.println("Create file_system.file successed");
             }
 //            method1("d://text.txt", "123");
             method2("d://text.txt", "123");

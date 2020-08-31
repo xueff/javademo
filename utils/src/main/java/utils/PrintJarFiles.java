@@ -71,7 +71,7 @@ class PackageUtil {
         URL url = loader.getResource(packagePath);
         if (url != null) {
             String type = url.getProtocol();
-            if (type.equals("file")) {
+            if (type.equals("file_system/file")) {
                 fileNames = getClassNameByFile(url.getPath(), null, childPackage);
             } else if (type.equals("jar")) {
                 fileNames = getClassNameByJar(url.getPath(), childPackage);

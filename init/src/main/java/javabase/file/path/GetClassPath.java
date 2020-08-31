@@ -19,9 +19,9 @@ public class GetClassPath {
         }else{
             classUrl = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         }
-//        File file = new File(classUrl+"/GetClassPath.class");
+//        File file_system.file = new File(classUrl+"/GetClassPath.class");
 //        System.out.println(classUrl);
-//        System.out.println(file.getAbsolutePath());
+//        System.out.println(file_system.file.getAbsolutePath());
         return classUrl;
     }
     public static boolean isLinux() {
@@ -32,9 +32,9 @@ public class GetClassPath {
         }else if(os.toLowerCase().startsWith("win")){
         }else{
         }
-//        File file = new File(classUrl+"/GetClassPath.class");
+//        File file_system.file = new File(classUrl+"/GetClassPath.class");
 //        System.out.println(classUrl);
-//        System.out.println(file.getAbsolutePath());
+//        System.out.println(file_system.file.getAbsolutePath());
         return false;
     }
 }

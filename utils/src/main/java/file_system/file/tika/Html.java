@@ -1,4 +1,4 @@
-package file.tika;
+package file_system.file.tika;
 
 import com.google.common.io.Files;
 import org.xml.sax.SAXException;
@@ -14,14 +14,10 @@ import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.html.HtmlParser;
 import org.apache.tika.sax.BodyContentHandler;
-import org.junit.Before;
-import org.junit.Test;
 
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.sax.ExpandedTitleContentHandler;
-import org.xml.sax.SAXException;
 import org.apache.tika.metadata.Metadata;
-import java.util.concurrent.Future;
 
 /**
  * 文件 内容 抽取
