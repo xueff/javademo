@@ -202,6 +202,11 @@
             <scope>system</scope>
             <systemPath>D:\project\git\my.java.tools\init\lib\sevenzipjbinding-16.02-2.01beta-AllPlatforms.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>2.1.0</version>
+        </dependency>
         <!--RAR5 依赖  end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
     </dependencies>
 
