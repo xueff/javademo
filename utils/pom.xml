@@ -140,6 +140,27 @@
         <!--sigar   end-->
 
 
+        <!--ocr 0 -->
+        <!--<tess4j图片识别>-->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>4.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.jna</groupId>
+                    <artifactId>jna</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--ocr 1-->
+
+
     </dependencies>
 
 

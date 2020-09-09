@@ -9,14 +9,14 @@ import java.util.Objects;
 
 /**
  *
- * 文件追加内容
+ * 敏感发现结果整理
  * @version 2011-3-10 下午10:49:41
  */
 public class JSONFileUtils {
 
 
     public static void main(String[] args)   {
-        List<Dto> dtos = readFile(new File("C:\\Users\\admin\\Desktop\\aa\\send.txt"));
+        List<Dto> dtos = readFile(new File("C:\\Users\\admin\\Desktop\\aa.txt"));
         dtos.forEach(it->{
             String aa = it.getDbName()+","+it.getFamily()+","+it.getTableName()+","+it.getColumn()+","+it.getValues()+","+it.getSample()+"\n";
             try {
@@ -82,7 +82,7 @@ public class JSONFileUtils {
                 try {
                     System.out.println(j++);
                     JsonObject json = new JsonObject(line);
-                    if(json.getInteger("taskId") == 661 && !json.containsKey("inCompleteCount")){
+                    if(json.getInteger("taskId") == 788 && !json.containsKey("inCompleteCount")){
                         JsonArray array = json.getJsonArray("tableList");
                         array.forEach(it->{
                             JsonObject table = (JsonObject) it;
