@@ -37,18 +37,22 @@ public class AddressMacher {
         pcMAp.put("北京","");
         pcMAp.put("天津","");
         pcMAp.put("重庆","");
+        pcMAp.put("新疆","");
+        pcMAp.put("南京市","");
+        pcMAp.put("西藏","");
+        pcMAp.put("辽宁省","");
+        pcMAp.put("宁夏","");
         pcMAp.put("宁夏回族自治区","");
-        int total = 0;
 //        String ad = "楼好";
 //        String ad = "江苏苏州我市工业园区第三街道峰湖路28号创业产业园*号楼12楼28单元1201室";
-        String ad = "苏州市高新区狮山路龙湖天街生活广场二期4幢101号";
+        String ad = "江苏苏州";
 //        String ad = "江苏苏州吴中";
 //        String ad = "几天29号，明天30号，是的";
         //房子
         String xiangxi = "([\\d]|\\*){1,4}(幢|号楼|楼|栋|单元|层|室)+?";
         Pattern p = Pattern.compile(xiangxi);
         Matcher m=p.matcher(ad);
-        String next = "";
+        String next = null;
 
         boolean success = false;
         boolean find_lou = false;
@@ -63,12 +67,6 @@ public class AddressMacher {
             int end = m.end();
             System.out.println(ad.substring(i,end));
             i =end;
-            if(find ==2){
-                total +=3;
-                break;
-            }else {
-                total +=1;
-            }
         }
 
         //街区
@@ -76,7 +74,7 @@ public class AddressMacher {
         i=0;
         String quyu = "((街道|路|街)([\\d|\\*]{1,4}号))|(街道|路|广场|街|小区)";
         p = Pattern.compile(quyu);
-        ad = next.equals("")?ad:next;
+        ad = null==next?ad:next;
         m=p.matcher(ad);
         while (m.find()) {
             if(!find_jiequ) {
@@ -92,6 +90,7 @@ public class AddressMacher {
         }
 
         if(success || (find_jiequ&&find_lou)){
+            success = true;
             System.out.println("find");
         }
 
@@ -101,7 +100,7 @@ public class AddressMacher {
         boolean find_sheng_shi = false;
         String p_c = "(\\*(省|自治区|市|地区|州|盟))|(省|自治区|市|地区|州|盟)";
         p = Pattern.compile(p_c);
-        ad = next.equals("")?ad:next;
+        ad = null==next?ad:next;
         m=p.matcher(ad);
         i = 0;
 //        Set<String> addressMap = new HashSet<>(10);
@@ -110,7 +109,7 @@ public class AddressMacher {
             int end = m.end();
             String match = m.group();
             if(m.group().equals("州")){
-                if(ad.charAt(end) == '市'){
+                if(end<ad.length()&& ad.charAt(end) == '市'){
                     end+=1;
                     match = "市";
                 }
@@ -119,12 +118,14 @@ public class AddressMacher {
             if(m.group().contains("*")){
                 find_sheng_shi = true;
                 find++;
+            }else if(pcMAp.containsKey(items)){
+                find++;
+                find_sheng_shi = true;
             }else if(!pcMAp.containsKey(items)&& StringUtils.isNotEmpty(items)){
-                String split = ad.substring(i, end-match.length());
                 //split拆分check  TODO
-                int flag = split.length();
-                for(int j=flag-2;j>=0;j--){
-                    String city = split.substring(j,flag);
+                int flag = items.length();
+                for(int j=flag;j>=0;j--){
+                    String city = items.substring(j,flag);
                     if(pcMAp.containsKey(city)){
                         find++;
                         find_sheng_shi = true;
@@ -155,7 +156,7 @@ public class AddressMacher {
         boolean find_xian = false;
         String q_x = "(市|县|区|镇|乡)";
         p = Pattern.compile(q_x);
-        ad = next.equals("")?ad:next;
+        ad = null==next?ad:next;
         m=p.matcher(ad);
         i = 0;
         while (m.find()) {
@@ -172,25 +173,36 @@ public class AddressMacher {
         }
         if(success || (find_jiequ&&find_xian)){
             System.out.println("find");
+            success =true;
         }
         if(success || (find_sheng_shi&&find_xian)){
             System.out.println("find");
+            success =true;
         }
 
         //简写
-        ad = next.equals("")?ad:next;
+        /////////////////////////////////////////////////////////////////////
+        //1.首字母-查找
+        //2.遍历 包含
+        ad = null==next?ad:next;
         i =0;
         int count_find = 0;
+        boolean find_jianxie = false;
         for(int j=2;j<=(ad.length()>=8?8:ad.length());j++){
             if(pcMAp.containsKey(ad.substring(i,j))){
                 System.out.println(ad.substring(i,j));
                 i = j;
                 count_find++;
+                find_jianxie = true;
             }
         }
-        if(count_find>=2){
+        if(count_find>=2 ||(find_jianxie&&find_sheng_shi)){
             System.out.println("find");
+            success =true;
         }
+
+
+        /////////////////////////////////////////////////////////////////////////////
     }
 
 
