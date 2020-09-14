@@ -38,6 +38,8 @@ public class AddressMacher {
         pcMAp.put("天津","");
         pcMAp.put("重庆","");
         pcMAp.put("新疆","");
+        pcMAp.put("昆山","");
+        pcMAp.put("昆山市","");
         pcMAp.put("南京市","");
         pcMAp.put("西藏","");
         pcMAp.put("辽宁省","");
@@ -107,11 +109,9 @@ public class AddressMacher {
         while (m.find()) {
 
             int end = m.end();
-            String match = m.group();
             if(m.group().equals("州")){
                 if(end<ad.length()&& ad.charAt(end) == '市'){
                     end+=1;
-                    match = "市";
                 }
             }
             String items = ad.substring(i, end);
@@ -121,20 +121,23 @@ public class AddressMacher {
             }else if(pcMAp.containsKey(items)){
                 find++;
                 find_sheng_shi = true;
-            }else if(!pcMAp.containsKey(items)&& StringUtils.isNotEmpty(items)){
-                //split拆分check  TODO
-                int flag = items.length();
-                for(int j=flag;j>=0;j--){
-                    String city = items.substring(j,flag);
-                    if(pcMAp.containsKey(city)){
-                        find++;
-                        find_sheng_shi = true;
-                        flag = j;
-                        j = j-1;
-                    }
-
-                }
+            }else if((items.endsWith("州")||items.endsWith("市"))&& StringUtils.isNotEmpty(items)){
+                continue;
             }
+//            else if(!pcMAp.containsKey(items)&& StringUtils.isNotEmpty(items)){
+//                //split拆分check  TODO
+//                int flag = items.length();
+//                for(int j=flag;j>=0;j--){
+//                    String city = items.substring(j,flag);
+//                    if(pcMAp.containsKey(city)){
+//                        find++;
+//                        find_sheng_shi = true;
+//                        flag = j;
+//                        j = j-1;
+//                    }
+//
+//                }
+//            }
 //            else {
 //                if(StringUtils.isNotEmpty(items)) {
 //                    addressMap.add(items);
