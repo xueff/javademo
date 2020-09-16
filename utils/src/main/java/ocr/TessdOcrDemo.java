@@ -15,7 +15,7 @@ import java.util.List;
 
 public class TessdOcrDemo {
     public static void main(String[] args) throws Exception {
-        System.out.println(ocrResult("C:\\Users\\admin\\Desktop\\shengfenzheng\\不全.jpg"));
+        System.out.println(ocrResult("C:\\Users\\admin\\Desktop\\企业微信截图_20200914161415.png"));
     }
     /**
      * 图片识别
