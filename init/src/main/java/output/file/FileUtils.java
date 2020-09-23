@@ -66,6 +66,30 @@ public class FileUtils {
 
         return cxt.toString();
     }
+    /**
+     *
+     * @param cfg
+     * @return
+     */
+    public static String readFile(InputStream cfg) {
+        StringBuilder cxt = new StringBuilder();
+        try {
+            InputStreamReader inputStreamReader = new InputStreamReader(cfg, "UTF-8");
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                cxt.append(line);
+            }
+            bufferedReader.close();
+            inputStreamReader.close();
+
+        } catch (Exception e) {
+            System.out.println("读取文件失败");
+        }
+
+        return cxt.toString();
+    }
 
 
 
