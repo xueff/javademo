@@ -58,10 +58,10 @@ public class TableColumnBeanConvertInSql {
 
                }
            }
-           valueSql += value+",";
+           valueSql += value+",\n";
            value = valueFix;
        }
-       return colums +valueSql.substring(0,valueSql.length()-1)+";";
+       return column +valueSql.substring(0,valueSql.length()-1)+";";
 
     }
 
