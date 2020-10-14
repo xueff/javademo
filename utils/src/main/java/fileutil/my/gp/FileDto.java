@@ -1,5 +1,8 @@
 package fileutil.my.gp;
 
+import javax.persistence.Table;
+
+@Table(name = "books")
 public class FileDto {
 
     private String path;

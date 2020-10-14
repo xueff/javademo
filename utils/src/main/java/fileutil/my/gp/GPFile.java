@@ -59,13 +59,11 @@ public class GPFile {
         });
     }
     public static void read() throws Exception {
-        List<String> list = FileUtil.readUtf8Lines("C:\\Users\\admin\\Desktop\\gp.txt");
+        List<String> list = FileUtil.readUtf8Lines("C:\\Users\\admin\\Desktop\\book.txt");
         List<Object> dtos = new ArrayList<>(list.size());
         list.forEach(it->{
-            if(it.contains(".gpv")) {
                 String[] arr = it.split("\t");
                 dtos.add(new FileDto(arr[0].trim(), arr[1].trim()));
-            }
         });
         System.out.println(TableColumnBeanConvertInSql.insertBeans(dtos));
 
