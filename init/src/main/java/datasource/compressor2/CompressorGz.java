@@ -41,12 +41,17 @@ public class CompressorGz implements Compressor {
 			Compressor.createDirectory(targetPath, null);
 
 
-			// TODO 文件名获取乱码
-			GzipCompressorInputStream stream1=new GzipCompressorInputStream(new FileInputStream(file));
-			String fileName = stream1.getMetaData().getFilename();
-			stream1.close();
+			String fileName;
+			//			乱码
+			try {
+				GzipCompressorInputStream stream1 = new GzipCompressorInputStream(new FileInputStream(file));
+				fileName = targetPath+File.separator+stream1.getMetaData().getFilename();
+				stream1.close();
+			}catch (Exception e){
+				fileName = targetPath + File.separator + file.getName().replace(suffix, "");
+			}
 
-			File tempFile = new File(targetPath + File.separator + file.getName().replace(suffix, ""));
+			File tempFile = new File(fileName);
 			out = new FileOutputStream(tempFile);
 			int count;
 			byte data[] = new byte[2048];
