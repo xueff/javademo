@@ -22,8 +22,9 @@ public class DBUtils {
             Class.forName(DBConf.JDBC_DRIVER);
             conn = DriverManager.getConnection(DBConf.  DB_URL, DBConf.USER, DBConf.PASS);
 
-            String sql = "select * from satet_sys_user where id=?";
-            Map<String, Object> resultMap = queryRunner.query(conn, sql, new MapHandler(), 1);
+//            String sql = "select * from gbk where id=?";
+            String sql = "SELECT COLUMN_NAME,column_comment FROM INFORMATION_SCHEMA.Columns WHERE table_name='gbk' AND table_schema='db-gbk'  and column_name='name' ";
+            Map<String, Object> resultMap = queryRunner.query(conn, sql, new MapHandler());
             System.out.println(resultMap);
 
         } catch (Exception ex) {
