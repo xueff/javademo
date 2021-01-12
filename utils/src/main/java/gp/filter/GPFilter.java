@@ -1,4 +1,4 @@
-package test.filter.base;
+package gp.filter;
 
 import org.apache.commons.lang.StringUtils;
 

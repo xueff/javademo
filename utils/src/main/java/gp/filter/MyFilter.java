@@ -1,4 +1,4 @@
-package test.filter.base;
+package gp.filter;
 
 public interface MyFilter {
 

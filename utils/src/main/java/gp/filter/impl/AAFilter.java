@@ -1,7 +1,7 @@
-package test.filter.impl;
+package gp.filter.impl;
 
-import test.filter.base.FilterParams;
-import test.filter.base.GPFilter;
+import gp.base.gp.FilterParams;
+import gp.base.gp.GPFilter;
 
 public class AAFilter extends GPFilter {
 
