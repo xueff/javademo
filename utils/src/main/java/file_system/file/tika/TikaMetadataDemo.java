@@ -10,6 +10,7 @@ import org.apache.tika.mime.MediaType;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
+import org.apache.tika.parser.xml.XMLParser;
 import org.apache.tika.sax.BodyContentHandler;
 import org.junit.Test;
 import org.xml.sax.SAXException;
@@ -18,17 +19,17 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class TikaDemo {
+public class TikaMetadataDemo {
 
     //TODO 如何写到 /dev/null ??
     @Test
-    public void getMetadaByBigFile() {
+    public void getMetadataByBigFile() {
         long st = System.currentTimeMillis();
         TikaWriter printWriter = null;
         try {
             printWriter = new TikaWriter();
             BodyContentHandler content = new BodyContentHandler(printWriter);
-            Path inputFile = Paths.get("r.html");
+            Path inputFile = Paths.get("Sessions.xml");
             TikaInputStream inputStream = TikaInputStream.get(inputFile);
 
             AutoDetectParser parser = new AutoDetectParser();
@@ -36,9 +37,35 @@ public class TikaDemo {
             ParseContext context = new ParseContext();
 
             parser.parse(inputStream, content, metadata, context);
-            for(String name :  metadata.names()) {
-                System.out.println(name + ": " + metadata.get(name));
-            }
+//            for(String name :  metadata.names()) {
+//                System.out.println(name + ": " + metadata.get(name));
+//            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(System.currentTimeMillis() - st);
+    }
+
+    //TODO 如何写到 /dev/null ??
+    @Test
+    public void getXml() {
+        long st = System.currentTimeMillis();
+        TikaWriter printWriter = null;
+        try {
+            printWriter = new TikaWriter();
+            BodyContentHandler content = new BodyContentHandler(printWriter);
+            Path inputFile = Paths.get("Sessions.xml");
+            TikaInputStream inputStream = TikaInputStream.get(inputFile);
+
+            AutoDetectParser parser = new AutoDetectParser();
+            Metadata metadata = new Metadata();
+            ParseContext context = new ParseContext();
+            XMLParser xmlparser = new XMLParser();
+            xmlparser.parse(inputStream, content, metadata, context);
+//            parser.parse(inputStream, content, metadata, context);
+//            for(String name :  metadata.names()) {
+//                System.out.println(name + ": " + metadata.get(name));
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

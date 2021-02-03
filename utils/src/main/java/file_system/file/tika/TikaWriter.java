@@ -5,6 +5,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 public class TikaWriter extends Writer {
+        volatile boolean isStop = false;
         String fileName = "";
         //0:未开始  1：进行中 2：结束  -1：失败
         int status = 0;
@@ -23,10 +24,14 @@ public class TikaWriter extends Writer {
                 // TODO  lock 控制速度
                 //无用字符
                 queue.put(chr);
+                isStop = true;
                 System.out.println(new String(chr));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+//            if(isStop){
+//                throw new RuntimeException("正常终止");
+//            }
         }
 
         public void write(char[] chr, int st, int end) {
@@ -43,9 +48,11 @@ public class TikaWriter extends Writer {
         }
 
         public void flush() {
+            System.out.println("flush");
         }
 
         public void close() {
+            System.out.println("close");
         }
     }
 

@@ -2,7 +2,6 @@ package gp.filter;
 
 import gp.filter.impl.AAFilter;
 import io.vertx.core.json.JsonArray;
-import gp.base.gp.GPFilter;
 
 import java.util.ArrayList;
 import java.util.List;

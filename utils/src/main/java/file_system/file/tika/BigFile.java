@@ -1,5 +1,6 @@
 package file_system.file.tika;
 
+import org.apache.tika.Tika;
 import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
@@ -19,13 +20,34 @@ public class BigFile {
 //        parseFile(new File("Sessions.xml"));
 
     }
-    public static void q222(String[] args) {
+    @Test
+    public void commonRead() {
+        try {
+
+            File file = new File("12月话费发票.pdf");
+
+            Tika tika = new Tika();
+
+            String filecontent = tika.parseToString(file);
+
+            System.out.println("Extracted Content: " + filecontent);
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+    @Test
+    public void common() {
         Path outputFile = Paths.get("output.txt"); // Paths.get() if not using Java 11
         PrintWriter printWriter = null;
         try {
             printWriter = new PrintWriter(Files.newOutputStream(outputFile));
             BodyContentHandler content = new BodyContentHandler(printWriter);
-            Path inputFile = Paths.get("Sessions.xml");
+            Path inputFile = Paths.get("12月话费发票.pdf");
             TikaInputStream inputStream = TikaInputStream.get(inputFile);
 
             AutoDetectParser parser = new AutoDetectParser();
@@ -79,7 +101,7 @@ public class BigFile {
         try {
             printWriter = new TikaWriter();
             BodyContentHandler content = new BodyContentHandler(printWriter);
-            Path inputFile = Paths.get("Sessions.xml");
+            Path inputFile = Paths.get("12月话费发票.pdf");
             TikaInputStream inputStream = TikaInputStream.get(inputFile);
 
             AutoDetectParser parser = new AutoDetectParser();
@@ -87,6 +109,7 @@ public class BigFile {
             ParseContext context = new ParseContext();
 
             parser.parse(inputStream, content, metadata, context);
+            System.out.println(content.toString());
 
         } catch (Exception e) {
             e.printStackTrace();
