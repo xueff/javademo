@@ -1,7 +1,9 @@
 import cn.hutool.core.lang.Validator;
+import cn.hutool.core.util.XmlUtil;
 import cn.hutool.http.HttpUtil;
 import io.vertx.core.json.JsonObject;
 import org.apache.commons.lang3.StringUtils;
+import org.w3c.dom.Document;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -23,6 +25,81 @@ import java.util.stream.Collectors;
  */
 public class Test {
     public static void main(String[] args) {
+        Document d =  XmlUtil.parseXml("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+                "\n" +
+                "<report> \n" +
+                "  <vendor>绿盟科技</vendor>  \n" +
+                "  <product>RSAS</product>  \n" +
+                "  <version>6.0.2.0</version>  \n" +
+                "  <sysvul_version>6.0.0.1</sysvul_version>  \n" +
+                "  <task> \n" +
+                "    <id>1</id>  \n" +
+                "    <name>扫描【192.168.1.1;192.168.1.2&gt;</name>  \n" +
+                "    <targets>192.168.1.1;192.168.1.2</targets>  \n" +
+                "    <task_type>1</task_type>  \n" +
+                "    <vuln_template>0</vuln_template>  \n" +
+                "    <start_time>2014-10-01 12:00:00</start_time>  \n" +
+                "    <end_time>2014-10-01 12:01:00</end_time> \n" +
+                "  </task>  \n" +
+                "  <failed_hosts> \n" +
+                "    <failed_host> \n" +
+                "      <ip>111</ip>  \n" +
+                "      <reason/> \n" +
+                "    </failed_host> \n" +
+                "  </failed_hosts>  \n" +
+                "  <targets> \n" +
+                "    <target> \n" +
+                "      <ip>192.168.1.1</ip>  \n" +
+                "      <vuln_scanned> \n" +
+                "        <vuln> \n" +
+                "          <vul_id>vul_id</vul_id>  \n" +
+                "          <port>port</port>  \n" +
+                "          <protocol>protocol</protocol>  \n" +
+                "          <mess_string>mess_string</mess_string> \n" +
+                "        </vuln> \n" +
+                "      </vuln_scanned>  \n" +
+                "      <vuln_detail> \n" +
+                "        <vuln> \n" +
+                "          <vul_id>vul_id</vul_id>  \n" +
+                "          <plugin_id>plugin_id</plugin_id>  \n" +
+                "          <name>i18n_name</name>  \n" +
+                "          <threat_category>plugin_id</threat_category>  \n" +
+                "          <cve_id>cve_id</cve_id>  \n" +
+                "          <nsfocus_id>nsfocus_id</nsfocus_id>  \n" +
+                "          <bugtraq_id>bugtraq_id</bugtraq_id>  \n" +
+                "          <risk_points>risk_points</risk_points>  \n" +
+                "          <solution>solution</solution>  \n" +
+                "          <description>description</description> \n" +
+                "        </vuln> \n" +
+                "      </vuln_detail>  \n" +
+                "      <!--口令猜测结果-->  \n" +
+                "      <password_results> \n" +
+                "        <password_result> \n" +
+                "          <type>SMB</type>  \n" +
+                "          <ip>1.1.1.1</ip>  \n" +
+                "          <username>username</username>  \n" +
+                "          <password>password</password> \n" +
+                "        </password_result> \n" +
+                "      </password_results>  \n" +
+                "      <appendix_info> \n" +
+                "        <info> \n" +
+                "          <info_name>info_name</info_name>  \n" +
+                "          <record_result_name> \n" +
+                "            <name>item_name</name> \n" +
+                "          </record_result_name>  \n" +
+                "          <record_results> \n" +
+                "            <result> \n" +
+                "              <vule>item_name</vule> \n" +
+                "            </result> \n" +
+                "          </record_results>  \n" +
+                "          <record_results/> \n" +
+                "        </info> \n" +
+                "      </appendix_info> \n" +
+                "    </target> \n" +
+                "  </targets> \n" +
+                "</report>\n");
+
+
         List<String> list = new ArrayList<>();
         list.add("a");
         list.add("a");

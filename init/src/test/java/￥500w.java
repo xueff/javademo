@@ -1,8 +1,5 @@
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -50,8 +47,10 @@ public class ￥500w {
     @Test
     public void 大乐透(){
 
+        Map<Integer,Integer> countShuRed = new HashMap<>();
+        Map<Integer,Integer> countShuBlu = new HashMap<>();
         Random random=new Random();
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 100000; j++) {
             List<Integer> redlist=new ArrayList<>();
             StringBuffer sb=new StringBuffer();
             //红号
@@ -86,9 +85,23 @@ public class ￥500w {
             if(j!=4){
                 System.out.println("=================");
             }
+
+            redlist.forEach(it->{
+                if(countShuRed.containsKey(it)){
+                    countShuRed.put(it,0);
+                }
+                countShuRed.put(it,countShuRed.get(it) +1);
+            });
+            bluelist.forEach(it->{
+                if(countShuBlu.containsKey(it)){
+                    countShuBlu.put(it,0);
+                }
+                countShuBlu.put(it,countShuBlu.get(it) +1);
+            });
         }
-        String notify=chickenSoup.get(random.nextInt(chickenSoup.size()-1));
-        System.out.println("======"+notify+"======");
+//        String notify=chickenSoup.get(random.nextInt(chickenSoup.size()-1));
+        System.out.println("======"+countShuRed+"======");
+        System.out.println("======"+countShuBlu+"======");
     }
 
     //鸡汤

@@ -17,42 +17,7 @@ import java.util.*;
  */
 public class Teat1 {
     public static void main(String[] args) {
-        int i=0;
-        while (true){
-            System.out.println(i++);
-        }
-//        String str = "{\n" +
-//                "  \"type\": \"FILE\",\n" +
-//                "  \"header\": {\n" +
-//                "    \"EXTRATYPE\": \"WRITE\"\n" +
-//                "  },\n" +
-//                "  \"body\": {\n" +
-//                "    \"path\": \"/.dev/47b9ab80559cce18bb3217129278f9f6/000c43131005\",\n" +
-//                "    \"cmd\": {\n" +
-//                "      \"cmdName\": \"SendWhiteList\",\n" +
-//                "      \"cmdDetails\":{\n" +
-//                "        \"deviceList\":[\n" +
-//                "          {\n" +
-//                "            \"deviceId\":\"asdasd\",\n" +
-//                "            \"install_code\":\"asdasda\"\n" +
-//                "          }\n" +
-//                "          \n" +
-//                "        ]\n" +
-//                "      }\n" +
-//                "    }\n" +
-//                "  }\n" +
-//                "}";
-//
-//        JsonObject json = new JsonObject(str);
-//        StringBuffer s = new StringBuffer();
-//        String code = getJsonObjectCode(json.getMap(),s).toString();
-//        System.out.println(code);
-//
-//
-//
-//        JsonObject jsonout = new JsonObject().put("type","FILE").put("header",new JsonObject().put("EXTRATYPE","WRITE")).put("body",new JsonObject().put("path","/.dev/47b9ab80559cce18bb3217129278f9f6/000c43131005").put("cmd",new JsonObject().put("cmdName","SendWhiteList").put("cmdDetails",new JsonObject().put("deviceList",new JsonArray().add(new JsonObject().put("deviceId","asdasd").put("install_code","asdasda"))))));
-//
-//        System.out.println(jsonout.toString());
+        Optional<EventModel>  optional = ports.stream().filter(s->s.getPort().equals(port)).findFirst();
 
     }
 

@@ -167,6 +167,14 @@
         </dependency>
 
 
+
+        <dependency>
+            <groupId>com.espertech</groupId>
+            <artifactId>esper</artifactId>
+            <version>4.9.0</version>
+        </dependency>
+
+
     </dependencies>
 
 
